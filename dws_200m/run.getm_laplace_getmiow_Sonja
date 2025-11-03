@@ -81,7 +81,7 @@ export stop=$stop_time
 export GOTMGUIDIR=$HOME/home/GOTM_SOURCES/gotm-git/gui.py
 
 # getm_git: master, iow_master (and les and ip branches)
-$HOME/tools/bbpy/editscenario/editscenario/editscenario.py -q -e nml . --schemadir=/$HOME/home/getm-git/code/schemas --targetversion=getm-2.5 $setup.xml
+$HOME/tools/bbpy/editscenario/editscenario/editscenario.py -q -e nml . --schemadir=/$HOME/home/getm-git/schemas --targetversion=getm-2.5 $setup.xml
 
 echo "done"
 
@@ -91,18 +91,28 @@ echo "start running the model...."
 t1=`date +%s`
 echo "  mpiexec -l $mpich2_args -n $np bin/getm_prod_IFORT13.$conf &> $logdir/log.run"
 
-  mpirun $mpi_args -np $np $HOME/home/setups/$setup/bin/getm_prod_$FORTRAN_COMPILER.$conf &> $logdir/log.run
+  mpirun $mpi_args -np $np $HOME/home/GETM_ERSEM_SETUPS/$setup/bin/getm_prod_$FORTRAN_COMPILER.$conf &> $logdir/log.run
 
 t2=`date +%s`
 echo "... we made it"
 
+echo "starting move_files"
+
+#sleep 1
+# use queue:
+# for generating boundary conditions or merged subsets via run_all comment this out
+sbatch ./move_files $out_dir $runid
+
 echo "moving hot start files"
 echo "moving restart files, hot_dir:",$hot_dir
+#      mmv -o "$out_dir/restart.*.out" $hot_dir/restart.#1.in
+      sleep 10
       mv -f $out_dir/*.out $hot_dir/.
       wait
       rename .out .in $hot_dir/*.out
       wait
-      sleep 1
+      sleep 10
+#      rm -f $out_dir/restart.???.out
       echo "done"
 
 wait
@@ -110,15 +120,14 @@ wait
 echo "done"
 
 echo "moving log files"
-mv *.stderr getm.inp $logdir && rm -f *.stdout
+rsync -a *.stderr $logdir/.
+cp getm.inp $logdir/.
+#rm -f *.stderr
+#rm -f *.stdout
+rm getm.inp
+#rm stderr.tgz
 wait
 echo "done"
-
-
-ssh_string='nice -n 10 '`pwd`'/move_files '$out_dir' '$runid' > ~/err_move_files.msg &'
-echo $ssh_string
-ssh no60 "$ssh_string" > ~/err_sshm01.msg &
-sleep 1
 
 rm .info.pid
 pid=$!
