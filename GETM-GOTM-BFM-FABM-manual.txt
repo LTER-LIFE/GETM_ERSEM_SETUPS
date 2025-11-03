@@ -1,0 +1,63 @@
+
+Folder: /export/lv9/user/qzhan/
+#lv is like hard disks, 
+git clone https://github.com/jvdmolen/bfm_2016.git
+git checkout -b new_branch_name remotes/origin/bfm2016_production_20250827
+
+
+## Steps by Steps: ##
+1). Git clone BFM
+2). Git clone GOTM
+3). Git clone GETM
+4). Git clone FABM
+5). Setup required directory structures (tbd with Johan)
+6). Add settings to .bashrc to set up compilation environment
+7). Compile BFM + GOTM
+	- Running test 1D model
+8). Copy 3D setup from Sonja’s directory
+9). Make some modifications/additions to use BFM
+10). Compile 3D
+
+## Automation: ##
+# make new dir structure following Johans
+mkdir $HOME/BFM_SOURCES/bfm_2016
+mkdir $HOME/GOTM_SOURCES
+mkdir $HOME/GETM_SOURCES
+mkdir $HOME/fabm-git
+
+## Step (1): ##
+git clone https://github.com/jvdmolen/bfm_2016.git
+git checkout -b bfm2016_production_20250827 remotes/origin/bfm2016_production_20250827
+
+git clone https://github.com/jvdmolen/gotm_coupled_bfm_2016.git
+git checkout -b master_20210107_couplingGETM_bfm2016_20241126 remotes/origin/master_20210107_couplingGETM_bfm2016_20241126
+
+git clone https://github.com/jvdmolen/bfm_2016.git
+git checkout -b “new_branch_name” remotes/origin/bfm2016_production_20250827
+
+
+
+
+
+
+
+
+## A script to go back to previous steps:##
+Remove step: 
+rmdir 
+
+## Notes:##
+# BFM cannot be compiled alone, it has to be compiled together with GOTM. The compiled BFM-GOTM can be further compiled with GETM (3D).
+# The compiled executive is set-up specific, and is not standalone.
+# the manual in “/doc/folder” is outdated. Pls ignore the manual in “/doc/ folder”.
+# Useful codes: Copy & paste: left mouse click, then right mouse
+
+# to see which tag/release corresponds to that commit:
+# git tag --contains e1f1f08e42d84f8324f5114924b67ad567719334
+
+# To put my working copy exactly at that commit and create your own branch with a name "fabm_20200605":
+git checkout -b fabm_20200605 e1f1f08e42d84f8324f5114924b67ad567719334
+
+
+
+
