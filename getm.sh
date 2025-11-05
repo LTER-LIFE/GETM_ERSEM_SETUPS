@@ -1,0 +1,40 @@
+# getm.sh
+
+# module paths
+export PATH=/opt/laplace/NCO/bin:$PATH
+
+# testing package to run getm-iow
+module purge
+#module load EasyBuild/3.7.1
+module load EasyBuild/3.9.4
+module load CMake/3.9.1-GCCcore-6.4.0
+#module load py2-scipy/1.1.0
+#module load py2-numpy/1.14.3
+module load netCDF-Fortran/4.4.4-foss-2018a
+module load netCDF/4.6.0-foss-2018a
+# comment next line out for running GETM: screws up HDF5 library...
+#module load netcdf/4.6.1 #for nco tools
+
+#Definitions for GETM/GOTM compiler
+export FORTRAN_COMPILER=GFORTRAN
+
+#export FC=gcc
+unset FC
+unset LDFLAGS
+
+export MPI=OPENMPI
+
+export NETCDF_VERSION="NETCDF4"
+#export NETCDFINC=/opt/ohpc/pub/libs/gnu7/openmpi3/netcdf-fortran/4.4.4/include
+#export NETCDFINC=$HOME/.local/easybuild/software/netCDF-Fortran/4.4.4-foss-2018a/include
+#export NETCDFLIBNAME=netcdf.inc
+#export NETCDFLIBDIR=$HOME/.local/easybuild/software/netCDF-Fortran/4.4.4-foss-2018a/lib
+
+export COMPILATION_MODE="production"
+export GETM_PARALLEL=true
+
+export GOTMDIR=$HOME/home/gotm-git/
+export FABMDIR=$HOME/home/fabm-git/fabm/src
+export BFMDIR=$HOME/home/BFM_SOURCES/bfm-git
+export GETMDIR=$HOME/home/getm-git/src
+export GOTM_BUILD_DIR=$HOME/home/build/gotm
