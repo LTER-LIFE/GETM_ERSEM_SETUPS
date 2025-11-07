@@ -10,6 +10,7 @@ LABEL description="HPC-like environment for GOTM/FABM with GCC 6.4"
 # Install system dependencies
 # --------------------------
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    bash \
     build-essential \
     wget \
     curl \
@@ -25,6 +26,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     zlib1g-dev \
     nano \
+    vim \
+    && ln -sf /bin/bash /bin/sh \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -171,17 +174,6 @@ CMD ["/bin/bash"]
 # docker build -t getm-wad-container:latest .
 # docker build --build-arg GIT_USERNAME=yourusername --build-arg GIT_TOKEN=yourtoken  -t getm-wad-container:latest .
 
-# docker run -it getm-wad-container
-# mkdir -p ./build/gotm && cd ./build/gotm
-# cmake $GOTMDIR -DFABM_BASE=$FABMDIR -DNETCDF_ROOT=/opt/netcdf-fortran-4.4.4
-# make install
-
-# grep -r "global_mod" $GOTMDIR
-# nano /wad/home/GOTM_SOURCES/gotm_coupled_bfm_2016/src/CMakeLists.txt
-# deactivate two lines:
-#  add_dependencies(global_mod util)  #GetDelta.F90 depends on Time.F90
-#  add_dependencies(gotm bio)
-
 # On HPC:
 # module load singularity
 # singularity --version
@@ -189,9 +181,37 @@ CMD ["/bin/bash"]
 # singularity shell --bind $HOME/home/singularity-workspace:/opt/workspace getm-wad-container.sif # bind the directory, In Singularity, the container filesystem is mostly read-only. 
 # Only paths that are bound to your host directories are writable.
 
-# cd /opt/workspace/
-# mkdir -p ./build/gotm && cd ./build/gotm
-# cmake $GOTMDIR -DFABM_BASE=$FABMDIR -DNETCDF_ROOT=/opt/netcdf-fortran-4.4.4
-# make install
-# nano /opt/workspace/home/GOTM_SOURCES/gotm_coupled_bfm_2016/src/CMakeLists.txt
-# grep -r "global_mod" /opt/workspace/home/GOTM_SOURCES/gotm_coupled_bfm_2016/
+# --- STEP (10): Compile 3D.
+# mkdir $HOME/tools/getm/build/ && cd $HOME/tools/getm/build/
+# cp /export/lv1/user/jvandermolen/tools/getm/build/getm_configure.sh .
+# Change paths (no "code")
+# nano getm_configure.sh
+# ./getm_configure.sh
+
+# cd /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m
+# nano compile_all_git
+# ln -sf $setupdir/Configurations/$conf/$setup.dim $HOME/tools/getm/build/$compiler/dimensions.h
+# cd $HOME/tools/getm/build/$compiler
+
+# run it for compilation
+# ./compile_all_git
+
+# remove #sbatch in the file "run_gotm_batch_qing" (copy of "run_gotm_laplace")
+# create a file: run_gotm_sbatch.sh
+#!/bin/bash
+#SBATCH --job-name=gotm_laplace
+#SBATCH --output=/path/to/output/log_%j.out
+#SBATCH --error=/path/to/output/log_%j.err
+#SBATCH --time=12:00:00
+#SBATCH --partition=normal
+#SBATCH --ntasks=1
+#SBATCH --mem=2G
+
+## Load singularity module if needed
+# module load singularity
+
+## Run the container with GOTM inside
+# singularity exec /path/to/getm-wad-container.sif ./run_gotm_batch_qing
+
+# in the gotm case wk in HPC, run the sbatch
+# sbatch run_gotm_sbatch.sh
