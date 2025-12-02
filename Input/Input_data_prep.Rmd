@@ -3,12 +3,14 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-
 ```{r}
 library(terra)
 library(ncdf4)
 library(ggplot2)
 library(tidyterra)
+
+library(terra)
+library(leaflet)
 
 ncfile_path <- "C:/Users/qzhan/OneDrive - NIOZ/Attachments/01_LTER-LIFE/03_Model/3D_models_WaddenSea/Input/"
 
@@ -28,8 +30,11 @@ island_mask <- is.na(bathy)
 # --- Load Wadden Sea measurements ---
 silt_nc <- rast(paste0(ncfile_path, "sediment_mud_fraction.nc"))
 
-# Assign CRS (EPSG:4326)
-crs(silt_nc) <- "EPSG:4326"
+# Assign CRS (assume lon/lat, EPSG:4326)
+if (crs(silt_nc) == "") crs(silt_nc) <- "EPSG:4326"
+
+# Replace negative values with NA
+silt_nc[silt_nc < 0] <- NA
 
 # --- Load North Sea porosity ---
 ns_nc <- rast(paste0(ncfile_path, "Ben_Sedprop.nc"))
@@ -82,55 +87,223 @@ plot_interactive <- function(arr, lonc, latc, title="Raster Map") {
 
 
 
-# Load the North Sea porosity raster
+
+
+
+# 1. Load Wadden Sea porosity map
 ```{r}
-ns_nc <- rast(paste0(ncfile_path, "Ben_Sedprop.nc"))
-crs(ns_nc)
-ns_ll <- project(ns_nc, "EPSG:4326")  # reproject to lon/lat if needed
 
-# Convert raster to points for leaflet
-df_ns <- as.data.frame(ns_ll, xy = TRUE)
-df_ns <- df_ns[,c("x","y", "Porosity")]
-names(df_ns) <- c("lon", "lat", "Porosity")
+# --- Load Wadden Sea measurements ---
+silt_nc <- rast(paste0(ncfile_path, "sediment_mud_fraction.nc"))
 
-# Remove NA
-df_ns <- df_ns[!is.na(df_ns$Porosity), ]
+# Assign CRS (assume lon/lat, EPSG:4326)
+if (crs(silt_nc) == "") crs(silt_nc) <- "EPSG:4326"
 
-# Color palette
-pal <- colorNumeric("viridis", df_ns$Porosity, na.color = "grey80")
+# Replace negative values with NA
+silt_nc[silt_nc < 0] <- NA
+
+# Optional: interactive map for Wadden Sea porosity
+df_ws <- as.data.frame(silt_nc, xy = TRUE)
+df_ws <- df_ws[,c("lonc","latc","porosity")]
+names(df_ws) <- c("lon","lat","porosity")
+df_ws <- df_ws[!is.na(df_ws$porosity), ]
+
+pal_ws <- colorNumeric("viridis", df_ws$porosity, na.color="grey80")
+
+leaflet(df_ws) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 3,
+    color = ~pal_ws(porosity),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Porosity: ", round(porosity,4))
+  ) %>%
+  addLegend(
+    pal = pal_ws,
+    values = df_ws$porosity,
+    title = "Wadden Sea Porosity"
+  )
+
+
+```
+The range of Wadden Sea porosity based on SIBES & SUBES dataset: 0.3878324 0.6755730
+
+
+# 2. Load Default North Sea porosity raster
+```{r}
+ns_por <- rast(paste0(ncfile_path, "Ben_Sedprop.nc"))
+
+# Reproject to EPSG:4326 if needed
+if (crs(ns_por) != "EPSG:4326") {
+  ns_por <- project(ns_por, "EPSG:4326")
+}
+
+# Optional: interactive map for NS porosity
+df_ns <- as.data.frame(ns_por, xy = TRUE)
+df_ns <- df_ns[,c("x", "y", "Porosity")]
+names(df_ns) <- c("lon","lat","porosity")
+df_ns <- df_ns[!is.na(df_ns$porosity), ]
+
+pal_ns <- colorNumeric("viridis", df_ns$porosity, na.color="grey80")
 
 leaflet(df_ns) %>%
   addTiles() %>%
   addCircleMarkers(
     lng = ~lon, lat = ~lat,
     radius = 2,
-    color = ~pal(Porosity),
+    color = ~pal_ns(porosity),
     stroke = FALSE, fillOpacity = 0.8,
-    label = ~paste0("Porosity: ", round(Porosity, 4))
+    label = ~paste0("Porosity: ", round(porosity,4))
   ) %>%
   addLegend(
-    pal = pal,
-    values = df_ns$Porosity,
+    pal = pal_ns,
+    values = df_ns$porosity,
     title = "North Sea Porosity"
   )
 
 
-range(df_ns$Porosity)
+range(df_ns$porosity)
 ```
-The range of default Northsea & Wadden Sea Porosity 0.4011450 0.5160929
+The range of default Northsea & Wadden Sea porosity: 0.4011450 0.5160929
 
 
-# --- 1. Interpolate NS porosity to GETM grid ---
+# 2.1. Interpolate NS porosity to GETM grid ---
 ```{r}
-ns_vals <- terra::extract(ns_ll, xy, method="bilinear")
-# extract returns a data.frame with column for each layer
-# If single layer, it might still be a data.frame
+# ------------------------------
+# Prepare target GETM coordinates for interpolation
+# ------------------------------
+xy <- cbind(as.vector(lonc), as.vector(latc))  # N x 2
+
+# Interpolate NS porosity to GETM grid
+ns_vals <- terra::extract(ns_por, xy, method="bilinear")
+ns_vals <- ns_vals$Porosity
 if(is.data.frame(ns_vals)) ns_vals <- ns_vals[, ncol(ns_vals)]
 ns_arr <- array(as.numeric(ns_vals), dim = c(dim_xc, dim_yc))
 
-plot_interactive(ns_arr, lonc, latc, title="NS Porosity Interpolated")
+# Optional: interactive inspection
+df_ns_interp <- data.frame(
+  lon = as.vector(lonc),
+  lat = as.vector(latc),
+  porosity = as.vector(ns_arr)
+)
+df_ns_interp <- df_ns_interp[!is.na(df_ns_interp$porosity), ]
+pal_ns_interp <- colorNumeric("viridis", df_ns_interp$porosity, na.color="grey80")
+
+leaflet(df_ns_interp) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 2,
+    color = ~pal_ns_interp(porosity),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Porosity: ", round(porosity,4))
+  ) %>%
+  addLegend(
+    pal = pal_ns_interp,
+    values = df_ns_interp$porosity,
+    title = "NS Porosity Interpolated (200m)"
+  )
+```
+
+# 2.2. Merge: replace NS porosity with Wadden Sea values
+```{r}
+
+df_ws_grid <- as.data.frame(silt_nc)
+df_ws_grid <- df_ws_grid[,c("lonc", "latc", "porosity")]
+names(df_ws_grid) <- c("lon", "lat", "porosity")
+
+ws_arr <- as.array(df_ws_grid$porosity, dim = c(dim_xc, dim_yc))  # should already be dim_xc x dim_yc
+
+final_porosity <- ns_arr
+final_porosity[!is.na(ws_arr)] <- ws_arr[!is.na(ws_arr)]
+
+# Optional: interactive inspection
+df_ns_ws_merg <- data.frame(
+  lon = as.vector(lonc),
+  lat = as.vector(latc),
+  porosity = as.vector(final_porosity)
+)
+
+df_ns_ws_merg <- df_ns_ws_merg[!is.na(df_ns_ws_merg$porosity), ]
+pal_ns_interp <- colorNumeric("viridis", df_ns_ws_merg$porosity, na.color="grey80")
+
+leaflet(df_ns_ws_merg) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 2,
+    color = ~pal_ns_interp(porosity),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Porosity: ", round(porosity,4))
+  ) %>%
+  addLegend(
+    pal = pal_ns_interp,
+    values = df_ns_ws_merg$porosity,
+    title = "NS Porosity replaced with Wadden Sea 200m"
+  )
 
 ```
+# 2.3 Apply Wadden island mask
+```{r}
+final_porosity[island_mask] <- NA
+
+# Optional: interactive inspection of final merged porosity
+df_final <- data.frame(
+  lon = as.vector(lonc),
+  lat = as.vector(latc),
+  porosity = as.vector(final_porosity)
+)
+df_final <- df_final[!is.na(df_final$porosity), ]
+pal_final <- colorNumeric("viridis", df_final$porosity, na.color="grey80")
+
+leaflet(df_final) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 2,
+    color = ~pal_final(porosity),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Porosity: ", round(porosity,4))
+  ) %>%
+  addLegend(
+    pal = pal_final,
+    values = df_final$porosity,
+    title = "Final Merged Porosity"
+  )
+
+```
+
+# 2.4 Write NetCDF
+```{r}
+
+out_nc <- paste0(ncfile_path, "porosity_merged.nc")
+
+xc_dim <- ncdim_def("xc", "m", 1:dim_xc)
+yc_dim <- ncdim_def("yc", "m", 1:dim_yc)
+
+lon_var <- ncvar_def("lonc", "degree_east", list(xc_dim, yc_dim), missval=1e20, prec="float")
+lat_var <- ncvar_def("latc", "degree_north", list(xc_dim, yc_dim), missval=1e20, prec="float")
+por_var <- ncvar_def("porosity", "1", list(xc_dim, yc_dim), missval=-999, prec="float")
+
+ncnew <- nc_create(out_nc, vars = list(lon_var, lat_var, por_var))
+ncvar_put(ncnew, "lonc", lonc)
+ncvar_put(ncnew, "latc", latc)
+
+# Replace NA with -999 for NetCDF
+final_nc <- final_porosity
+final_nc[is.na(final_nc)] <- -999
+ncvar_put(ncnew, "porosity", final_nc)
+
+ncatt_put(ncnew, 0, "type", "Merged Wadden Sea + North Sea porosity")
+ncatt_put(ncnew, 0, "gridid", "North Sea and Wadden Sea")
+ncatt_put(ncnew, 0, "history", paste("Created:", date()))
+nc_close(ncnew)
+
+cat("Final porosity NetCDF written to:", out_nc, "\n")
+
+```
+
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 
