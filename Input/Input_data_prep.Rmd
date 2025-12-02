@@ -1,0 +1,137 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(terra)
+library(ncdf4)
+library(ggplot2)
+library(tidyterra)
+
+ncfile_path <- "C:/Users/qzhan/OneDrive - NIOZ/Attachments/01_LTER-LIFE/03_Model/3D_models_WaddenSea/Input/"
+
+# --- Load topo (to get grid and Wadden island mask) ---
+nc_topo <- nc_open(paste0(ncfile_path, "topo_adjusted_dws_200m_2009.nc"))
+lonc <- ncvar_get(nc_topo, "lonc")
+latc <- ncvar_get(nc_topo, "latc")
+bathy <- ncvar_get(nc_topo, "bathymetry")
+nc_close(nc_topo)
+
+dim_xc <- dim(lonc)[1]
+dim_yc <- dim(lonc)[2]
+
+# Wadden island mask: TRUE = island (NA in topo)
+island_mask <- is.na(bathy)
+
+# --- Load Wadden Sea measurements ---
+silt_nc <- rast(paste0(ncfile_path, "sediment_mud_fraction.nc"))
+
+# Assign CRS (EPSG:4326)
+crs(silt_nc) <- "EPSG:4326"
+
+# --- Load North Sea porosity ---
+ns_nc <- rast(paste0(ncfile_path, "Ben_Sedprop.nc"))
+crs(ns_nc)
+ns_ll <- project(ns_nc, "EPSG:4326")  # reproject to lon/lat if needed
+
+# --- Prepare target coordinates for GETM grid ---
+xy <- cbind(as.vector(lonc), as.vector(latc))  # N x 2
+
+```
+
+
+# Functions
+## Prepare interactive leaflet map function
+```{r}
+library(terra)
+library(leaflet)
+
+plot_interactive <- function(arr, lonc, latc, title="Raster Map") {
+  # Convert array to points
+  df <- data.frame(
+    lon = as.vector(lonc),
+    lat = as.vector(latc),
+    value = as.vector(arr)
+  )
+  
+  # Remove missing for plotting
+  df <- df[!is.na(df$value), ]
+  
+  # Color palette
+  pal <- colorNumeric("viridis", df$value, na.color="grey80")
+  
+  leaflet(df) %>%
+    addTiles() %>%
+    addCircleMarkers(
+      lng = ~lon, lat = ~lat,
+      radius = 2,
+      color = ~pal(value),
+      stroke = FALSE, fillOpacity = 0.8,
+      label = ~paste0(round(value,4))
+    ) %>%
+    addLegend(
+      pal = pal,
+      values = df$value,
+      title = title
+    )
+}
+
+```
+
+
+
+# Load the North Sea porosity raster
+```{r}
+ns_nc <- rast(paste0(ncfile_path, "Ben_Sedprop.nc"))
+crs(ns_nc)
+ns_ll <- project(ns_nc, "EPSG:4326")  # reproject to lon/lat if needed
+
+# Convert raster to points for leaflet
+df_ns <- as.data.frame(ns_ll, xy = TRUE)
+df_ns <- df_ns[,c("x","y", "Porosity")]
+names(df_ns) <- c("lon", "lat", "Porosity")
+
+# Remove NA
+df_ns <- df_ns[!is.na(df_ns$Porosity), ]
+
+# Color palette
+pal <- colorNumeric("viridis", df_ns$Porosity, na.color = "grey80")
+
+leaflet(df_ns) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 2,
+    color = ~pal(Porosity),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Porosity: ", round(Porosity, 4))
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = df_ns$Porosity,
+    title = "North Sea Porosity"
+  )
+
+
+range(df_ns$Porosity)
+```
+The range of default Northsea & Wadden Sea Porosity 0.4011450 0.5160929
+
+
+# --- 1. Interpolate NS porosity to GETM grid ---
+```{r}
+ns_vals <- terra::extract(ns_ll, xy, method="bilinear")
+# extract returns a data.frame with column for each layer
+# If single layer, it might still be a data.frame
+if(is.data.frame(ns_vals)) ns_vals <- ns_vals[, ncol(ns_vals)]
+ns_arr <- array(as.numeric(ns_vals), dim = c(dim_xc, dim_yc))
+
+plot_interactive(ns_arr, lonc, latc, title="NS Porosity Interpolated")
+
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
