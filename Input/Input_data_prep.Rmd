@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r}
@@ -85,15 +87,12 @@ plot_interactive <- function(arr, lonc, latc, title="Raster Map") {
 
 ```
 
-
-
-
-
-
 # 1. Load Wadden Sea porosity map
 ```{r}
 
-# --- Load Wadden Sea measurements ---
+library(classInt)
+library(leaflet)
+
 silt_nc <- rast(paste0(ncfile_path, "sediment_mud_fraction.nc"))
 
 # Assign CRS (assume lon/lat, EPSG:4326)
@@ -104,26 +103,74 @@ silt_nc[silt_nc < 0] <- NA
 
 # Optional: interactive map for Wadden Sea porosity
 df_ws <- as.data.frame(silt_nc, xy = TRUE)
-df_ws <- df_ws[,c("lonc","latc","porosity")]
-names(df_ws) <- c("lon","lat","porosity")
+df_ws <- df_ws[,c("lonc","latc","mud_fraction","porosity")]
+names(df_ws) <- c("lon","lat", "Silt_content","porosity")
 df_ws <- df_ws[!is.na(df_ws$porosity), ]
 
-pal_ws <- colorNumeric("viridis", df_ws$porosity, na.color="grey80")
+# small value in gully account for a mall contribution
+plot(density(df_ws$Silt_content))
 
+# Franken et al. used a 5-class quantile categorical color scale, not a continuous viridis scale.
+# A discrete ramp that emphasizes structural contrasts
+# Often based on earth tones (brown–yellow–blue) or GIST-Earth / terrain
+# A hillshade underneath enhances gullies regardless of palette
+
+
+# pal_ws_silt <- colorNumeric("viridis", df_ws$Silt_content, na.color="grey80")
+# pal_ws <- colorNumeric("viridis", df_ws$porosity, na.color="grey80")
+
+# define quantile breaks
+silt_brks <- classInt::classIntervals(df_ws$Silt_content, n = 5, style = "quantile")$brks
+por_brks <- classInt::classIntervals(df_ws$porosity, n = 5, style = "quantile")$brks
+
+# pick 5 colors (low→high), e.g. from brown → green → blue
+col5 <- c("#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598")
+
+pal_ws_silt <- colorBin(palette = col5,
+                       bins = silt_brks,
+                       domain = df_ws$Silt_content,
+                       na.color = "transparent",
+                       right = TRUE)
+
+pal_ws_por <- colorBin(palette = col5,
+                     bins = por_brks,
+                     domain = df_ws$porosity,
+                     na.color = "transparent",
+                     right = TRUE)
+
+# Silt content map from Franken et al.,
 leaflet(df_ws) %>%
   addTiles() %>%
   addCircleMarkers(
     lng = ~lon, lat = ~lat,
     radius = 3,
-    color = ~pal_ws(porosity),
+    color = ~pal_ws_silt(Silt_content),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Silt content: ", round(Silt_content, 2), "%")
+  ) %>%
+  addLegend(
+    pal = pal_ws_silt,
+    values = df_ws$Silt_content,
+    title = "Wadden Sea Silt content (%)"
+  )
+
+
+# Porosity
+leaflet(df_ws) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 3,
+    color = ~pal_ws_por(porosity),
     stroke = FALSE, fillOpacity = 0.8,
     label = ~paste0("Porosity: ", round(porosity,4))
   ) %>%
   addLegend(
-    pal = pal_ws,
+    pal = pal_ws_por,
     values = df_ws$porosity,
-    title = "Wadden Sea Porosity"
+    title = "Porosity (quantile classes)"
   )
+
 
 
 ```
@@ -169,17 +216,20 @@ The range of default Northsea & Wadden Sea porosity: 0.4011450 0.5160929
 
 
 # 2.1. Interpolate NS porosity to GETM grid ---
-```{r}
+```{r echo=TRUE}
 # ------------------------------
 # Prepare target GETM coordinates for interpolation
 # ------------------------------
 xy <- cbind(as.vector(lonc), as.vector(latc))  # N x 2
 
 # Interpolate NS porosity to GETM grid
-ns_vals <- terra::extract(ns_por, xy, method="bilinear")
+# ns_vals <- terra::extract(ns_por, xy, method="bilinear")
+ns_vals <- terra::extract(ns_por, xy, method="simple")
 ns_vals <- ns_vals$Porosity
 if(is.data.frame(ns_vals)) ns_vals <- ns_vals[, ncol(ns_vals)]
 ns_arr <- array(as.numeric(ns_vals), dim = c(dim_xc, dim_yc))
+
+ns_arr[island_mask] <- NA
 
 # Optional: interactive inspection
 df_ns_interp <- data.frame(
@@ -206,8 +256,50 @@ leaflet(df_ns_interp) %>%
   )
 ```
 
+# 2.1.1. Interpolate NS porosity with fixed value ---
+```{r echo=TRUE}
+
+xy <- cbind(as.vector(lonc), as.vector(latc))  # N x 2
+
+# Interpolate NS porosity to GETM grid
+# ns_vals <- terra::extract(ns_por, xy, method="bilinear")
+ns_vals <- terra::extract(ns_por, xy, method="simple")
+ns_vals <- ns_vals$Porosity
+
+# set all values (non-missing values) to north sea value: 0.4011
+ns_vals[!is.na(ns_vals)] <- 0.4011
+
+ns_arr <- array(ns_vals, dim = c(dim_xc, dim_yc))
+
+# Optional: interactive inspection
+df_ns_interp <- data.frame(
+  lon = as.vector(lonc),
+  lat = as.vector(latc),
+  porosity = as.vector(ns_arr)
+)
+df_ns_interp <- df_ns_interp[!is.na(df_ns_interp$porosity), ]
+pal_ns_interp <- colorNumeric("viridis", df_ns_interp$porosity, na.color="grey80")
+
+leaflet(df_ns_interp) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 2,
+    color = ~pal_ns_interp(porosity),
+    stroke = FALSE, fillOpacity = 0.8,
+    label = ~paste0("Porosity: ", round(porosity,4))
+  ) %>%
+  addLegend(
+    pal = pal_ns_interp,
+    values = df_ns_interp$porosity,
+    title = "NS Porosity Interpolated (200m)"
+  )
+
+```
+
 # 2.2. Merge: replace NS porosity with Wadden Sea values
 ```{r}
+
 
 df_ws_grid <- as.data.frame(silt_nc)
 df_ws_grid <- df_ws_grid[,c("lonc", "latc", "porosity")]
@@ -226,19 +318,32 @@ df_ns_ws_merg <- data.frame(
 )
 
 df_ns_ws_merg <- df_ns_ws_merg[!is.na(df_ns_ws_merg$porosity), ]
-pal_ns_interp <- colorNumeric("viridis", df_ns_ws_merg$porosity, na.color="grey80")
+
+# use wadden sea data for defining breaks, otherwise north sea will create repeat breaks (large nr)
+por_brks <- classInt::classIntervals(df_ws$porosity, n = 5, style = "quantile")$brks
+
+# pick 5 colors (low→high), e.g. from brown → green → blue
+col5 <- c("#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598")
+
+pal_ws_por_merg <- colorBin(palette = col5,
+                            bins = por_brks,
+                            domain = df_ns_ws_merg$porosity,
+                            na.color = "transparent",
+                            right = TRUE)
+
+# pal_ns_interp <- colorNumeric("viridis", df_ns_ws_merg$porosity, na.color="grey80")
 
 leaflet(df_ns_ws_merg) %>%
   addTiles() %>%
   addCircleMarkers(
     lng = ~lon, lat = ~lat,
-    radius = 2,
-    color = ~pal_ns_interp(porosity),
+    radius = 3,
+    color = ~pal_ws_por_merg(porosity),
     stroke = FALSE, fillOpacity = 0.8,
-    label = ~paste0("Porosity: ", round(porosity,4))
+    label = ~paste0("sediment porosity: ", round(porosity, 3))
   ) %>%
   addLegend(
-    pal = pal_ns_interp,
+    pal = pal_ws_por_merg,
     values = df_ns_ws_merg$porosity,
     title = "NS Porosity replaced with Wadden Sea 200m"
   )
@@ -246,6 +351,9 @@ leaflet(df_ns_ws_merg) %>%
 ```
 # 2.3 Apply Wadden island mask
 ```{r}
+
+final_porosity <- ns_arr
+final_porosity[!is.na(ws_arr)] <- ws_arr[!is.na(ws_arr)]
 final_porosity[island_mask] <- NA
 
 # Optional: interactive inspection of final merged porosity
@@ -254,23 +362,38 @@ df_final <- data.frame(
   lat = as.vector(latc),
   porosity = as.vector(final_porosity)
 )
+
 df_final <- df_final[!is.na(df_final$porosity), ]
-pal_final <- colorNumeric("viridis", df_final$porosity, na.color="grey80")
+
+# pal_final <- colorNumeric("viridis", df_final$porosity, na.color="grey80")
+# use wadden sea data for defining breaks, otherwise north sea will create repeat breaks (large nr)
+por_brks <- classInt::classIntervals(df_ws$porosity, n = 5, style = "quantile")$brks
+
+# pick 5 colors (low→high), e.g. from brown → green → blue
+col5 <- c("#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598")
+
+pal_ws_por_final <- colorBin(palette = col5,
+                            bins = por_brks,
+                            domain = df_final$porosity,
+                            na.color = "transparent",
+                            right = TRUE)
+
 
 leaflet(df_final) %>%
   addTiles() %>%
   addCircleMarkers(
     lng = ~lon, lat = ~lat,
-    radius = 2,
-    color = ~pal_final(porosity),
+    radius = 3,
+    color = ~pal_ws_por_final(porosity),
     stroke = FALSE, fillOpacity = 0.8,
-    label = ~paste0("Porosity: ", round(porosity,4))
+    label = ~paste0("sediment porosity: ", round(porosity, 3))
   ) %>%
   addLegend(
-    pal = pal_final,
+    pal = pal_ws_por_final,
     values = df_final$porosity,
-    title = "Final Merged Porosity"
+    title = "NS Porosity replaced with Wadden Sea 200m"
   )
+
 
 ```
 
@@ -304,7 +427,3 @@ cat("Final porosity NetCDF written to:", out_nc, "\n")
 
 ```
 
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
