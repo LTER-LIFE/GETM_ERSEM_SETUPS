@@ -24,17 +24,17 @@ param_minio_user_prefix = "zhanqing2016@gmail.com"  # Your personal folder in th
 secret_minio_access_key = "sFmE1jsm5hjJBBGh5RBL"
 secret_minio_secret_key = "pczCG6FRpXQEtad7lAvXv00iCYFd5Dpa1g8GOWzR"
 
-mc = Minio(endpoint=param_minio_endpoint,
-           access_key=secret_minio_access_key,
-           secret_key=secret_minio_secret_key)
+# mc = Minio(endpoint=param_minio_endpoint,
+#           access_key=secret_minio_access_key,
+#           secret_key=secret_minio_secret_key)
 
 # List existing buckets: get a list of all available buckets
-mc.list_buckets()
+# mc.list_buckets()
 
 # List files in bucket: get a list of files in a given bucket. For bucket `naa-vre-user-data`, only list files in your personal folder
-objects = mc.list_objects("naa-vre-user-data", prefix=f"{param_minio_user_prefix}/")
-for obj in objects:
-    print(obj.object_name)
+# objects = mc.list_objects("naa-vre-user-data", prefix=f"{param_minio_user_prefix}/")
+#for obj in objects:
+#    print(obj.object_name)
 
 # Upload file to bucket: uploads `myfile_local.csv` to your personal folder on MinIO as `myfile.csv`
 #mc.fput_object(bucket_name="naa-vre-user-data", 
@@ -51,10 +51,14 @@ for obj in objects:
 #ofname=os.environ['ofname']
 
 # set hard (comment out if using script)
-# infname='C:/Users/qzhan/OneDrive - NIOZ/Attachments/01_LTER-LIFE/03_Model/3D_models_WaddenSea/Input/restart_201501_hydro.nc'
-infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc'
-ofname='C:/Users/qzhan/OneDrive - NIOZ/Attachments/01_LTER-LIFE/03_Model/3D_models_WaddenSea/Input/restart_201501_hydro_reducedlayers_Q.nc'
+# For the hydro file
+# infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc'
+
+# For the bio file
+infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc'
+
 # ofname='/export/lv9/user/qzhan/home/model_input_files/restart/restart_201501_hydro_reducedlayers.nc'
+ofname='/export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/model_input_files/restart/restart_201501_bio_reducedlayers.nc'
 
 ##################################################################################
 # Main routine
