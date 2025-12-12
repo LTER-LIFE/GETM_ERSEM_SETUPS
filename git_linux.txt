@@ -42,4 +42,6 @@ git push -u origin branch_name
 ## 5. Pull the newest changes from the remote
 git pull
 
-
+# without -m "message", Git opened the default text editor (usually vi or vim) for you to write a commit message.
+# tpye command below to quit
+:q!
