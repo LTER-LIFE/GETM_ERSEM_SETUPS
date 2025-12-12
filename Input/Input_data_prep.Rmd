@@ -400,7 +400,7 @@ leaflet(df_final) %>%
 # 2.4 Write NetCDF
 ```{r}
 
-out_nc <- paste0(ncfile_path, "porosity_merged.nc")
+out_nc <- paste0(ncfile_path, "porosity_merged.nc") # the name needs to be changed to "Ben_Sedprop.nc" which is the name that can be recognized in 3D model
 
 xc_dim <- ncdim_def("xc", "m", 1:dim_xc)
 yc_dim <- ncdim_def("yc", "m", 1:dim_yc)
