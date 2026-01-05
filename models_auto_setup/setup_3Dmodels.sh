@@ -56,8 +56,8 @@ echo "==========================================="
 
 # --- STEP (5): Set up directory structure
 # Such as home/GETM_ERSEM_SETUPS/dws_200m/
-mkdir "$HOME/home/GETM_ERSEM_SETUPS/"
-mkdir "$HOME/home/GETM_ERSEM_SETUPS/Input"
+# mkdir "$HOME/home/GETM_ERSEM_SETUPS/"
+# mkdir "$HOME/home/GETM_ERSEM_SETUPS/Input"
 
 # --- STEP (6): Add settings .sh file: "getm.sh", and modify .bashrc to source shell file in order to set up compilation env
 # --- "getm.sh" file can be found in the github repository: https://github.com/NIOZ-QingZ/3D_models_WaddenSea.git
@@ -65,30 +65,31 @@ mkdir "$HOME/home/GETM_ERSEM_SETUPS/Input"
 # --- STEP (7): Compile BFM+GOTM
 # --- to run test 1D model
 # --- To refer Bass's document: "Bass_compile_GOTM_HPC.rtf"
-mkdir -p $HOME/home/build/gotm && cd $HOME/home/build/gotm
-cmake $GOTMDIR -DFABM_BASE=$FABMDIR
+mkdir -p "$HOME/home/build/gotm" && cd "$HOME/home/build/gotm"
+cmake $GOTMDIR -DFABM_BASE=$FABMDIR -DCMAKE_INSTALL_PREFIX="$HOME/local/gotm"
 make install
 # This will produce a GOTM executable at $HOME/local/gotm/bin/gotm
-# ls $HOME/local/gotm/bin
+ls $HOME/local/gotm/bin
 
-rsync -av /export/lv1/user/jvandermolen/home/gotm-cases/nov2024_bfm2016/OysterGrounds .
+# --- to run a test case, e.g., OysterGrounds
+# mkdir -p "$HOME/home/gotm-cases/nov2024_bfm2016" && cd "$HOME/home/gotm-cases/nov2024_bfm2016"
+# rsync -av /export/lv1/user/jvandermolen/home/gotm-cases/nov2024_bfm2016/OysterGrounds .
 
-cd /export/lv1/user/jvandermolen/home/gotm-cases/nov2024_bfm2016/OysterGrounds
-grep -r jvandermolen . # find paths that include jvandermolen, change it to your user
-nano gotmrun.nml
-nano run_gotm_laplace
-sbatch ./run_gotm_laplace
-squeue
-ls log*
-tail -F log.out
+# grep -r jvandermolen . # find paths that include jvandermolen, change it to your user
+# nano gotmrun.nml
+# nano run_gotm_laplace
+# sbatch ./run_gotm_laplace
+# squeue
+# ls log*
+# tail -F log.out
 
 
 # --- STEP (8): Copy 3D setup from Sonja's directory 
 # --- 8.1 copy dir: "dws_200m" from "/export/lv1/user/svanleeuwen/home/setups/"
-cp -r "/export/lv1/user/svanleeuwen/home/setups/dws_200m" "$HOME/home/GETM_ERSEM_SETUPS/"
+# cp -r "/export/lv1/user/svanleeuwen/home/setups/dws_200m" "$HOME/home/GETM_ERSEM_SETUPS/"
 
 # --- 8.2 copy file: "dws_200m_info.txt" from "/export/lv1/user/svanleeuwen/home/setups/"; info about "TO DO"
-cp "/export/lv1/user/svanleeuwen/home/setups/dws_200m_info.txt" "$HOME/home/GETM_ERSEM_SETUPS/dws_200m_info.txt"
+# cp "/export/lv1/user/svanleeuwen/home/setups/dws_200m_info.txt" "$HOME/home/GETM_ERSEM_SETUPS/dws_200m_info.txt"
 
 # --- 8.3 copy file: "move_files" from Johan's folder (any NS usecase), change:
 #         line 19: #SBATCH --output=/export/lv9/user/qzhan/move_files.stdout  
@@ -101,9 +102,13 @@ cp "/export/lv1/user/svanleeuwen/home/setups/dws_200m_info.txt" "$HOME/home/GETM
 # --- download tiff image from Franken (BelowMurkyWaters_Silt)
 
 # --- STEP (10): Compile 3D.
+mkdir -p "$HOME/tools/getm/build" && cd "$HOME/tools/getm/build"
+cp "$HOME/home/3D_models_WaddenSea/Container/getm_configure.sh" .
+chmod +x getm_configure.sh && ./getm_configure.sh
 
+cd "$HOME/home/GETM_ERSEM_SETUPS/dws_200m" && ./compile_all_git
 
 # Run the script by:
 # Make it executable:
 # chmod +x setup_3Dmodels.sh
-# $HOME/BFM-GOTM-GETM-FABM/setup_3Dmodels.sh
+# ./setup_3Dmodels.sh

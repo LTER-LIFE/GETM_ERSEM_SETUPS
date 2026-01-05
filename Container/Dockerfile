@@ -123,7 +123,7 @@ ENV GOTMDIR=/opt/home/GOTM_SOURCES/gotm_coupled_bfm_2016/
 ENV FABMDIR=/opt/home/fabm-git/fabm
 ENV BFMDIR=/opt/home/BFM_SOURCES/bfm_2016
 ENV GETMDIR=/opt/home/getm-git
-ENV GOTM_BUILD_DIR=/opt/build/gotm
+ENV GOTM_BUILD_DIR=/opt/home/build/gotm
 
 
 # --------------------------
@@ -152,7 +152,7 @@ RUN mkdir -p $HOME/home/BFM_SOURCES \
     git clone "https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/fabm-model/fabm.git" && \
     cd fabm && git checkout -b master_20200610 e1f1f08e42d84f8324f5114924b67ad567719334
 
-RUN mkdir -p $HOME/build/gotm && cd $HOME/build/gotm && \
+RUN mkdir -p $HOME/home/build/gotm && cd $HOME/home/build/gotm && \
 	# Create  files in build/gotm 
 	cmake $GOTMDIR -DFABM_BASE=$FABMDIR -DCMAKE_INSTALL_PREFIX=$HOME/local/gotm && \ 
 	# Create gotm executable (Run as many parallel compilation jobs as the CPU cores)	
