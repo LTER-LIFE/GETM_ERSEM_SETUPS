@@ -1,5 +1,9 @@
 #! /usr/bin/env python
 
+# to run on terminal interactively
+# source .bashrc.conda3
+# conda activate interp_hotstart
+
 # python script to read an .nc file, halving number of layers 
 # and write
 # a new file
@@ -21,8 +25,8 @@ from minio import Minio
 # Configuration (do not containerize this cell)
 param_minio_endpoint = "scruffy.lab.uvalight.net:9000"
 param_minio_user_prefix = "zhanqing2016@gmail.com"  # Your personal folder in the naa-vre-user-data bucket in MinIO
-secret_minio_access_key = "sFmE1jsm5hjJBBGh5RBL"
-secret_minio_secret_key = "pczCG6FRpXQEtad7lAvXv00iCYFd5Dpa1g8GOWzR"
+secret_minio_access_key = ""
+secret_minio_secret_key = ""
 
 # mc = Minio(endpoint=param_minio_endpoint,
 #           access_key=secret_minio_access_key,
@@ -58,7 +62,7 @@ secret_minio_secret_key = "pczCG6FRpXQEtad7lAvXv00iCYFd5Dpa1g8GOWzR"
 infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc'
 
 # ofname='/export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/model_input_files/restart/restart_201501_hydro_reducedlayers.nc'
-ofname='/export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/model_input_files/restart/restart_201501_bio_reducedlayers.nc'
+ofname='/export/lv9/user/qzhan/home/model_input_files/restart/restart_201501_bio_reducedlayers.nc'
 
 ##################################################################################
 # Main routine
@@ -70,7 +74,7 @@ print(infname)
 infile=Dataset(infname,'r',format='NETCDF4') #NetCDFFile(infname,'r')
 
 # Launch the ncview-like GUI
-ncvue(infname)
+ncvue(infname) # or on cluster ncview(infname) if X11 forwarding is enabled
 
 print('Output file: ',ofname)
 
