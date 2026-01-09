@@ -60,7 +60,7 @@ echo "==========================================="
 # mkdir "$HOME/home/GETM_ERSEM_SETUPS/Input"
 
 # --- STEP (6): Add settings .sh file: "getm.sh", and modify .bashrc to source shell file in order to set up compilation env
-# --- "getm.sh" file can be found in the github repository: https://github.com/NIOZ-QingZ/3D_models_WaddenSea.git
+# --- "getm.sh" file can be found in the github repository: https://github.com/LTER-LIFE/GETM_ERSEM_SETUPS.git
 
 # --- STEP (7): Compile BFM+GOTM
 # --- to run test 1D model
