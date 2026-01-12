@@ -4,15 +4,17 @@
 # used to make restart file match a particular subdomain decomposition
 
 #--------------- settings --------------------------
+indir = /export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes 
+outdir= /export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
 
-outdir=/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes
 infname=restart_201501_dws200m_bio.nc.keep
 outfname=restart_201501_dws200m_bio.nc
 
-addrows=10   # number of rows to add
+addrows=8   # number of rows to add
 
 #--------------------------------------------------------------------- 
 
+cp $indir/$infname $outdir/$infname
 cp $outdir/$infname $outdir/restart.in
 
 # add rows at the bottom

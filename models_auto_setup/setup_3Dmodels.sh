@@ -103,7 +103,7 @@ ls $HOME/local/gotm/bin
 
 # --- STEP (10): Compile 3D.
 mkdir -p "$HOME/tools" && cd "$HOME/tools"
-cp "/export/lv1/user/jvandermolen/tools/bbpy" .
+cp -a "/export/lv1/user/jvandermolen/tools/bbpy" .
 
 mkdir -p "$HOME/tools/getm/build" && cd "$HOME/tools/getm/build"
 cp "$HOME/home/GETM_ERSEM_SETUPS/Container/getm_configure.sh" .
