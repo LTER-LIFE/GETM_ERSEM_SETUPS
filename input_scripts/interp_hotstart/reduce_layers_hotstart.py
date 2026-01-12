@@ -13,6 +13,37 @@ from netCDF4 import Dataset
 from numpy import *
 from pylab import *
 #import Numeric
+from ncvue import ncvue
+import os
+
+# Access MinIO files
+from minio import Minio
+
+# Configuration (do not containerize this cell)
+param_minio_endpoint = "scruffy.lab.uvalight.net:9000"
+param_minio_user_prefix = "zhanqing2016@gmail.com"  # Your personal folder in the naa-vre-user-data bucket in MinIO
+secret_minio_access_key = "sFmE1jsm5hjJBBGh5RBL"
+secret_minio_secret_key = "pczCG6FRpXQEtad7lAvXv00iCYFd5Dpa1g8GOWzR"
+
+# mc = Minio(endpoint=param_minio_endpoint,
+#           access_key=secret_minio_access_key,
+#           secret_key=secret_minio_secret_key)
+
+# List existing buckets: get a list of all available buckets
+# mc.list_buckets()
+
+# List files in bucket: get a list of files in a given bucket. For bucket `naa-vre-user-data`, only list files in your personal folder
+# objects = mc.list_objects("naa-vre-user-data", prefix=f"{param_minio_user_prefix}/")
+#for obj in objects:
+#    print(obj.object_name)
+
+# Upload file to bucket: uploads `myfile_local.csv` to your personal folder on MinIO as `myfile.csv`
+#mc.fput_object(bucket_name="naa-vre-user-data", 
+#               file_path="/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc", 
+#               object_name=f"{param_minio_user_prefix}/restart_201501_hydro.nc")
+
+# Download file from bucket: download `myfile.csv` from your personal folder on MinIO and save it locally as `myfile_downloaded.csv`
+# mc.fget_object(bucket_name="naa-vre-user-data", object_name=f"{param_minio_user_prefix}/PCLake_PLoads.png", file_path="/export/lv9/user/qzhan/home/PCLake_PLoads.png")
 
 ############## settings ##################################################
 
@@ -21,9 +52,16 @@ from pylab import *
 #ofname=os.environ['ofname']
 
 # set hard (comment out if using script)
-infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc'
+wdir='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes'
+os.chdir(wdir)
 
-ofname='/export/lv9/user/qzhan/home/model_input_files/restart/restart_201501_hydro_reducedlayers.nc'
+# For the hydro file
+# infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc'
+# ofname='/export/lv9/user/qzhan/home/model_input_files/restart/restart_201501_hydro_reducedlayers.nc'
+
+# For the bio file
+infname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc'
+ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_bio_reducedlayers.nc'
 
 ##################################################################################
 # Main routine
@@ -143,4 +181,3 @@ infile.close()
 outfile.close()
 
 print('Done')
-

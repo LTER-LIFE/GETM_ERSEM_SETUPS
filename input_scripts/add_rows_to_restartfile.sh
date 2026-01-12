@@ -7,11 +7,8 @@
 indir=/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes 
 outdir=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
 
-#infname=restart_201501_dws200m_bio.nc.keep
-infname=restart_201501_bio_reducedlayers.nc.keep
-
-#outfname=restart_201501_dws200m_bio.nc
-outfname=restart_201501_bio_reducedlayers.nc
+infname=restart_201501_dws200m_bio.nc.keep
+outfname=restart_201501_dws200m_bio.nc
 
 addrows=7   # number of rows to add
 
