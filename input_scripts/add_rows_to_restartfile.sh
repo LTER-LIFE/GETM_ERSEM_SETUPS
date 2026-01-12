@@ -7,23 +7,24 @@
 indir=/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes 
 outdir=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
 
-infname=restart_201501_dws200m_bio.nc.keep
-#infname=restart_201501_bio_reducedlayers.nc.keep
+#infname=restart_201501_dws200m_bio.nc.keep
+infname=restart_201501_bio_reducedlayers.nc.keep
 
-outfname=restart_201501_dws200m_bio.nc
-#outfname=restart_201501_bio_reducedlayers.nc
+#outfname=restart_201501_dws200m_bio.nc
+outfname=restart_201501_bio_reducedlayers.nc
 
-addrows=8   # number of rows to add
+addrows=7   # number of rows to add
 
 #--------------------------------------------------------------------- 
 
-cp $indir/$infname $outdir/$infname
-cp $outdir/$infname $outdir/restart.in
+cp -f $indir/$infname $outdir/$infname
+cp -f $outdir/$infname $outdir/restart.in
 
 # add rows at the bottom
 echo "preparing..."
 # first copy the bottom row to a file
 ncks --no-abc -O -d yax,1 $outdir/$infname $outdir/temp_slice.nc
+
 # then stick it to the output file
 # then combine
 ncrename -h -d yax,time $outdir/temp_slice.nc                                       #rename dimension
