@@ -8,7 +8,7 @@
 # load modules
 
 # testing package to run getm-iow
-module purge
+#module purge
 module load EasyBuild/3.9.4
 #module load CMake/3.15.4-GCCcore-6.4.0
 module load CMake/3.9.1-GCCcore-6.4.0
