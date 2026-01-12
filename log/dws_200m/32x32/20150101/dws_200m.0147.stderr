@@ -1,7 +1,7 @@
  MPI is initialised - v3.1
- Process          147  of          239  is alive on no66
+ Process          147  of          239  is alive on no65
  ------------------------------------------------------------------------
- getm: Started on  20260112 113953.849
+ getm: Started on  20260112 171021.523
  ------------------------------------------------------------------------
  GETM version: 969dceb (iow_20200609_bfm2016_20250116 branch)
  GOTM version: f7b271b (master_20210107_couplingGETM_bfm2016_20241126 branch)
@@ -1625,3 +1625,75 @@
         Opening Input/Ben_Sedprop.nc.
         Found Porosity in Input/Ben_Sedprop.nc.
         Reading benthic biological fields from hotstart file
+    Error messages to finish in GOTM will be handeld in GETM 
+    init_rivers_bio()
+    init_les
+    init_register_all_variables()
+    init_output
+        save_nuh T
+        save_num T
+        save_tke T
+        save (rotated) velocities in center points
+        save grid-related volume fluxes through interfaces
+        2D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0147.nc
+        First=           0  step=         150  sync_2d=          144
+        Elevation will be masked for depths below   0.349999994    
+        Saving meteo forcing in /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0147.nc
+        3D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.3d.0147.nc
+        First=           0  step=         450  sync_3d=           48
+        Elevation will be masked for depths below   0.200000003    
+        calculate and save mixing analysis
+    do_register_all_variables()
+        register_domain_variables()
+        register_meteo_variables()
+        register_waves_variables()
+        register_2d_variables()
+        register_3d_variables()
+        register_les_variables()
+        register_processed_variables()
+    hotstart
+        Reading hotstart file: 
+            /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//restart.0147.in
+            variable missing in restart file. Skipping Uinto               
+            variable missing in restart file. Skipping Vinto               
+ read_restart_ncdf_0           1           2           3           4
+ read_restart_ncdf_1
+    imin,ioff_l,iread_from,il,ifill_from           1         384           0           0           0
+    jmin,joff_l,jread_from,jl,jfill_from           1         352           0           0           0
+    il         385
+    il         385
+    jl         353
+    jl         353
+ read_restart_ncdf: fulldomain file
+ read_restart_ncdf ioff_0_ff,joff_0_ff       -9999       32765
+ read_restart_ncdf ioff,joff         384         374
+ read_restart_ncdf ioff_0,joff_0           0           0
+ read_restart_ncdf ioff_l,joff_l         384         352
+ read_restart_ncdf il,ih         385         416
+ read_restart_ncdf jl,jh         353         384
+ read_restart_ncdf iloc,jloc           1           1
+ read_restart_ncdf ilen,jlen          32          32
+ read_restart_ncdf iread_from,jread_from           0           0
+ read_restart_ncdf ifill_from,jfill_from           0           0
+ read_restart_ncdf edges          32          32          31           0           0
+ read_restart_ncdf start         385         353           1           0           0
+                 mpi-read returned with status=           0
+            read_restart_ncdf(): leaving UEulerInt=0
+            read_restart_ncdf(): leaving VEulerInt=0
+            read_restart_ncdf(): leaving UEulerAdv=0
+            read_restart_ncdf(): leaving VEulerAdv=0
+            read_restart_ncdf(): leaving UStokesCint=0
+            read_restart_ncdf(): leaving VStokesCint=0
+            read_restart_ncdf(): leaving UStokesCadv=0
+            read_restart_ncdf(): leaving VStokesCadv=0
+            read_restart_ncdf(): setting uu=0
+            read_restart_ncdf(): setting vv=0
+            read_restart_ncdf(): setting ww=0
+            read_restart_ncdf(): setting uuEx=0
+            read_restart_ncdf(): setting vvEx=0
+            Something bad happened
+ FATAL ERROR: read_restart_ncdf: NetCDF: Start+count exceeds dimension bound                                     
+  
+ FATAL GETM ERROR: Called from read_restart_ncdf()
+ FATAL GETM ERROR: NetCDF: Start+count exceeds dimension bound
+  

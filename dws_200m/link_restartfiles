@@ -1,6 +1,6 @@
 #!/bin/bash
 
-restart_dir=/export/lv9/user/qzhan/home/model_input_files/restart/
+restart_dir=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/
 #restart_file=restart_199501_from200201.in
 #outdir=/export/lv1/user/jvandermolen/model_output/active_runs/nwes_bfm/26x26/1995/01/
 restart_file=restart_dws200_2015_01.nc

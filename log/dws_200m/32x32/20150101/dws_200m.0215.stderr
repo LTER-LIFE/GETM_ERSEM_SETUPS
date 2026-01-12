@@ -1,7 +1,7 @@
  MPI is initialised - v3.1
- Process          215  of          239  is alive on no68
+ Process          215  of          239  is alive on no67
  ------------------------------------------------------------------------
- getm: Started on  20260112 113953.848
+ getm: Started on  20260112 171021.522
  ------------------------------------------------------------------------
  GETM version: 969dceb (iow_20200609_bfm2016_20250116 branch)
  GOTM version: f7b271b (master_20210107_couplingGETM_bfm2016_20241126 branch)
@@ -1675,4 +1675,46 @@
     hotstart
         Reading hotstart file: 
             /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//restart.0215.in
- FATAL ERROR: open_restart_ncdf: FILE                 No such file or directory                                                       
+            variable missing in restart file. Skipping Uinto               
+            variable missing in restart file. Skipping Vinto               
+ read_restart_ncdf_0           1           2           3           4
+ read_restart_ncdf_1
+    imin,ioff_l,iread_from,il,ifill_from           1          64           0    10557152           0
+    jmin,joff_l,jread_from,jl,jfill_from           1         448           0           0           0
+    il          65
+    il          65
+    jl         449
+    jl         449
+ read_restart_ncdf: fulldomain file
+ read_restart_ncdf ioff_0_ff,joff_0_ff       -9999           0
+ read_restart_ncdf ioff,joff          64         470
+ read_restart_ncdf ioff_0,joff_0           0           0
+ read_restart_ncdf ioff_l,joff_l          64         448
+ read_restart_ncdf il,ih          65          96
+ read_restart_ncdf jl,jh         449         480
+ read_restart_ncdf iloc,jloc           1           1
+ read_restart_ncdf ilen,jlen          32          32
+ read_restart_ncdf iread_from,jread_from           0           0
+ read_restart_ncdf ifill_from,jfill_from           0           0
+ read_restart_ncdf edges          32          32          31           0           0
+ read_restart_ncdf start          65         449           1           0           0
+                 mpi-read returned with status=           0
+            read_restart_ncdf(): leaving UEulerInt=0
+            read_restart_ncdf(): leaving VEulerInt=0
+            read_restart_ncdf(): leaving UEulerAdv=0
+            read_restart_ncdf(): leaving VEulerAdv=0
+            read_restart_ncdf(): leaving UStokesCint=0
+            read_restart_ncdf(): leaving VStokesCint=0
+            read_restart_ncdf(): leaving UStokesCadv=0
+            read_restart_ncdf(): leaving VStokesCadv=0
+            read_restart_ncdf(): setting uu=0
+            read_restart_ncdf(): setting vv=0
+            read_restart_ncdf(): setting ww=0
+            read_restart_ncdf(): setting uuEx=0
+            read_restart_ncdf(): setting vvEx=0
+            Something bad happened
+ FATAL ERROR: read_restart_ncdf: NetCDF: Start+count exceeds dimension bound                                     
+  
+ FATAL GETM ERROR: Called from read_restart_ncdf()
+ FATAL GETM ERROR: NetCDF: Start+count exceeds dimension bound
+  
