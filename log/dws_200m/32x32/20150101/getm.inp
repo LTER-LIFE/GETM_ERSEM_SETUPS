@@ -174,7 +174,7 @@
    crit_depth = 0.25,
    min_depth = 0.1,
    clip_depth = 0.05,
-   kdum = 30,
+   kdum = 15,
    ddu = 0.7,
    ddl = 0.5,
    d_gamma = 10.0,

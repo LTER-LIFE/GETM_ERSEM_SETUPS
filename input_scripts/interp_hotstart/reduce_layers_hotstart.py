@@ -8,16 +8,17 @@
 # import the relevant packages
 import sys
 sys.path.append('/share/apps/python2.6.6/lib/python2.6/site-packages/pynetcdf')
+from matplotlib import units
 from netCDF4 import Dataset
 #from NetCDF import *
 from numpy import *
 from pylab import *
 #import Numeric
-from ncvue import ncvue
+# from ncvue import ncvue
 import os
 
 # Access MinIO files
-from minio import Minio
+# from minio import Minio
 
 # Configuration (do not containerize this cell)
 param_minio_endpoint = "scruffy.lab.uvalight.net:9000"
@@ -61,6 +62,7 @@ ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
 
 # For the bio file
 #infname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc'
+#infname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc.keep'
 #ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_bio_reducedlayers.nc'
 
 ##################################################################################
@@ -82,8 +84,11 @@ print('Variables: ',varnames)
 
 # open and initialise output file
 #outfile=NetCDFFile(ofname,'w')
-outfile=Dataset(ofname,'w',format='NETCDF4_CLASSIC')
+outfile=Dataset(ofname,'w',format='NETCDF3_CLASSIC')
 ndims=len(alldimnames)
+
+# Create a mapping of old dimension sizes to new dimension sizes
+dim_mapping = {}
 for idim in range(ndims):
   dimname=alldimnames[idim]
   print(dimname)
@@ -95,6 +100,7 @@ for idim in range(ndims):
   else:
     lendim=len(dimvalue)
 
+  dim_mapping[dimname] = lendim
   outfile.createDimension(alldimnames[idim],lendim)
 
 # process
@@ -108,7 +114,8 @@ for varname in varnames:
   datavals=var[:]
 #  data_attlist=dir(var)
 
-  datatype=datavals.dtype.kind
+  # Preserve original data type (double, float, int, etc.)
+  datatype=var.dtype
 ##  print datatype
 #  if datatype=='f':
 #    datatype='d'
@@ -182,27 +189,21 @@ for varname in varnames:
     out = np.arange(newz, dtype=datavals.dtype)  
 
   # write variable
-#  outvar=outfile.createVariable(varnames[j],datatype,dimnames,fill_value=mv,chunksizes=out.shape)
-
   print(out)
-  outvar=outfile.createVariable(varname,datatype,dimnames,chunksizes=out.shape)
-  sout=list(shape(out))
-  print(sout)
+  print('Dimension names for', varname, ':', dimnames)
+  print('Output shape:', out.shape)
+  
+  # Verify dimensions exist and match shape
+  for i, dimname in enumerate(dimnames):
+    if dimname not in dim_mapping:
+      print(f'ERROR: Dimension {dimname} not found in dimension mapping!')
+    expected_size = dim_mapping[dimname]
+    actual_size = out.shape[i]
+    if expected_size != actual_size:
+      print(f'WARNING: Dimension {dimname} mismatch - expected {expected_size}, got {actual_size}')
+  
+  outvar=outfile.createVariable(varname, datatype, dimnames)
   outvar[:]=out
-  #if len(sout)>1:
-  #  outvar[:]=out
-   
-
-  #else:
-  #  print(outvar[:])
-  #  print(sout)
-  #  print(out)
-  #  outvar[:]=out
-  #  print(not(sout))
-  #  if not(sout):
-  #    outvar[:]=out
-   # else:
-   #   outvar[:]=out
 
   ##units and other attributes should be written as well!!
   # copy attributes
