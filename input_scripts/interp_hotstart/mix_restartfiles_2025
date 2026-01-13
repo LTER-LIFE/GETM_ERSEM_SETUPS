@@ -5,13 +5,12 @@
 # a later one (taking the biology)
 
 #-----Settings---------------------------------------------------
+indir_phys=/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes
+fname_phys=restart_201501_hydro.nc
+indir_bio=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
+fname_bio=restart_201501_dws200m_bio.nc.keep
 
-# indir_phys=/export/lv1/user/jvandermolen/home/GETM_ERSEM_SETUPS/north_sea_coarse_noos_bfm2016_jan2025/restart_1981_01/
-indir_phys=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
-fname_phys=restart_201501_hydro_reducedlayers.nc
-indir_bio=$indir_phys
-fname_bio=restart_201501_bio_reducedlayers.nc
-outdir=$indir_phys
+outdir=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
 outfname=restart_dws200_2015_01.nc
 
 tempsalt_from_phys=1
@@ -39,6 +38,7 @@ rm $outdir/temp_combined1.nc
 #cp   $outdir/temp1.nc #$outfname
 #cp $indir_bio/$fname_bio $outdir/$outfname
 
+module load netcdf/4.6.1
 ## remove obsolete variables
 ##ncks -C -O -x -v Uinto $outdir/temp1.nc $outdir/temp2.nc
 ##ncks -C -O -x -v Vinto $outdir/temp2.nc $outdir/$outfname
@@ -124,5 +124,8 @@ echo "fixing time..."
 ncks -A -v julianday $indir_phys/$fname_phys $outdir/$outfname
 #this is done as part of the previous command:
 #ncks -C -A -a restart_date $indir_phys/$fname_phys $outdir/$outfname
+
+rm $outdir/temp_bio.nc
+rm $outdir/temp_phys.nc
 
 echo "done!"
