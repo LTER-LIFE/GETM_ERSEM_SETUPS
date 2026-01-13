@@ -16,7 +16,7 @@ read STEP
 case "$STEP" in
   1)
     echo "Rolling back everything from step 1 onward..."
-    rm -rf "$HOME/home/BFM_SOURCES" "$HOME/home/GOTM_SOURCES" "$HOME/home/GETM_SOURCES" "$HOME/home/fabm-git" "$HOME/home/build" "$HOME/tools" 
+    rm -rf "$HOME/home/BFM_SOURCES" "$HOME/home/GOTM_SOURCES" "$HOME/home/GETM_SOURCES" "$HOME/home/fabm-git" "$HOME/home/build" "$HOME/tools" "$HOME/local"
     ;;
   2)
     echo "Rolling back everything from step 2 onward..."

@@ -66,6 +66,7 @@ echo "==========================================="
 # --- to run test 1D model
 # --- To refer Bass's document: "Bass_compile_GOTM_HPC.rtf"
 mkdir -p "$HOME/home/build/gotm" && cd "$HOME/home/build/gotm"
+mkdir -p "$HOME/local/gotm"
 cmake $GOTMDIR -DFABM_BASE=$FABMDIR -DCMAKE_INSTALL_PREFIX="$HOME/local/gotm"
 make install
 # This will produce a GOTM executable at $HOME/local/gotm/bin/gotm
