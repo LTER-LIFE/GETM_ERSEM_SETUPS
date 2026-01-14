@@ -49,6 +49,11 @@ cd fabm || exit 1
 # To put the working copy exactly at specific commit, and create a local branch
 git checkout -b master_20200610 e1f1f08e42d84f8324f5114924b67ad567719334
 
+# create symbolic links for BFM and FABM in GETM and GOTM directories
+ln -s "$HOME/home/BFM_SOURCES/bfm_2016" "$HOME/home/BFM_SOURCES/bfm-git"
+ln -s "$HOME/home/GOTM_SOURCES/gotm_coupled_bfm_2016" "$HOME/home/gotm-git"
+ln -s "$HOME/home/GETM_SOURCES/getm_coupled_bfm_2016" "$HOME/home/getm-git"
+
 echo "==========================================="
 echo " Steps 1–4 completed: repositories cloned. "
 echo " Next steps: setup environment + compilation."
