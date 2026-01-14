@@ -164,24 +164,24 @@ RUN mkdir -p $HOME/home/build/gotm && cd $HOME/home/build/gotm && \
 COPY dws_200m $HOME/home/GETM_ERSEM_SETUPS/dws_200m
 
 # Create build directory
-RUN mkdir -p $HOME/tools/getm/build
+# RUN mkdir -p $HOME/tools/getm/build
 
 # Set working directory
-WORKDIR $HOME/tools/getm/build
+# WORKDIR $HOME/tools/getm/build
 
 # Copy the configuration script into the build directory
-COPY getm_configure.sh ./
+# COPY getm_configure.sh ./
 
 # Run the configuration
-RUN chmod +x getm_configure.sh && ./getm_configure.sh
+# RUN chmod +x getm_configure.sh && ./getm_configure.sh
 
 #------------------------------------------------
 # create getm executable based on Dutch Wadden Sea setup at 200m resolution
 #------------------------------------------------
 # Set working directory
-WORKDIR $HOME/home/GETM_ERSEM_SETUPS/dws_200m
+# WORKDIR $HOME/home/GETM_ERSEM_SETUPS/dws_200m
 
-RUN ./compile_all_git
+# RUN ./compile_all_git
 
 
 # --------------------------
