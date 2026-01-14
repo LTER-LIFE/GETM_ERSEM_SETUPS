@@ -57,13 +57,13 @@ wdir='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes'
 os.chdir(wdir)
 
 # For the hydro file
-infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc'
-ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro_reducedlayers.nc'
+#infname='/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro.nc'
+#ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_hydro_reducedlayers.nc'
 
 # For the bio file
+infname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc.keep'
 #infname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc'
-#infname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_dws200m_bio.nc.keep'
-#ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_bio_reducedlayers.nc'
+ofname='/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes/restart_201501_bio_reducedlayers.nc'
 
 ##################################################################################
 # Main routine
