@@ -4,24 +4,24 @@
 # used to make restart file match a particular subdomain decomposition
 
 #--------------- settings --------------------------
-indir=/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes 
+module load netcdf/4.6.1
+
+indir=/export/lv1/user/jvandermolen/model_output/active_runs/boundaries/dws_200m_nwes
 outdir=/export/lv9/user/qzhan/model_output/active_runs/boundaries/dws_200m_nwes
 
 infname=restart_201501_dws200m_bio.nc.keep
 outfname=restart_201501_dws200m_bio.nc
 
-addrows=7   # number of rows to add
+addrows=10   # number of rows to add
 
 #--------------------------------------------------------------------- 
 
-cp -f $indir/$infname $outdir/$infname
-cp -f $outdir/$infname $outdir/restart.in
+cp $indir/$infname $outdir/restart.in
 
 # add rows at the bottom
 echo "preparing..."
 # first copy the bottom row to a file
-ncks --no-abc -O -d yax,1 $outdir/$infname $outdir/temp_slice.nc
-
+ncks --no-abc -O -d yax,1 $indir/$infname $outdir/temp_slice.nc
 # then stick it to the output file
 # then combine
 ncrename -h -d yax,time $outdir/temp_slice.nc                                       #rename dimension
@@ -53,4 +53,5 @@ rm $outdir/temp_out2.nc
 rm $outdir/temp_combined.nc
 rm $outdir/temp_combined2.nc
 
+module unload netcdf/4.6.1
 echo "Done"
