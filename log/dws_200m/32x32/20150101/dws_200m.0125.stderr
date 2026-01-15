@@ -1,7 +1,7 @@
  MPI is initialised - v3.1
- Process          125  of          239  is alive on no67
+ Process          125  of          239  is alive on no66
  ------------------------------------------------------------------------
- getm: Started on  20260114 164146.218
+ getm: Started on  20260115 101624.706
  ------------------------------------------------------------------------
  GETM version: 969dceb (iow_20200609_bfm2016_20250116 branch)
  GOTM version: f7b271b (master_20210107_couplingGETM_bfm2016_20241126 branch)
@@ -1658,14 +1658,14 @@
             variable missing in restart file. Skipping Vinto               
  read_restart_ncdf_0           1           2           3           4
  read_restart_ncdf_1
-    imin,ioff_l,iread_from,il,ifill_from           1         512           0    10630880           0
+    imin,ioff_l,iread_from,il,ifill_from           1         512           0           0           0
     jmin,joff_l,jread_from,jl,jfill_from           1         320           0           0           0
     il         513
     il         513
     jl         321
     jl         321
  read_restart_ncdf: fulldomain file
- read_restart_ncdf ioff_0_ff,joff_0_ff       -9999           0
+ read_restart_ncdf ioff_0_ff,joff_0_ff       -9999       32765
  read_restart_ncdf ioff,joff         512         342
  read_restart_ncdf ioff_0,joff_0           0           0
  read_restart_ncdf ioff_l,joff_l         512         320
@@ -1946,3 +1946,413 @@
             Initial values defined in bio_bfm.nml are used
             missing intial pelagic data  gridpoint i=544 ( 32) j=344 (  2)
             Initial values defined in bio_bfm.nml are used
+            read 2d/benthic variables
+ rest_bio_ncdf 2d:           0
+                H3c was smaller than 0.100000E-19 i=513 (  1) j=371 ( 29)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=513 (  1) j=371 ( 29)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=513 (  1) j=371 ( 29)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=513 (  1) j=372 ( 30)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=513 (  1) j=372 ( 30)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=513 (  1) j=372 ( 30)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=513 (  1) j=373 ( 31)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=513 (  1) j=373 ( 31)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=513 (  1) j=373 ( 31)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=513 (  1) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=513 (  1) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=513 (  1) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=514 (  2) j=371 ( 29)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=514 (  2) j=371 ( 29)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=514 (  2) j=371 ( 29)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=514 (  2) j=372 ( 30)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=514 (  2) j=372 ( 30)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=514 (  2) j=372 ( 30)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=514 (  2) j=373 ( 31)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=514 (  2) j=373 ( 31)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=514 (  2) j=373 ( 31)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=514 (  2) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=514 (  2) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=514 (  2) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=515 (  3) j=372 ( 30)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=515 (  3) j=372 ( 30)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=515 (  3) j=372 ( 30)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=515 (  3) j=373 ( 31)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=515 (  3) j=373 ( 31)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=515 (  3) j=373 ( 31)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=515 (  3) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=515 (  3) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=515 (  3) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=516 (  4) j=372 ( 30)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=516 (  4) j=372 ( 30)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=516 (  4) j=372 ( 30)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=516 (  4) j=373 ( 31)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=516 (  4) j=373 ( 31)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=516 (  4) j=373 ( 31)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=516 (  4) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=516 (  4) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=516 (  4) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=517 (  5) j=373 ( 31)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=517 (  5) j=373 ( 31)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=517 (  5) j=373 ( 31)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=517 (  5) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=517 (  5) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=517 (  5) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=518 (  6) j=373 ( 31)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=518 (  6) j=373 ( 31)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=518 (  6) j=373 ( 31)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=518 (  6) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=518 (  6) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=518 (  6) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=519 (  7) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=519 (  7) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=519 (  7) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+                H3c was smaller than 0.100000E-19 i=520 (  8) j=374 ( 32)
+                H3c reinitialized assuming a fixed ../C quotum of 0.500000
+                H3n was smaller than 0.100000E-19 i=520 (  8) j=374 ( 32)
+                H3n reinitialized assuming a fixed ../C quotum of 0.500000
+                H3p was smaller than 0.100000E-19 i=520 (  8) j=374 ( 32)
+                H3p reinitialized assuming a fixed ../C quotum of 0.500000
+            MinN adjusted to     39441600
+            2015-01-01 00:00:00
+    hotstart_2d
+            hotstart_2d: Reset to mask(au), U=0 for i,j=          28          32
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          29          31
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          30          31
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          31          31
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          32          31
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          26          32
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          27          32
+            hotstart_2d: Reset to mask(av), V=0 for i,j=          28          32
+    hotstart_3d
+        hotstart temperature:
+            getting initial fields from hotstart
+        hotstart salinity:
+            getting initial fields from hotstart
+            hotstart_3d: Reset to mask(au), uu=0 for i,j=          28          32
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          29          31
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          30          31
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          31          31
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          32          31
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          26          32
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          27          32
+            hotstart_3d: Reset to mask(av), vv=0 for i,j=          28          32
+        postinit_bdy_3d() bio_calc= T
+    init_input
+        init_meteo_input
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2000-ShelfSeas.nc
+                time_id -->            1 , len =         8784
+                Meteorological offset time    315619200.00000000     
+                Datafile starts:   2000-01-01 00:00:00
+                Datafile ends  :   2000-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2001-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    283996800.00000000     
+                Datafile starts:   2001-01-01 00:00:00
+                Datafile ends  :   2001-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2002-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    252460800.00000000     
+                Datafile starts:   2002-01-01 00:00:00
+                Datafile ends  :   2002-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2003-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    220924800.00000000     
+                Datafile starts:   2003-01-01 00:00:00
+                Datafile ends  :   2003-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2004-ShelfSeas.nc
+                time_id -->            1 , len =         8784
+                Meteorological offset time    189388800.00000000     
+                Datafile starts:   2004-01-01 00:00:00
+                Datafile ends  :   2004-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2005-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    157766400.00000000     
+                Datafile starts:   2005-01-01 00:00:00
+                Datafile ends  :   2005-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2006-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    126230400.00000000     
+                Datafile starts:   2006-01-01 00:00:00
+                Datafile ends  :   2006-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2007-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    94694400.000000000     
+                Datafile starts:   2007-01-01 00:00:00
+                Datafile ends  :   2007-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2008-ShelfSeas.nc
+                time_id -->            1 , len =         8784
+                Meteorological offset time    63158400.000000000     
+                Datafile starts:   2008-01-01 00:00:00
+                Datafile ends  :   2008-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2009-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    31536000.000000000     
+                Datafile starts:   2009-01-01 00:00:00
+                Datafile ends  :   2009-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2010-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time    0.0000000000000000     
+                Datafile starts:   2010-01-01 00:00:00
+                Datafile ends  :   2010-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2011-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time   -31536000.000000000     
+                Datafile starts:   2011-01-01 00:00:00
+                Datafile ends  :   2011-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2012-ShelfSeas.nc
+                time_id -->            1 , len =         8784
+                Meteorological offset time   -63072000.000000000     
+                Datafile starts:   2012-01-01 00:00:00
+                Datafile ends  :   2012-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2013-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time   -94694400.000000000     
+                Datafile starts:   2013-01-01 00:00:00
+                Datafile ends  :   2013-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2014-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time   -126230400.00000000     
+                Datafile starts:   2014-01-01 00:00:00
+                Datafile ends  :   2014-12-31 23:00:00
+            Trying meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2015-ShelfSeas.nc
+                time_id -->            1 , len =         8760
+                Meteorological offset time   -157766400.00000000     
+                Datafile starts:   2015-01-01 00:00:00
+                Datafile ends  :   2015-12-31 23:00:00
+                dimensions
+                lat_id  -->            2 , len =           73
+                lon_id  -->            3 , len =          129
+                Setting southpole to (0,-90,0)
+                 ... checking variable slp
+                 ... checking variable precip
+                 ... checking variable u10
+                 ... checking variable v10
+                 ... checking variable t2
+                 ... checking variable tcc
+        Taking hum as dew point temperature
+            Using meteo from:
+                /export/lv1/user/jvandermolen/data/model_input_files/meteo/ERA5-2015-ShelfSeas.nc
+            Data from: 2015-01-01 00:00:00 to 2015-12-31 23:00:00
+            Reverting lat-axis and setting grid_scan to 0
+    init_grid_interpol
+        interpolates for all valid lat-lon
+        source field domain (geo-graphical coordinates):
+            lon:   -18.000000000000000        14.000000000000000     
+            lat:    46.000000000000000        64.000000000000000     
+        target field domain:
+            lon:    5.6214098930358887        5.6877388954162598     
+            lat:    53.357631683349609        53.431533813476562     
+        Checking interpolation coefficients
+        done
+            2015-01-01 00:00:00: reading meteo data - 2015-01-01 00:00:00
+        init_river_input
+            init_river_input_ncdf
+                rivers.nc
+                 ... checking available variables for river "r3"
+                r3: N1p
+                r3: N3n
+                r3: N4n
+                r3: N5s
+                 ... checking available variables for river "r4"
+                r4: N1p
+                r4: N3n
+                r4: N4n
+                r4: N5s
+                 ... checking available variables for river "r14"
+                r14: N1p
+                r14: N3n
+                r14: N4n
+                 ... checking available variables for river "r17"
+                r17: N1p
+                r17: N3n
+                r17: N4n
+                 ... checking available variables for river "r19"
+                r19: N1p
+                r19: N3n
+                r19: N4n
+                 ... checking available variables for river "r24"
+                r24: N1p
+                r24: N3n
+                r24: N4n
+                 ... checking available variables for river "r29"
+                r29: N1p
+                r29: N3n
+                r29: N4n
+                r29: N5s
+                 ... checking available variables for river "r30"
+                r30: N1p
+                r30: N3n
+                r30: N4n
+                 ... checking available variables for river "r34"
+                r34: N1p
+                r34: N3n
+                r34: N4n
+                 ... checking available variables for river "r37"
+                r37: N1p
+                r37: N3n
+                r37: N4n
+                 ... checking available variables for river "r42"
+                r42: N1p
+                r42: N3n
+                r42: N4n
+                 ... checking available variables for river "r44"
+                r44: N1p
+                r44: N3n
+                r44: N4n
+                 ... checking available variables for river "r45"
+                r45: N1p
+                r45: N3n
+                r45: N4n
+                 ... checking available variables for river "r53"
+                r53: N1p
+                r53: N3n
+                r53: N4n
+                Warning:no limit conditions found for R9x
+                R9x limit min:    0.0000 max.:    0.0000
+                O2o limit min:  100.0000 max.: 1000.0000
+                N1p limit min:    0.0010 max.:   20.0000
+                N3n limit min:    0.0100 max.:   70.0000
+                N4n limit min:    0.0010 max.:   20.0000
+                N5s limit min:    0.0100 max.:   50.0000
+                N6r limit min:    0.0000 max.:    1.0000
+                B1c limit min:    0.1000 max.:   50.0000
+                B1n limit min:    0.0017 max.:    0.8500
+                B1p limit min:    0.0002 max.:    0.0950
+                Bac limit min:    0.1000 max.:   50.0000
+                P1c limit min:    0.0010 max.:    0.0100
+                P1n limit min:    0.0010 max.:    0.0100
+                P1p limit min:    0.0010 max.:    0.0100
+                P1l limit min:    0.0010 max.:    0.0100
+                P1s limit min:    0.0010 max.:    0.0100
+                P2c limit min:    0.0010 max.:    0.0100
+                P2n limit min:    0.0010 max.:    0.0100
+                P2p limit min:    0.0010 max.:    0.0100
+                P2l limit min:    0.0010 max.:    0.0100
+                P3c limit min:    0.0010 max.:    0.0100
+                P3n limit min:    0.0010 max.:    0.0100
+                P3p limit min:    0.0010 max.:    0.0100
+                P3l limit min:    0.0010 max.:    0.0100
+                P4c limit min:    0.0010 max.:    0.0100
+                P4n limit min:    0.0010 max.:    0.0100
+                P4p limit min:    0.0010 max.:    0.0100
+                P4l limit min:    0.0010 max.:    0.0100
+                P5c limit min:    0.0010 max.:    0.0100
+                P5n limit min:    0.0010 max.:    0.0100
+                P5p limit min:    0.0010 max.:    0.0100
+                P5l limit min:    0.0010 max.:    0.0100
+                P5s limit min:    0.0010 max.:    0.0100
+                P6c limit min:    0.0010 max.:    0.0100
+                P6n limit min:    0.0010 max.:    0.0100
+                P6p limit min:    0.0010 max.:    0.0100
+                P6l limit min:    0.0010 max.:    0.0100
+                Pcc limit min:    0.0010 max.:    0.0100
+                R1c limit min:    0.0010 max.:   20.0000
+                R1n limit min:    0.0010 max.:    0.2000
+                R1p limit min:    0.0010 max.:    0.0200
+                R2c limit min:    0.0010 max.:  200.0000
+                Warning:no limit conditions found for R2n
+                R2n limit min:    0.0000 max.:    0.0000
+                Warning:no limit conditions found for R3c
+                R3c limit min:    0.0000 max.:    0.0000
+                R6c limit min:    0.0010 max.:    0.0100
+                R6n limit min:    0.0010 max.:    2.0000
+                R6p limit min:    0.0010 max.:    0.2000
+                R6s limit min:    0.0010 max.:    2.0000
+                RZc limit min:    0.0010 max.:    0.0100
+                Warning:no limit conditions found for O3c
+                O3c limit min:    0.0000 max.:    0.0000
+                Warning:no limit conditions found for O3h
+                O3h limit min:    0.0000 max.:    0.0000
+                Z3c limit min:    0.0000 max.:    0.0100
+                Z4c limit min:    0.0000 max.:    0.0100
+                Z2c limit min:    0.0000 max.:    0.0100
+                Z5c limit min:    0.0010 max.:    0.0000
+                Z6c limit min:    0.0000 max.:    0.0000
+            River offset time    1830297600.0000000     
+            2015-01-01 00:00:00: reading river data ....        21185
+    postinit_2d
+    postinit_3d
+            init_calc_getm_bio: bio_model=           6
+    finalize_register_all_variables()
+    finalize_register_2d_variables()
+    finalize_register_3d_variables()
+    finalize_register_processed_variables()
+            2015-01-01 00:00:00: saving 2D .... 
+            2015-01-01 00:00:00: saving 3D .... 
+ ------------------------------------------------------------------------
+    integrating....
+ ------------------------------------------------------------------------
+            2015-01-01 00:00:00: reading meteo data - 2015-01-01 01:00:00
+    NaN sweeping seems OK with this compiler and settings

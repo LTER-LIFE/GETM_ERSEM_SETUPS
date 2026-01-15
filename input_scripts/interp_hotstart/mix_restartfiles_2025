@@ -98,7 +98,10 @@ ncks --no-abc -C -A -v Q11c,Q11n,Q11p,Q21c,Q21n,Q21p,H1c,H1n,H1p,H2c,H2n,H2p $ou
 ncks --no-abc -C -A -v H3c,H3n,H3p,HNc,HNn,HNp,Hac,Kp1p,Kp3n,Kp4n,Kn4n,Kp5s $outdir/temp_bio.nc $outdir/$outfname
 ncks --no-abc -C -A -v Qpun,K1p,K11p,K21p,K4n,K14n,K24n,K5s,K15s,K6r,K16r,K26r,K3n $outdir/temp_bio.nc $outdir/$outfname
 ncks --no-abc -C -A -v K13n,K23n,G2o,G4n,Dfm,Dcm,Dlm,D1m,D2m,D6m,D7m,D8m,D9m,DSm $outdir/temp_bio.nc $outdir/$outfname
-ncks --no-abc -C -A -v DH2m,DH3m,irri_bio,G3c,G3h,G13c,G13h,G23c,G23h,Mcac,Mcan,Mcap,Mcal,Msc $outdir/temp_bio.nc $outdir/$outfname
+ncks --no-abc -C -A -v DH2m,DH3m,irri_bio,G3c,G3h,G13c,G13h,G23c,G23h $outdir/temp_bio.nc $outdir/$outfname
+
+#,Mcac,Mcan,Mcap,Mcal,Msc # these variables do not exists, model running will look for them though and fail.
+#ncks --no-abc -C -A -v DH2m,DH3m,irri_bio,G3c,G3h,G13c,G13h,G23c,G23h,Mcac,Mcan,Mcap,Mcal,Msc $outdir/temp_bio.nc $outdir/$outfname
 
 # add a row at the bottom
 # first copy the bottom row to a file
