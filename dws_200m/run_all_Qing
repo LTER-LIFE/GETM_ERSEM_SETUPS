@@ -387,7 +387,10 @@ if [ $BASE_4 == "1" ]; then
 	   ln -sf "/export/lv9/ERSEM_runs/boundaries/dws_200m_nwes/bdy_dws_200m_2_"$yy"_"$mm".3d.nc" bdy_3d.nc
 	   echo "done linking bdy files"
 
-           sed --follow-symlinks -i -e 's/\(time_start: \).\{7\}/\1'$yy'-'$mm'/' ./output.yaml
+        cp output.yaml output_yaml.tmp
+         sed --follow-symlinks -e 's/\(time_start: \).\{7\}/\1'$yy'-'$mm'/' output_yaml.tmp > output.yaml 
+         wait
+         rm output_yaml.tmp
 
            mkdir -p $logdir
            ./run.getm "$start" "$stop" >& $logdir/log.$yy.$mm.$dd
