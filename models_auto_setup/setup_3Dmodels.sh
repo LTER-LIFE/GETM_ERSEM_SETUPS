@@ -103,6 +103,11 @@ clone_repos() {
 compile_models(){
     echo "Starting compilation..."
     
+    # --- Clean build directories ---
+    rm -rf "$HOME/home/build"
+    rm -rf "$HOME/tools"
+    rm -rf "$HOME/local"
+
     # --- Compile GOTM (1D) ---
     mkdir -p "$HOME/home/build/gotm"
     cd "$HOME/home/build/gotm" || exit 1
@@ -127,6 +132,7 @@ compile_models(){
     ./getm_configure.sh
 
     cd "$HOME/home/GETM_ERSEM_SETUPS/dws_200m" || exit 1
+    ./link_restart_files
     ./compile_all_git
 
     echo "==========================================="
@@ -182,7 +188,6 @@ esac
 # --- Prepare a porosity map based on SIBES&SUBES dataset. An example of such a file is in "/export/lv1/user/jvandermolen/home/GETM_ERSEM_SETUPS/north_west_european_shelf_bfm_jan2025/nwes/Input/Ben_Sedprop.nc"
 # --- download SIBES mud_percentage dataset (https://doi.org/10.25850/nioz/7b.b.ug)
 # --- download tiff image from Franken (BelowMurkyWaters_Silt)
-
 
 # Run the script by:
 # Make it executable:
