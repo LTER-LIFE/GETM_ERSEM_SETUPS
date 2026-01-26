@@ -76,7 +76,9 @@ clone_repos() {
     cd "$HOME/home/GETM_SOURCES" || exit 1
     git clone "git@github.com:jvdmolen/getm_coupled_bfm_2016.git"
     cd getm_coupled_bfm_2016 || exit 1
-    git checkout -b iow_20200609_bfm2016_20250116 remotes/origin/iow_20200609_bfm2016_20250116
+    # git checkout -b iow_20200609_bfm2016_20250116 remotes/origin/iow_20200609_bfm2016_20250116
+    # checkout specific commit:
+    git checkout -b iow_20200609_bfm2016_20250116 969dceb73ca9d801c03eb7f218da1d45d5748db3
 
     # --- FABM ---
     echo "Cloning FABM..."
