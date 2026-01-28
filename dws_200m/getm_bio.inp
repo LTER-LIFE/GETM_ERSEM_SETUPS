@@ -10,8 +10,8 @@
 !-------------------------------------------------------------------------------
 &getm_bio_nml
   hotstart_bio=.true.,
-  bio_hor_adv=4
-  bio_ver_adv=4
+  bio_hor_adv=5
+  bio_ver_adv=5
   bio_adv_split=1
   bio_AH=-1.
  /

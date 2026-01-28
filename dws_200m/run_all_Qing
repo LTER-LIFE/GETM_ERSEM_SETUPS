@@ -12,6 +12,9 @@
 #SBATCH --output=/export/lv9/user/qzhan/home/run_all.stdout
 #SBATCH --job-name="run_all"
 
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=qing.zhan@nioz.nl
+
 module load clustershell/1.8
 
 echo "run_all"
@@ -317,8 +320,8 @@ fi  # BASE_3
 ##################################################################
 if [ $BASE_4 == "1" ]; then
 
-  export step_2d=1 #150 #150 # 150  # xml: 90
-  export step_3d=1 # 450  # xml: 1440
+  export step_2d=900 #150 #150 # 150  # xml: 90
+  export step_3d=900 # 450  # xml: 1440
   export save_initial=True
   
   export use_epoch=True 
@@ -366,8 +369,8 @@ if [ $BASE_4 == "1" ]; then
 	     export start="$yy-$mm-$dd 00:00:00"
            fi
 	   export start="$yy-$mm-$dd 00:00:00"
-	   #export stop="$hot_yy-$hot_mm-$dd 00:00:00"
-  	   export stop="$hot_yy-01-01 00:00:04"
+	   export stop="$hot_yy-$hot_mm-$dd 00:00:00"
+  	   export stop="$hot_yy-01-02 00:00:00"
 
            export logdir=log/$runid/$conf/$yy$mm$dd
            export year=$yy

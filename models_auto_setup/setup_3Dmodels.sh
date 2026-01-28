@@ -134,7 +134,7 @@ compile_models(){
     ./getm_configure.sh
 
     cd "$HOME/home/GETM_ERSEM_SETUPS/dws_200m" || exit 1
-    ./link_restart_files
+    ./link_restartfiles
     ./compile_all_git
 
     echo "==========================================="

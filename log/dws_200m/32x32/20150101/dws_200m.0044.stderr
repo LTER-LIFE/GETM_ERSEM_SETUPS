@@ -1,9 +1,9 @@
  MPI is initialised - v3.1
- Process           44  of          239  is alive on no63
+ Process           44  of          239  is alive on no65
  ------------------------------------------------------------------------
- getm: Started on  20260126 111202.653
+ getm: Started on  20260128 163702.111
  ------------------------------------------------------------------------
- GETM version: 71711f1 (iow_20200609_bfm2016_20250116 branch)
+ GETM version: 969dceb (iow_20200609_bfm2016_20250116 branch)
  GOTM version: f7b271b (master_20210107_couplingGETM_bfm2016_20241126 branch)
  ------------------------------------------------------------------------
  Compiler: GNU 6.4.0
@@ -25,8 +25,8 @@
         Time step:         4.0000000000000000       seconds
         Time format:               2
         Start:          2010-01-01 00:00:00
-        Stop:           2015-01-01 00:00:04
-         ==>         1826  day(s) and            4  seconds ==>     39441601  micro time steps
+        Stop:           2015-01-02 00:00:00
+         ==>         1827  day(s) and            0  seconds ==>     39463200  micro time steps
         using "2010-01-01 00:00:00" as time reference
     init_domain
     read_par_setup: Consistency OK
@@ -154,21 +154,21 @@
         init_variables_2d
         init_advection
         Advection of depth-averaged velocities
-            half step splitting: u/2 + v + u/2
-             TVD-P2-PDM advection (third-order, monotone)
+            full step splitting: u + v
+             TVD-MUSCL advection (second-order, monotone)
              without diffusion
         Am_method=0 -> horizontal momentum diffusion not included
         An_method=1 -> Using constant horizontal numerical diffusion
         sealevel_check>0 --> NaN values will result in error conditions
     init_3d
-        splitting factor M:            2
+        splitting factor M:           30
         init_variables_3d
         init_advection_3d
         Advection of horizontal 3D velocities
-            half step splitting: u/2 + v/2 + w + v/2 + u/2
-             horizontal: TVD-P2-PDM advection (third-order, monotone)
+            full step splitting: u + v + w
+             horizontal: TVD-MUSCL advection (second-order, monotone)
                          without diffusion
-             vertical  : TVD-Superbee advection (second-order, monotone)
+             vertical  : TVD-MUSCL advection (second-order, monotone)
                          with max          500  iterations
         vel_check=           0
         Turbulence settings
@@ -184,10 +184,10 @@
         init_temperature()
             avmolt =    1.39999997E-07
             Advection of temperature
-            half step splitting: u/2 + v/2 + w + v/2 + u/2
-             horizontal: TVD-Superbee advection (second-order, monotone)
+            full step splitting: u + v + w
+             horizontal: TVD-MUSCL advection (second-order, monotone)
                          without diffusion
-             vertical  : TVD-Superbee advection (second-order, monotone)
+             vertical  : TVD-MUSCL advection (second-order, monotone)
                          with max          500  iterations
             temp_AH_method=0 -> horizontal diffusion of heat disabled
             setting attenuation coefficients to constant values:
@@ -199,10 +199,10 @@
         init_salinity()
             avmols =    1.09999998E-09
             Advection of salinity
-            half step splitting: u/2 + v/2 + w + v/2 + u/2
-             horizontal: TVD-Superbee advection (second-order, monotone)
+            full step splitting: u + v + w
+             horizontal: TVD-MUSCL advection (second-order, monotone)
                          without diffusion
-             vertical  : TVD-Superbee advection (second-order, monotone)
+             vertical  : TVD-MUSCL advection (second-order, monotone)
                          with max          500  iterations
             salt_AH_method=0 -> horizontal diffusion of salt disabled
             salt_check=           0
@@ -524,56 +524,27 @@
             N4n
             N5s
             N6r
-            Nun
             B1c
-            B1n
             Bac
             P1c
-            P1n
-            P2n
-            P3n
-            P4n
-            P5n
-            P6n
             P2c
             P3c
             P4c
             P5c
             P6c
-            P1l
-            P2l
-            P3l
-            P4l
-            P5l
-            P6l
-            Pcc
             Z2c
             Z3c
             Z4c
             Z5c
             Z6c
             R1c
-            R1p
-            R1n
-            R1c
-            Warning: variable R1s does not exist!
             R2c
             R3c
             R6c
-            R6s
-            R6p
-            R6n
             RZc
             Q1c
-            Q1n
-            Q1p
             Q11c
-            Q11n
-            Q11p
             Q6c
-            Q6s
-            Q6n
-            Q6p
             Chla
             H1c
             H2c
@@ -601,14 +572,7 @@
             K21p
             D1m
             D2m
-            D6m
-            D7m
-            D8m
-            D9m
-            Dcm
-            Dfm
             O3c
-            DIC
             pCO2
             CO2
             HCO3
@@ -630,152 +594,24 @@
             pHan
             pCO2ae
             pCO2an
-            PrM1p
-            PrM3n
-            PrM4n
-            PrM6r
-            PrM5s
-            Warning: variable PrQ1c does not exist!
-            PrDIC
-            PrAc
-            PrpH
             G3h
             G13h
             BP1c
-            totPELn
-            totPELp
-            totPELs
-            totPELc
-            totBENn
-            totBENp
-            totBENs
-            totBENc
-            totSYSn
-            totSYSp
-            totSYSs
-            totSYSc
             ETW
             irrenh
             turenh
-            R2n
-            PON
             dry_z
-            jK25K15s
-            jK31K21p
-            jK34K24n
-            jK36K26r
-            jK13K3n
-            jG33G23h
-            jG33G23c
-            sK4K3
-            jK4K3n
-            jK3G4n
-            jG2K7o
-            qqrivR6p
-            qqrivNtn
-            qqrivNtp
-            jbotO2o
-            jbotN4n
-            jbotN3n
-            jbotN1p
-            jbotN5s
-            jbotR6c
-            jbotR6n
-            jbotR6p
-            jbotR6s
- Warning: variable jRIY3p does not exist!
-            jbotZ2c
-            jbotP1c
-            jbotP2c
-            jbotP3c
-            jbotP4c
-            jbotP5c
-            jbotP6c
-            jbotZ3c
-            jbotZ4c
-            jbotZ5c
-            jbotZ6c
-            jbotB1c
-            jbotQ6c
-            jbotQ6n
-            jbotQ6p
-            jbotQ6s
- Warning: variable jbott_ESS does not exist!
-            jrESS
-            rrBTo
-            rrATo
- Warning: variable jnetPTc does not exist!
-            grsPPm2
- Warning: variable exPPm2 does not exist!
- Warning: variable resPPm2 does not exist!
-            jspaY3c
-            jnetBPTc
-            jnetMeZc
-            jnetMiZc
-            jnetB1c
-            jnetY3c
-            jnetYy3c
             EIR
             sediR2
-            jbotO3c
-            jbotO3h
-            jsurO3c
-            reBTp
-            reBTn
-            reATn
-            reATp
-            J1_PTc
-            J1_R6c
-            J1_R2c
-            jPelFishInput
-            jBenFishInput
- Warning: variable fPZc does not exist!
- Warning: variable fBZc does not exist!
- Warning: variable fBO3c does not exist!
- Warning: variable fZO3c does not exist!
- Warning: variable fZRc does not exist!
- Warning: variable fRBc does not exist!
- Warning: variable fYG3c does not exist!
- Warning: variable fYQ1c does not exist!
- Warning: variable fQ1Yc does not exist!
- Warning: variable fQ6Hc does not exist!
- Warning: variable fHQ6c does not exist!
- Warning: variable fHYc does not exist!
- Warning: variable fHG3c does not exist!
-            pMIupZ4
             EUWIND
             EVWIND
             SdTdzTh
             BMLd
             TMLd
-            efilP6Y3
             Output2d_1
             Output2d_2
             Output2d_3
             Output2d_4
- Warning: variable jZ5Z2c does not exist!
- Warning: variable jP1Z2c does not exist!
- Warning: variable jP1ZIc does not exist!
- Warning: variable jP6ZIc does not exist!
- Warning: variable jPIY3n does not exist!
- Warning: variable jPIY3p does not exist!
-            jZIY3c
- Warning: variable jRIY3c does not exist!
-            jRIQIc
- Warning: variable fldiPIn does not exist!
- Warning: variable flN3PIn does not exist!
-            ruZTc
-            eO2mO2
-            XO2o
- Warning: variable lim_rumn4 does not exist!
- Warning: variable lim_rumn3 does not exist!
- Warning: variable lim_rump1 does not exist!
-            ruPTc
-            jtotbenpelc
-            jtotbenpeln
-            jtotbenpelp
-            jtotbenpels
- Warning: variable netPP does not exist!
  Warning: Variable turenh is already selected for output in var_save
  Warning: Variable irrenh is already selected for output in var_save
             netPPm2
@@ -789,20 +625,6 @@
  Warning: variable TauS does not exist!
             ws_out
             eta_out
- Warning: variable sdMs_iiMs_ does not exist!
- Warning: variable sunMI_iiMs_ does not exist!
- Warning: variable sugMI_iiMs_ does not exist!
- Warning: variable fr_lim_Ma_n_iiMca_ does not exist!
- Warning: variable fr_lim_Ma_p_iiMca_ does not exist!
- Warning: variable Mcac does not exist!
- Warning: variable Mcan does not exist!
- Warning: variable Mcap does not exist!
- Warning: variable Mcal does not exist!
- Warning: variable Msc does not exist!
- Warning: variable psur_iiMs_ does not exist!
- Warning: variable farm_surface_iiMs_ does not exist!
- Warning: variable surface does not exist!
-            rnetPTc
  BEGIN of READING PARMETERS
  #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  #  Reading Param parameters..
@@ -1462,156 +1284,56 @@
             init silt
         Reading from getm_bio.inp
         Settings related to 3D biological calculations
-            bio_hor_adv=              4
-            bio_ver_adv=              4
+            bio_hor_adv=              5
+            bio_ver_adv=              5
             bio_adv_split=            1
             bio_AH=          -1.0000000000000000     
         Detailed info about diagnostic Variables selected for output
             3d averaged: EIR seq_nrs:           1
             3d averaged: ESS seq_nrs:           2
-            3d averaged: XO2o seq_nrs:           3
-            3d averaged: eO2mO2 seq_nrs:           4
-            3d averaged: ws_out seq_nrs:           5
-            3d averaged: pMIupZ4 seq_nrs:           6
-            3d averaged: rnetPTc seq_nrs:           7
-            3d averaged: sediR2 seq_nrs:           8
-            3d averaged: xEPS seq_nrs:           9
+            3d averaged: ws_out seq_nrs:           3
+            3d averaged: sediR2 seq_nrs:           4
+            3d averaged: xEPS seq_nrs:           5
         section 2:Averaged Pelagic Diagnostic Variabeles start at           1
-            3d averaged: ruPTc seq_nrs:          10
-            3d averaged: ruZTc seq_nrs:          11
-        section 3:Averaged Pelagic Calculations  start at          10
-            3d sampled: ETW seq_nrs:          12
-            3d sampled: Chla seq_nrs:          13
-            3d sampled: Nun seq_nrs:          14
-            3d sampled: PON seq_nrs:          15
-            3d sampled: pCO2 seq_nrs:          16
-            3d sampled: CO2 seq_nrs:          17
-            3d sampled: HCO3 seq_nrs:          18
-            3d sampled: CO3 seq_nrs:          19
-            3d sampled: pH seq_nrs:          20
-            3d sampled: Ac seq_nrs:          21
-            3d sampled: DIC seq_nrs:          22
-        section 4:Sampled Pelagic Diagnostic Variables start at          12
+            3d sampled: ETW seq_nrs:           6
+            3d sampled: Chla seq_nrs:           7
+            3d sampled: pCO2 seq_nrs:           8
+            3d sampled: CO2 seq_nrs:           9
+            3d sampled: HCO3 seq_nrs:          10
+            3d sampled: CO3 seq_nrs:          11
+            3d sampled: pH seq_nrs:          12
+            3d sampled: Ac seq_nrs:          13
+        section 4:Sampled Pelagic Diagnostic Variables start at           6
             2d averaged: EUWIND seq_nrs:           1
             2d averaged: EVWIND seq_nrs:           2
             2d averaged: dry_z seq_nrs:           3
-            2d averaged: jrESS seq_nrs:           4
-            2d averaged: rrBTo seq_nrs:           5
-            2d averaged: rrATo seq_nrs:           6
-            2d averaged: reBTn seq_nrs:           7
-            2d averaged: reBTp seq_nrs:           8
-            2d averaged: reATn seq_nrs:           9
-            2d averaged: reATp seq_nrs:          10
-            2d averaged: jG2K7o seq_nrs:          11
-            2d averaged: jZIY3c seq_nrs:          12
-            2d averaged: jRIQIc seq_nrs:          13
-            2d averaged: jbotQ6c seq_nrs:          14
-            2d averaged: jbotQ6n seq_nrs:          15
-            2d averaged: jbotQ6p seq_nrs:          16
-            2d averaged: jbotQ6s seq_nrs:          17
-            2d averaged: efilP6Y3 seq_nrs:          18
-            2d averaged: sK4K3 seq_nrs:          19
-            2d averaged: jK4K3n seq_nrs:          20
-            2d averaged: jK3G4n seq_nrs:          21
-            2d averaged: jK31K21p seq_nrs:          22
-            2d averaged: jK34K24n seq_nrs:          23
-            2d averaged: jK13K3n seq_nrs:          24
-            2d averaged: jK25K15s seq_nrs:          25
-            2d averaged: jK36K26r seq_nrs:          26
-            2d averaged: jtotbenpelc seq_nrs:          27
-            2d averaged: jtotbenpeln seq_nrs:          28
-            2d averaged: jtotbenpelp seq_nrs:          29
-            2d averaged: jtotbenpels seq_nrs:          30
-            2d averaged: jnetMeZc seq_nrs:          31
-            2d averaged: jnetMiZc seq_nrs:          32
-            2d averaged: jnetB1c seq_nrs:          33
-            2d averaged: jnetY3c seq_nrs:          34
-            2d averaged: jspaY3c seq_nrs:          35
-            2d averaged: jnetYy3c seq_nrs:          36
-            2d averaged: jnetBPTc seq_nrs:          37
-            2d averaged: Output2d_1 seq_nrs:          38
-            2d averaged: Output2d_2 seq_nrs:          39
-            2d averaged: Output2d_3 seq_nrs:          40
-            2d averaged: Output2d_4 seq_nrs:          41
-            2d averaged: jPelFishInput seq_nrs:          42
-            2d averaged: jBenFishInput seq_nrs:          43
-            2d averaged: SdTdzTh seq_nrs:          44
-            2d averaged: TMLd seq_nrs:          45
-            2d averaged: BMLd seq_nrs:          46
-            2d averaged: Hs_out seq_nrs:          47
-            2d averaged: Tz_out seq_nrs:          48
-            2d averaged: u_orb_out seq_nrs:          49
-            2d averaged: TauW seq_nrs:          50
-            2d averaged: TauC seq_nrs:          51
-            2d averaged: eta_out seq_nrs:          52
-            2d averaged: jG33G23h seq_nrs:          53
-            2d averaged: jG33G23c seq_nrs:          54
-            2d averaged: jsurO3c seq_nrs:          55
-            2d averaged: jbotO2o seq_nrs:          56
-            2d averaged: jbotN1p seq_nrs:          57
-            2d averaged: jbotN3n seq_nrs:          58
-            2d averaged: jbotN4n seq_nrs:          59
-            2d averaged: jbotN5s seq_nrs:          60
-            2d averaged: jbotB1c seq_nrs:          61
-            2d averaged: jbotP1c seq_nrs:          62
-            2d averaged: jbotP2c seq_nrs:          63
-            2d averaged: jbotP3c seq_nrs:          64
-            2d averaged: jbotP4c seq_nrs:          65
-            2d averaged: jbotP5c seq_nrs:          66
-            2d averaged: jbotP6c seq_nrs:          67
-            2d averaged: jbotR6c seq_nrs:          68
-            2d averaged: jbotR6n seq_nrs:          69
-            2d averaged: jbotR6p seq_nrs:          70
-            2d averaged: jbotR6s seq_nrs:          71
-            2d averaged: jbotO3c seq_nrs:          72
-            2d averaged: jbotO3h seq_nrs:          73
-            2d averaged: jbotZ3c seq_nrs:          74
-            2d averaged: jbotZ4c seq_nrs:          75
-            2d averaged: jbotZ2c seq_nrs:          76
-            2d averaged: jbotZ5c seq_nrs:          77
-            2d averaged: jbotZ6c seq_nrs:          78
+            2d averaged: Output2d_1 seq_nrs:           4
+            2d averaged: Output2d_2 seq_nrs:           5
+            2d averaged: Output2d_3 seq_nrs:           6
+            2d averaged: Output2d_4 seq_nrs:           7
+            2d averaged: SdTdzTh seq_nrs:           8
+            2d averaged: TMLd seq_nrs:           9
+            2d averaged: BMLd seq_nrs:          10
+            2d averaged: Hs_out seq_nrs:          11
+            2d averaged: Tz_out seq_nrs:          12
+            2d averaged: u_orb_out seq_nrs:          13
+            2d averaged: TauW seq_nrs:          14
+            2d averaged: TauC seq_nrs:          15
+            2d averaged: eta_out seq_nrs:          16
         section 2:Averaged Benthic Diagnostic Variabeles start at           1
-            2d averaged: grsPPm2 seq_nrs:          79
-            2d averaged: netPPm2 seq_nrs:          80
-            2d averaged: J1_PTc seq_nrs:          81
-            2d averaged: J1_R6c seq_nrs:          82
-            2d averaged: J1_R2c seq_nrs:          83
-            2d averaged: qqrivNtn seq_nrs:          84
-            2d averaged: qqrivNtp seq_nrs:          85
-            2d averaged: qqrivR6p seq_nrs:          86
-        section 3:Averaged Benthic Calculations  start at          79
-            2d sampled: irrenh seq_nrs:          87
-            2d sampled: turenh seq_nrs:          88
-            2d sampled: totPELc seq_nrs:          89
-            2d sampled: totPELn seq_nrs:          90
-            2d sampled: totPELp seq_nrs:          91
-            2d sampled: totPELs seq_nrs:          92
-            2d sampled: totBENc seq_nrs:          93
-            2d sampled: totBENn seq_nrs:          94
-            2d sampled: totBENp seq_nrs:          95
-            2d sampled: totBENs seq_nrs:          96
-            2d sampled: totSYSc seq_nrs:          97
-            2d sampled: totSYSn seq_nrs:          98
-            2d sampled: totSYSp seq_nrs:          99
-            2d sampled: totSYSs seq_nrs:         100
-            2d sampled: DICae seq_nrs:         101
-            2d sampled: DICan seq_nrs:         102
-            2d sampled: Acae seq_nrs:         103
-            2d sampled: Acan seq_nrs:         104
-            2d sampled: pHae seq_nrs:         105
-            2d sampled: pHan seq_nrs:         106
-            2d sampled: pCO2ae seq_nrs:         107
-            2d sampled: pCO2an seq_nrs:         108
-        section 4:Sampled Benthic Diagnostic Variables start at          87
-            3d-prf sampled: PrM1p seq_nrs:           1
-            3d-prf sampled: PrM3n seq_nrs:           2
-            3d-prf sampled: PrM4n seq_nrs:           3
-            3d-prf sampled: PrM5s seq_nrs:           4
-            3d-prf sampled: PrM6r seq_nrs:           5
-            3d-prf sampled: PrDIC seq_nrs:           6
-            3d-prf sampled: PrAc seq_nrs:           7
-            3d-prf sampled: PrpH seq_nrs:           8
-        section 4:Sampled BenProfile Diagnostic Variables start at           1
+            2d averaged: netPPm2 seq_nrs:          17
+        section 3:Averaged Benthic Calculations  start at          17
+            2d sampled: irrenh seq_nrs:          18
+            2d sampled: turenh seq_nrs:          19
+            2d sampled: DICae seq_nrs:          20
+            2d sampled: DICan seq_nrs:          21
+            2d sampled: Acae seq_nrs:          22
+            2d sampled: Acan seq_nrs:          23
+            2d sampled: pHae seq_nrs:          24
+            2d sampled: pHan seq_nrs:          25
+            2d sampled: pCO2ae seq_nrs:          26
+            2d sampled: pCO2an seq_nrs:          27
+        section 4:Sampled Benthic Diagnostic Variables start at          18
         Set all elements of cc3d_out which contain river outputs on 0  and NOT on 'bio_missing'...
         In this way all active grid points in which no river ents   are set on 0
         Reading biological fields from hotstart file
@@ -1636,11 +1358,11 @@
         save (rotated) velocities in center points
         save grid-related volume fluxes through interfaces
         2D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0044.nc
-        First=           0  step=           1  sync_2d=          144
+        First=           0  step=         900  sync_2d=          144
         Elevation will be masked for depths below   0.349999994    
         Saving meteo forcing in /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0044.nc
         3D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.3d.0044.nc
-        First=           0  step=           1  sync_3d=           48
+        First=           0  step=         900  sync_3d=           48
         Elevation will be masked for depths below   0.200000003    
         calculate and save mixing analysis
     do_register_all_variables()
@@ -1658,10 +1380,7 @@
             variable missing in restart file. Skipping Vinto               
  read_restart_ncdf_0           1           2           3           4
  read_restart_ncdf_1
-    joff/jmax           6
-    jmax,joff,joff_0,joff_l          32         214          22         192
-    joff_l         224
-    imin,ioff_l,iread_from,il,ifill_from           1         256           0           0           0
+    imin,ioff_l,iread_from,il,ifill_from           1         256           0    10630880           0
     jmin,joff_l,jread_from,jl,jfill_from           1         224           0           0           0
     il         257
     il         257
@@ -7891,103 +7610,799 @@
  ------------------------------------------------------------------------
             2015-01-01 00:00:00: reading meteo data - 2015-01-01 01:00:00
     NaN sweeping seems OK with this compiler and settings
-            2015-01-01 00:00:04: saving 2D .... 
-            2015-01-01 00:00:04: saving 3D .... 
-        Checking for NANs before saving hotstart file...
-        Saving hotstart file #            1  as /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//restart.0044.out
- ------------------------------------------------------------------------
- Cleaning up....
- ------------------------------------------------------------------------
-    clean_input
-        At final MPI barrier
- barrier(): we are waiting
-        About to finish parallel part of GETM - calling MPI_Finalize()
-        MPI finalized
- ------------------------------------------------------------------------
-    getm: Completed on 20260126 111225.208
-    Memory used (global 2D and 3D arrays):
-        2D:          216  kbytes
-        3D:         3200  kbytes
-    Total CPU-time was:       10.6036377      seconds
-    Number of time steps:             1
-    Number of calc-points:         1024
-    CPU-time/calc-point:      1.03551149E-02  seconds
-    Sim-time/CPU-time:        14878517.027203131     
- ------------------------------------------------------------------------
-    GETM timers in seconds (           1000000000  tics per second)
-                                 wall      #sysclocks     % of total
-     Timername                time (s)        calls       clocked time
-  initialize                   15.30              6         69.24
-   sum bottom_friction          0.00              4          0.00
-  momentum                      0.06              2          0.28
-   momentum-halo                0.06              4          0.28
-  uv_depths                     0.00              2          0.00
-   sum uv_advect                0.16              2          0.74
-   uv_advect-halo               0.16              4          0.73
-   sum deformation_rates        0.00              0          0.00
-   sum uv_diffusion             0.00              2          0.00
-   sum depth_update             0.00              6          0.00
-   sum dryfac_update            0.00              2          0.00
-  sealevel                      3.69              2         16.69
-   sealevel-halo                3.69              2         16.69
-  gotm                          0.00              0          0.00
-   gotm-halo                    0.00              0          0.00
-  uv_advect_3d                  0.00              0          0.00
-   uv_advect_3d-halo            0.00              0          0.00
-  deformation_rates_3d          0.00              0          0.00
-  uv_diffusion_3d               0.00              0          0.00
-  vv_momentum_3d                0.00              0          0.00
-   vv_momentum_3d-halo          0.00              0          0.00
-  uu_momentum_3d                0.00              0          0.00
-   uu_momentum_3d-halo          0.00              0          0.00
-  ww_momentum_3d                0.00              0          0.00
-   ww_momentum_3d-halo          0.00              0          0.00
-  shear_frequency               0.00              0          0.00
-  buoyancy_frequency            0.00              2          0.00
-  stresses_3d                   0.00              0          0.00
-  do_bdy_3d                     0.00              0          0.00
-  do_temperature                0.00              0          0.00
-   temperature-halo             0.00              0          0.00
-  do_salinity                   0.00              0          0.00
-   salinity-halo                0.00              0          0.00
-  coordinates                   0.00              3          0.01
-  do_internal_pressure          0.00              2          0.01
-  do_nonhydrostatic             0.00              0          0.00
-   nonhyd overhead              0.00              0          0.00
-  start_macro                   0.00              0          0.00
-  stop_macro                    0.00              0          0.00
-  eq_state                      0.00              2          0.01
-  tracer_stirring               0.00              0          0.00
-   sum tracer_diffusion         0.00              0          0.00
-  calc_mean_fields              0.00              0          0.00
-  do_meteo                      0.01              6          0.04
-  getm_bio                      0.00              0          0.00
-  integrate_2d other            0.16              8          0.74
-  integrate_3d other            0.00              0          0.00
-  do_input                      0.00              2          0.00
-  do_output                     2.87              4         12.97
-  output_manager_save           0.00              4          0.00
-  do_output_processing          0.00              2          0.00
-   sum do_advection             0.00              4          0.01
-   do_advection-halo            0.00              6          0.01
-   sum do_advection_3d          0.00              0          0.00
-   do_advection_3d-halo         0.00              0          0.00
-   sum check_3d_fields          0.00              0          0.00
-  numerical mixing analysi      0.00              0          0.00
-   sum do_halo_2d               0.00             68          0.01
-   sum do_halo_3d               0.01            366          0.06
-   sum wait_halo                9.53            434         43.14
-   advection getm_bio           0.00              0          0.00
-  do_les_2d                     0.00              0          0.00
-  do_les_3d                     0.00              0          0.00
-   sum les_smagorinsky          0.00              0          0.00
-  waves                         0.00              0          0.00
-              TIMERS SUM       22.09            951        100.00
- ------------------------------------------------------------------------
-    Communication with other sub-domains:
-        2D data exchange:                     0  MB
-        3D data exchange:                     8  MB
- ------------------------------------------------------------------------
-    Copyright (C) Karsten Bolding and Hans Burchard.
-    under the General Public License (GPL) - http://www.gnu.org 
- ------------------------------------------------------------------------
+            2015-01-01 00:01:04: reading river data ....        21186
+ bio_solver numc=          56
+ bio_solver nlev=          15
+ bio_solver dt=   120.00000000000000     
+ bio_solver solver=           1
+ Start of run..........follow=     2457024
+            Vertical advective transport is present for
+                R9x defined outside PelGlobal.F90
+                R9x Diffusive transport coupled to advective transport
+                B1c
+                B1n coupled to B1c
+                B1p coupled to B1c
+                Bac coupled to B1c
+                P1c
+                P1n coupled to P1c
+                P1p coupled to P1c
+                P1l coupled to P1c
+                P1s coupled to P1c
+                P2c
+                P2n coupled to P2c
+                P2p coupled to P2c
+                P2l coupled to P2c
+                P3c
+                P3n coupled to P3c
+                P3p coupled to P3c
+                P3l coupled to P3c
+                P4c
+                P4n coupled to P4c
+                P4p coupled to P4c
+                P4l coupled to P4c
+                P5c
+                P5n coupled to P5c
+                P5p coupled to P5c
+                P5l coupled to P5c
+                P5s coupled to P5c
+                P6c
+                P6n coupled to P6c
+                P6p coupled to P6c
+                P6l coupled to P6c
+                Pcc coupled to P6c
+                R2c
+                R2n coupled to R2c
+                R3c coupled to P6c
+                R6c
+                R6n coupled to R6c
+                R6p coupled to R6c
+                R6s
+                RZc
+                Z3c
+                Z4c
+                Z2c
+                Z5c
+                Z6c
+            End of Vertical transport
+             
+    16:37:38.907 n=    39441700
+    16:37:56.055 n=    39441800
+    16:38:12.608 n=    39441900
+    16:38:34.449 n=    39442000
+    16:38:51.434 n=    39442100
+    16:39:08.590 n=    39442200
+    16:39:32.037 n=    39442300
+    16:39:48.328 n=    39442400
+    16:40:04.367 n=    39442500
+            2015-01-01 01:00:00: saving 2D .... 
+            2015-01-01 01:00:00: saving 3D .... 
+            2015-01-01 01:00:00: reading meteo data - 2015-01-01 02:00:00
+    16:40:27.176 n=    39442600
+    16:40:43.674 n=    39442700
+    16:40:59.761 n=    39442800
+    16:41:21.914 n=    39442900
+    16:41:38.449 n=    39443000
+    16:41:54.589 n=    39443100
+    16:42:16.225 n=    39443200
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.357%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.624%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.698%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.641%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     2.194%
+    16:42:32.874 n=    39443300
+    16:42:50.021 n=    39443400
+            2015-01-01 02:00:00: saving 2D .... 
+            2015-01-01 02:00:00: saving 3D .... 
+            2015-01-01 02:00:00: reading meteo data - 2015-01-01 03:00:00
+    16:43:12.500 n=    39443500
+    16:43:28.468 n=    39443600
+    16:43:45.566 n=    39443700
+    16:44:06.893 n=    39443800
+    16:44:23.024 n=    39443900
+    16:44:39.113 n=    39444000
+    16:45:01.002 n=    39444100
+    16:45:17.867 n=    39444200
+    16:45:33.996 n=    39444300
+            2015-01-01 03:00:00: saving 2D .... 
+            2015-01-01 03:00:00: saving 3D .... 
+            2015-01-01 03:00:00: reading meteo data - 2015-01-01 04:00:00
+    16:45:56.850 n=    39444400
+    16:46:13.745 n=    39444500
+    16:46:30.122 n=    39444600
+    16:46:51.474 n=    39444700
+    16:47:07.920 n=    39444800
+    16:47:24.134 n=    39444900
+    16:47:45.537 n=    39445000
+    16:48:01.595 n=    39445100
+    16:48:17.871 n=    39445200
+            2015-01-01 04:00:00: saving 2D .... 
+            2015-01-01 04:00:00: saving 3D .... 
+            2015-01-01 04:00:00: reading meteo data - 2015-01-01 05:00:00
+    16:48:41.320 n=    39445300
+    16:48:58.803 n=    39445400
+    16:49:15.714 n=    39445500
+    16:49:38.955 n=    39445600
+    16:49:55.177 n=    39445700
+    16:50:11.287 n=    39445800
+    16:50:33.009 n=    39445900
+    16:50:49.112 n=    39446000
+    16:51:05.595 n=    39446100
+            2015-01-01 05:00:00: saving 2D .... 
+            2015-01-01 05:00:00: saving 3D .... 
+            2015-01-01 05:00:00: reading meteo data - 2015-01-01 06:00:00
+    16:51:27.017 n=    39446200
+    16:51:43.165 n=    39446300
+    16:51:59.499 n=    39446400
+    16:52:22.157 n=    39446500
+    16:52:39.789 n=    39446600
+    16:52:56.330 n=    39446700
+    16:53:17.821 n=    39446800
+    16:53:33.861 n=    39446900
+    16:53:50.076 n=    39447000
+            2015-01-01 06:00:00: saving 2D .... 
+            2015-01-01 06:00:00: saving 3D .... 
+            2015-01-01 06:00:00: reading meteo data - 2015-01-01 07:00:00
+    16:54:11.989 n=    39447100
+    16:54:28.185 n=    39447200
+    16:54:44.723 n=    39447300
+    16:55:06.190 n=    39447400
+    16:55:22.717 n=    39447500
+    16:55:44.301 n=    39447600
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     0.864%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.898%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.831%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     4.341%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.217%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.181%
+    16:56:07.038 n=    39447700
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.103%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.528%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.130%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.072%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.975%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.755%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.882%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.500%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.837%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.254%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.104%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.742%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.876%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.281%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.051%
+    16:56:25.780 n=    39447800
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.208%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.638%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.781%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.201%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.294%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     5.581%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     5.547%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     5.478%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.129%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.684%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.248%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.060%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.978%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.023%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    16.543%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    16.536%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    16.525%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.767%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.219%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.465%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.247%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.348%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     4.371%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     4.311%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     4.241%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     5.900%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.537%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.076%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.745%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.696%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.638%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.949%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    14.654%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    14.648%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    14.640%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    14.828%
+    16:56:45.864 n=    39447900
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.973%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.650%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    15.832%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    15.818%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    15.794%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.353%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.433%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.432%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.427%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.525%
+            2015-01-01 07:00:00: saving 2D .... 
+            2015-01-01 07:00:00: saving 3D .... 
+            2015-01-01 07:00:00: reading meteo data - 2015-01-01 08:00:00
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.347%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.240%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.248%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.758%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.569%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.508%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.286%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.584%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    16.220%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    16.201%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    16.188%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.441%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    13.788%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    13.634%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    13.584%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    14.496%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.792%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.493%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.434%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    12.608%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    15.822%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    15.795%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    15.779%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.114%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.819%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.568%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.479%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.356%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.435%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.432%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.431%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.496%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.952%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.842%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.846%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.340%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.818%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.703%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.695%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.086%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.641%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.505%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.487%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.986%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.839%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.866%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.682%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.654%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.491%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.138%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.586%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.253%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.124%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.777%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.733%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.887%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.110%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.080%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.061%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.574%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.726%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.156%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.158%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.147%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.364%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.329%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.310%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.299%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.519%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.197%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.638%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.636%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.633%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.695%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.530%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.515%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.480%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.184%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.603%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.552%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.583%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.085%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.409%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.331%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.338%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.686%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.641%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.334%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.640%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.497%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.473%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.988%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.734%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.541%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.502%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.217%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.298%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.245%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.232%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.487%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.656%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.543%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.519%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.972%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.173%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.956%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.920%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.658%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.121%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.725%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.671%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.041%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.828%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.813%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.805%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    12.946%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.359%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.136%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.083%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.156%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.392%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.176%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.169%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.164%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.308%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.487%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.487%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.487%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     6.518%
+    16:57:09.829 n=    39448000
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.077%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.060%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.064%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     2.386%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    13.972%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    13.936%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    13.935%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    14.202%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    13.265%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    13.198%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    13.192%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.596%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.241%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.087%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.058%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.621%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.727%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.431%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.357%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.042%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.396%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.974%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.907%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.500%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    15.862%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    15.862%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    15.861%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    15.885%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.990%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.943%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.931%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.224%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    14.771%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    14.771%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    14.770%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    14.792%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     5.047%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     5.034%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     5.027%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     5.127%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.370%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.347%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.340%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.473%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.154%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.154%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.152%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     6.182%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.585%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.576%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.769%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    13.236%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    13.231%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    13.234%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.290%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.479%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.414%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.426%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.793%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.449%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.400%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.404%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.613%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    13.204%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    13.176%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    13.177%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.393%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    13.068%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.981%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.969%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.437%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    15.947%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    15.946%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    15.944%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    15.978%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.271%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.197%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.128%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.518%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     5.217%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     5.151%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     5.139%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     5.393%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     5.659%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     5.525%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     5.503%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     5.960%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.328%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.147%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.121%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     2.718%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.003%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.971%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.964%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.108%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.607%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.408%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.371%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.155%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.431%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.426%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.425%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.462%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.979%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.977%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.977%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.995%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.920%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.835%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.838%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.146%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.384%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     4.453%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     4.431%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     4.425%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.515%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     5.448%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     5.420%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     5.415%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     5.526%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     4.445%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     4.450%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     4.449%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.455%
+    16:57:27.524 n=    39448100
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.436%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.361%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.359%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.592%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.829%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.957%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.876%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.863%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.148%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     4.508%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     4.359%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     4.338%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.817%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.000%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.796%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.769%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     2.428%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     5.513%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     5.466%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     5.456%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     5.628%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     4.003%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.820%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.791%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.448%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.258%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.096%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.071%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    12.650%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.646%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.644%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.644%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.652%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.398%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.353%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.352%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    12.625%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.103%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.886%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.855%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.568%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.283%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.258%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.253%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.335%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.012%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.979%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.974%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.084%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.287%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.287%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.285%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.303%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.538%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.247%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.214%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.139%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.887%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.789%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.776%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.098%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     3.557%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     3.397%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     3.376%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     3.877%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.879%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.654%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.626%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     2.346%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     4.209%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     4.146%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     4.136%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     4.344%
+    16:57:43.842 n=    39448200
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.000%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.968%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.974%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.124%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.638%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.602%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.604%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.814%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.137%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.052%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.047%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    12.417%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    16.047%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    16.011%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    16.003%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.194%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.867%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.859%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.856%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.890%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.424%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.410%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.415%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.452%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.509%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.398%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.381%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.803%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.362%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.427%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     1.278%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     1.259%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.723%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     2.281%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     2.206%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     2.195%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     2.427%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.764%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.481%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.451%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.304%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.485%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.473%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.471%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.511%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     1.154%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     1.323%
+    16:58:07.608 n=    39448300
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.685%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.622%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.621%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.870%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.705%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.429%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.399%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.211%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    14.022%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    13.846%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    13.822%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    14.375%
+    16:58:26.862 n=    39448400
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.098%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.006%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.995%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.275%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.094%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.859%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.834%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.513%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.641%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.599%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.601%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.763%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.619%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.526%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.518%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.806%
+    16:58:43.766 n=    39448500
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.201%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.156%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.160%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     6.286%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.481%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.376%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.373%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.620%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.458%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.332%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.317%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     8.648%
+    16:59:09.871 n=    39448600
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.186%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.025%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.005%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.432%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     7.469%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     7.344%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     7.344%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     7.615%
+    16:59:28.850 n=    39448700
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.404%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.234%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.235%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     6.542%
+    16:59:47.998 n=    39448800
+            2015-01-01 08:00:00: saving 2D .... 
+            2015-01-01 08:00:00: saving 3D .... 
+            2015-01-01 08:00:00: reading meteo data - 2015-01-01 09:00:00
+    17:00:12.729 n=    39448900
+    17:00:29.242 n=    39449000
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.461%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.303%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.280%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.797%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     6.482%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     6.371%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     6.369%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     6.580%
+    17:00:48.935 n=    39449100
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.799%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.383%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.851%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.682%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.659%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.074%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.099%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.600%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.376%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.041%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.557%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.316%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.874%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.519%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.161%
+    17:01:12.697 n=    39449200
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.498%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.436%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.969%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.845%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.316%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.836%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.142%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.907%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.939%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.524%
+    17:01:29.306 n=    39449300
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.689%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.235%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.225%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.076%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.947%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.930%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.271%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.074%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.084%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.725%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.168%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.292%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.159%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.795%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.850%
+    17:01:48.353 n=    39449400
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.213%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.730%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.414%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.344%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.445%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.225%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.504%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.091%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.997%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.980%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    12.237%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.221%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.110%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.755%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.173%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.600%
+    17:02:12.209 n=    39449500
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.153%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.211%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.150%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.135%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.323%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.070%
+    17:02:29.476 n=    39449600
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    11.281%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    11.232%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    11.215%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.359%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.214%
+    17:02:46.091 n=    39449700
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     3.528%
+            2015-01-01 09:00:00: saving 2D .... 
+            2015-01-01 09:00:00: saving 3D .... 
+            2015-01-01 09:00:00: reading meteo data - 2015-01-01 10:00:00
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     9.502%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     9.401%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     9.375%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.617%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.173%
+    17:03:07.934 n=    39449800
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.281%
+    17:03:24.121 n=    39449900
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     0.937%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.135%
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     2.794%
+    17:03:39.973 n=    39450000
+ R9x: Negative values after bio+advection+vdiff n= 1 shift=     1.465%
+    17:04:01.286 n=    39450100
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    16.163%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    16.124%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    16.106%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.615%
+    17:04:17.432 n=    39450200
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.919%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.816%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.796%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    11.345%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    18.387%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    18.334%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    18.316%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    19.029%
+    17:04:33.531 n=    39450300
+    17:04:55.041 n=    39450400
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    16.683%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    16.624%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    16.601%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    17.378%
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    15.775%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    15.739%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    15.720%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    16.297%
+    17:05:12.121 n=    39450500
+    17:05:30.239 n=    39450600
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    14.588%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    14.427%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    14.405%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    15.057%
+            2015-01-01 10:00:00: saving 2D .... 
+            2015-01-01 10:00:00: saving 3D .... 
+            2015-01-01 10:00:00: reading meteo data - 2015-01-01 11:00:00
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    12.758%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    12.639%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    12.614%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    13.103%
+    17:05:53.407 n=    39450700
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=    10.441%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=    10.283%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=    10.261%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=    10.696%
+    17:06:09.438 n=    39450800
+ R6c: Negative values after bio+advection+vdiff n= 1 shift=     8.502%
+ R6n: Negative values after bio+advection+vdiff n= 1 shift=     8.190%
+ R6p: Negative values after bio+advection+vdiff n= 1 shift=     8.214%
+ R6s: Negative values after bio+advection+vdiff n= 1 shift=     9.044%

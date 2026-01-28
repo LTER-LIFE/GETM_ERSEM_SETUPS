@@ -1,9 +1,9 @@
  MPI is initialised - v3.1
- Process          213  of          239  is alive on no67
+ Process          213  of          239  is alive on no70
  ------------------------------------------------------------------------
- getm: Started on  20260126 111202.651
+ getm: Started on  20260128 163702.114
  ------------------------------------------------------------------------
- GETM version: 71711f1 (iow_20200609_bfm2016_20250116 branch)
+ GETM version: 969dceb (iow_20200609_bfm2016_20250116 branch)
  GOTM version: f7b271b (master_20210107_couplingGETM_bfm2016_20241126 branch)
  ------------------------------------------------------------------------
  Compiler: GNU 6.4.0
@@ -25,8 +25,8 @@
         Time step:         4.0000000000000000       seconds
         Time format:               2
         Start:          2010-01-01 00:00:00
-        Stop:           2015-01-01 00:00:04
-         ==>         1826  day(s) and            4  seconds ==>     39441601  micro time steps
+        Stop:           2015-01-02 00:00:00
+         ==>         1827  day(s) and            0  seconds ==>     39463200  micro time steps
         using "2010-01-01 00:00:00" as time reference
     init_domain
     read_par_setup: Consistency OK
@@ -164,8 +164,8 @@
         init_variables_2d
         init_advection
         Advection of depth-averaged velocities
-            half step splitting: u/2 + v + u/2
-             TVD-P2-PDM advection (third-order, monotone)
+            full step splitting: u + v
+             TVD-MUSCL advection (second-order, monotone)
              without diffusion
         Am_method=0 -> horizontal momentum diffusion not included
         An_method=1 -> Using constant horizontal numerical diffusion
@@ -174,14 +174,14 @@
             bdyfile_2d=bdy_2d.nc
             bdyfmt_2d=           2
     init_3d
-        splitting factor M:            2
+        splitting factor M:           30
         init_variables_3d
         init_advection_3d
         Advection of horizontal 3D velocities
-            half step splitting: u/2 + v/2 + w + v/2 + u/2
-             horizontal: TVD-P2-PDM advection (third-order, monotone)
+            full step splitting: u + v + w
+             horizontal: TVD-MUSCL advection (second-order, monotone)
                          without diffusion
-             vertical  : TVD-Superbee advection (second-order, monotone)
+             vertical  : TVD-MUSCL advection (second-order, monotone)
                          with max          500  iterations
         vel_check=           0
         Turbulence settings
@@ -197,10 +197,10 @@
         init_temperature()
             avmolt =    1.39999997E-07
             Advection of temperature
-            half step splitting: u/2 + v/2 + w + v/2 + u/2
-             horizontal: TVD-Superbee advection (second-order, monotone)
+            full step splitting: u + v + w
+             horizontal: TVD-MUSCL advection (second-order, monotone)
                          without diffusion
-             vertical  : TVD-Superbee advection (second-order, monotone)
+             vertical  : TVD-MUSCL advection (second-order, monotone)
                          with max          500  iterations
             temp_AH_method=0 -> horizontal diffusion of heat disabled
             setting attenuation coefficients to constant values:
@@ -212,10 +212,10 @@
         init_salinity()
             avmols =    1.09999998E-09
             Advection of salinity
-            half step splitting: u/2 + v/2 + w + v/2 + u/2
-             horizontal: TVD-Superbee advection (second-order, monotone)
+            full step splitting: u + v + w
+             horizontal: TVD-MUSCL advection (second-order, monotone)
                          without diffusion
-             vertical  : TVD-Superbee advection (second-order, monotone)
+             vertical  : TVD-MUSCL advection (second-order, monotone)
                          with max          500  iterations
             salt_AH_method=0 -> horizontal diffusion of salt disabled
             salt_check=           0
@@ -550,56 +550,27 @@
             N4n
             N5s
             N6r
-            Nun
             B1c
-            B1n
             Bac
             P1c
-            P1n
-            P2n
-            P3n
-            P4n
-            P5n
-            P6n
             P2c
             P3c
             P4c
             P5c
             P6c
-            P1l
-            P2l
-            P3l
-            P4l
-            P5l
-            P6l
-            Pcc
             Z2c
             Z3c
             Z4c
             Z5c
             Z6c
             R1c
-            R1p
-            R1n
-            R1c
-            Warning: variable R1s does not exist!
             R2c
             R3c
             R6c
-            R6s
-            R6p
-            R6n
             RZc
             Q1c
-            Q1n
-            Q1p
             Q11c
-            Q11n
-            Q11p
             Q6c
-            Q6s
-            Q6n
-            Q6p
             Chla
             H1c
             H2c
@@ -627,14 +598,7 @@
             K21p
             D1m
             D2m
-            D6m
-            D7m
-            D8m
-            D9m
-            Dcm
-            Dfm
             O3c
-            DIC
             pCO2
             CO2
             HCO3
@@ -656,152 +620,24 @@
             pHan
             pCO2ae
             pCO2an
-            PrM1p
-            PrM3n
-            PrM4n
-            PrM6r
-            PrM5s
-            Warning: variable PrQ1c does not exist!
-            PrDIC
-            PrAc
-            PrpH
             G3h
             G13h
             BP1c
-            totPELn
-            totPELp
-            totPELs
-            totPELc
-            totBENn
-            totBENp
-            totBENs
-            totBENc
-            totSYSn
-            totSYSp
-            totSYSs
-            totSYSc
             ETW
             irrenh
             turenh
-            R2n
-            PON
             dry_z
-            jK25K15s
-            jK31K21p
-            jK34K24n
-            jK36K26r
-            jK13K3n
-            jG33G23h
-            jG33G23c
-            sK4K3
-            jK4K3n
-            jK3G4n
-            jG2K7o
-            qqrivR6p
-            qqrivNtn
-            qqrivNtp
-            jbotO2o
-            jbotN4n
-            jbotN3n
-            jbotN1p
-            jbotN5s
-            jbotR6c
-            jbotR6n
-            jbotR6p
-            jbotR6s
- Warning: variable jRIY3p does not exist!
-            jbotZ2c
-            jbotP1c
-            jbotP2c
-            jbotP3c
-            jbotP4c
-            jbotP5c
-            jbotP6c
-            jbotZ3c
-            jbotZ4c
-            jbotZ5c
-            jbotZ6c
-            jbotB1c
-            jbotQ6c
-            jbotQ6n
-            jbotQ6p
-            jbotQ6s
- Warning: variable jbott_ESS does not exist!
-            jrESS
-            rrBTo
-            rrATo
- Warning: variable jnetPTc does not exist!
-            grsPPm2
- Warning: variable exPPm2 does not exist!
- Warning: variable resPPm2 does not exist!
-            jspaY3c
-            jnetBPTc
-            jnetMeZc
-            jnetMiZc
-            jnetB1c
-            jnetY3c
-            jnetYy3c
             EIR
             sediR2
-            jbotO3c
-            jbotO3h
-            jsurO3c
-            reBTp
-            reBTn
-            reATn
-            reATp
-            J1_PTc
-            J1_R6c
-            J1_R2c
-            jPelFishInput
-            jBenFishInput
- Warning: variable fPZc does not exist!
- Warning: variable fBZc does not exist!
- Warning: variable fBO3c does not exist!
- Warning: variable fZO3c does not exist!
- Warning: variable fZRc does not exist!
- Warning: variable fRBc does not exist!
- Warning: variable fYG3c does not exist!
- Warning: variable fYQ1c does not exist!
- Warning: variable fQ1Yc does not exist!
- Warning: variable fQ6Hc does not exist!
- Warning: variable fHQ6c does not exist!
- Warning: variable fHYc does not exist!
- Warning: variable fHG3c does not exist!
-            pMIupZ4
             EUWIND
             EVWIND
             SdTdzTh
             BMLd
             TMLd
-            efilP6Y3
             Output2d_1
             Output2d_2
             Output2d_3
             Output2d_4
- Warning: variable jZ5Z2c does not exist!
- Warning: variable jP1Z2c does not exist!
- Warning: variable jP1ZIc does not exist!
- Warning: variable jP6ZIc does not exist!
- Warning: variable jPIY3n does not exist!
- Warning: variable jPIY3p does not exist!
-            jZIY3c
- Warning: variable jRIY3c does not exist!
-            jRIQIc
- Warning: variable fldiPIn does not exist!
- Warning: variable flN3PIn does not exist!
-            ruZTc
-            eO2mO2
-            XO2o
- Warning: variable lim_rumn4 does not exist!
- Warning: variable lim_rumn3 does not exist!
- Warning: variable lim_rump1 does not exist!
-            ruPTc
-            jtotbenpelc
-            jtotbenpeln
-            jtotbenpelp
-            jtotbenpels
- Warning: variable netPP does not exist!
  Warning: Variable turenh is already selected for output in var_save
  Warning: Variable irrenh is already selected for output in var_save
             netPPm2
@@ -815,20 +651,6 @@
  Warning: variable TauS does not exist!
             ws_out
             eta_out
- Warning: variable sdMs_iiMs_ does not exist!
- Warning: variable sunMI_iiMs_ does not exist!
- Warning: variable sugMI_iiMs_ does not exist!
- Warning: variable fr_lim_Ma_n_iiMca_ does not exist!
- Warning: variable fr_lim_Ma_p_iiMca_ does not exist!
- Warning: variable Mcac does not exist!
- Warning: variable Mcan does not exist!
- Warning: variable Mcap does not exist!
- Warning: variable Mcal does not exist!
- Warning: variable Msc does not exist!
- Warning: variable psur_iiMs_ does not exist!
- Warning: variable farm_surface_iiMs_ does not exist!
- Warning: variable surface does not exist!
-            rnetPTc
  BEGIN of READING PARMETERS
  #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  #  Reading Param parameters..
@@ -1488,156 +1310,56 @@
             init silt
         Reading from getm_bio.inp
         Settings related to 3D biological calculations
-            bio_hor_adv=              4
-            bio_ver_adv=              4
+            bio_hor_adv=              5
+            bio_ver_adv=              5
             bio_adv_split=            1
             bio_AH=          -1.0000000000000000     
         Detailed info about diagnostic Variables selected for output
             3d averaged: EIR seq_nrs:           1
             3d averaged: ESS seq_nrs:           2
-            3d averaged: XO2o seq_nrs:           3
-            3d averaged: eO2mO2 seq_nrs:           4
-            3d averaged: ws_out seq_nrs:           5
-            3d averaged: pMIupZ4 seq_nrs:           6
-            3d averaged: rnetPTc seq_nrs:           7
-            3d averaged: sediR2 seq_nrs:           8
-            3d averaged: xEPS seq_nrs:           9
+            3d averaged: ws_out seq_nrs:           3
+            3d averaged: sediR2 seq_nrs:           4
+            3d averaged: xEPS seq_nrs:           5
         section 2:Averaged Pelagic Diagnostic Variabeles start at           1
-            3d averaged: ruPTc seq_nrs:          10
-            3d averaged: ruZTc seq_nrs:          11
-        section 3:Averaged Pelagic Calculations  start at          10
-            3d sampled: ETW seq_nrs:          12
-            3d sampled: Chla seq_nrs:          13
-            3d sampled: Nun seq_nrs:          14
-            3d sampled: PON seq_nrs:          15
-            3d sampled: pCO2 seq_nrs:          16
-            3d sampled: CO2 seq_nrs:          17
-            3d sampled: HCO3 seq_nrs:          18
-            3d sampled: CO3 seq_nrs:          19
-            3d sampled: pH seq_nrs:          20
-            3d sampled: Ac seq_nrs:          21
-            3d sampled: DIC seq_nrs:          22
-        section 4:Sampled Pelagic Diagnostic Variables start at          12
+            3d sampled: ETW seq_nrs:           6
+            3d sampled: Chla seq_nrs:           7
+            3d sampled: pCO2 seq_nrs:           8
+            3d sampled: CO2 seq_nrs:           9
+            3d sampled: HCO3 seq_nrs:          10
+            3d sampled: CO3 seq_nrs:          11
+            3d sampled: pH seq_nrs:          12
+            3d sampled: Ac seq_nrs:          13
+        section 4:Sampled Pelagic Diagnostic Variables start at           6
             2d averaged: EUWIND seq_nrs:           1
             2d averaged: EVWIND seq_nrs:           2
             2d averaged: dry_z seq_nrs:           3
-            2d averaged: jrESS seq_nrs:           4
-            2d averaged: rrBTo seq_nrs:           5
-            2d averaged: rrATo seq_nrs:           6
-            2d averaged: reBTn seq_nrs:           7
-            2d averaged: reBTp seq_nrs:           8
-            2d averaged: reATn seq_nrs:           9
-            2d averaged: reATp seq_nrs:          10
-            2d averaged: jG2K7o seq_nrs:          11
-            2d averaged: jZIY3c seq_nrs:          12
-            2d averaged: jRIQIc seq_nrs:          13
-            2d averaged: jbotQ6c seq_nrs:          14
-            2d averaged: jbotQ6n seq_nrs:          15
-            2d averaged: jbotQ6p seq_nrs:          16
-            2d averaged: jbotQ6s seq_nrs:          17
-            2d averaged: efilP6Y3 seq_nrs:          18
-            2d averaged: sK4K3 seq_nrs:          19
-            2d averaged: jK4K3n seq_nrs:          20
-            2d averaged: jK3G4n seq_nrs:          21
-            2d averaged: jK31K21p seq_nrs:          22
-            2d averaged: jK34K24n seq_nrs:          23
-            2d averaged: jK13K3n seq_nrs:          24
-            2d averaged: jK25K15s seq_nrs:          25
-            2d averaged: jK36K26r seq_nrs:          26
-            2d averaged: jtotbenpelc seq_nrs:          27
-            2d averaged: jtotbenpeln seq_nrs:          28
-            2d averaged: jtotbenpelp seq_nrs:          29
-            2d averaged: jtotbenpels seq_nrs:          30
-            2d averaged: jnetMeZc seq_nrs:          31
-            2d averaged: jnetMiZc seq_nrs:          32
-            2d averaged: jnetB1c seq_nrs:          33
-            2d averaged: jnetY3c seq_nrs:          34
-            2d averaged: jspaY3c seq_nrs:          35
-            2d averaged: jnetYy3c seq_nrs:          36
-            2d averaged: jnetBPTc seq_nrs:          37
-            2d averaged: Output2d_1 seq_nrs:          38
-            2d averaged: Output2d_2 seq_nrs:          39
-            2d averaged: Output2d_3 seq_nrs:          40
-            2d averaged: Output2d_4 seq_nrs:          41
-            2d averaged: jPelFishInput seq_nrs:          42
-            2d averaged: jBenFishInput seq_nrs:          43
-            2d averaged: SdTdzTh seq_nrs:          44
-            2d averaged: TMLd seq_nrs:          45
-            2d averaged: BMLd seq_nrs:          46
-            2d averaged: Hs_out seq_nrs:          47
-            2d averaged: Tz_out seq_nrs:          48
-            2d averaged: u_orb_out seq_nrs:          49
-            2d averaged: TauW seq_nrs:          50
-            2d averaged: TauC seq_nrs:          51
-            2d averaged: eta_out seq_nrs:          52
-            2d averaged: jG33G23h seq_nrs:          53
-            2d averaged: jG33G23c seq_nrs:          54
-            2d averaged: jsurO3c seq_nrs:          55
-            2d averaged: jbotO2o seq_nrs:          56
-            2d averaged: jbotN1p seq_nrs:          57
-            2d averaged: jbotN3n seq_nrs:          58
-            2d averaged: jbotN4n seq_nrs:          59
-            2d averaged: jbotN5s seq_nrs:          60
-            2d averaged: jbotB1c seq_nrs:          61
-            2d averaged: jbotP1c seq_nrs:          62
-            2d averaged: jbotP2c seq_nrs:          63
-            2d averaged: jbotP3c seq_nrs:          64
-            2d averaged: jbotP4c seq_nrs:          65
-            2d averaged: jbotP5c seq_nrs:          66
-            2d averaged: jbotP6c seq_nrs:          67
-            2d averaged: jbotR6c seq_nrs:          68
-            2d averaged: jbotR6n seq_nrs:          69
-            2d averaged: jbotR6p seq_nrs:          70
-            2d averaged: jbotR6s seq_nrs:          71
-            2d averaged: jbotO3c seq_nrs:          72
-            2d averaged: jbotO3h seq_nrs:          73
-            2d averaged: jbotZ3c seq_nrs:          74
-            2d averaged: jbotZ4c seq_nrs:          75
-            2d averaged: jbotZ2c seq_nrs:          76
-            2d averaged: jbotZ5c seq_nrs:          77
-            2d averaged: jbotZ6c seq_nrs:          78
+            2d averaged: Output2d_1 seq_nrs:           4
+            2d averaged: Output2d_2 seq_nrs:           5
+            2d averaged: Output2d_3 seq_nrs:           6
+            2d averaged: Output2d_4 seq_nrs:           7
+            2d averaged: SdTdzTh seq_nrs:           8
+            2d averaged: TMLd seq_nrs:           9
+            2d averaged: BMLd seq_nrs:          10
+            2d averaged: Hs_out seq_nrs:          11
+            2d averaged: Tz_out seq_nrs:          12
+            2d averaged: u_orb_out seq_nrs:          13
+            2d averaged: TauW seq_nrs:          14
+            2d averaged: TauC seq_nrs:          15
+            2d averaged: eta_out seq_nrs:          16
         section 2:Averaged Benthic Diagnostic Variabeles start at           1
-            2d averaged: grsPPm2 seq_nrs:          79
-            2d averaged: netPPm2 seq_nrs:          80
-            2d averaged: J1_PTc seq_nrs:          81
-            2d averaged: J1_R6c seq_nrs:          82
-            2d averaged: J1_R2c seq_nrs:          83
-            2d averaged: qqrivNtn seq_nrs:          84
-            2d averaged: qqrivNtp seq_nrs:          85
-            2d averaged: qqrivR6p seq_nrs:          86
-        section 3:Averaged Benthic Calculations  start at          79
-            2d sampled: irrenh seq_nrs:          87
-            2d sampled: turenh seq_nrs:          88
-            2d sampled: totPELc seq_nrs:          89
-            2d sampled: totPELn seq_nrs:          90
-            2d sampled: totPELp seq_nrs:          91
-            2d sampled: totPELs seq_nrs:          92
-            2d sampled: totBENc seq_nrs:          93
-            2d sampled: totBENn seq_nrs:          94
-            2d sampled: totBENp seq_nrs:          95
-            2d sampled: totBENs seq_nrs:          96
-            2d sampled: totSYSc seq_nrs:          97
-            2d sampled: totSYSn seq_nrs:          98
-            2d sampled: totSYSp seq_nrs:          99
-            2d sampled: totSYSs seq_nrs:         100
-            2d sampled: DICae seq_nrs:         101
-            2d sampled: DICan seq_nrs:         102
-            2d sampled: Acae seq_nrs:         103
-            2d sampled: Acan seq_nrs:         104
-            2d sampled: pHae seq_nrs:         105
-            2d sampled: pHan seq_nrs:         106
-            2d sampled: pCO2ae seq_nrs:         107
-            2d sampled: pCO2an seq_nrs:         108
-        section 4:Sampled Benthic Diagnostic Variables start at          87
-            3d-prf sampled: PrM1p seq_nrs:           1
-            3d-prf sampled: PrM3n seq_nrs:           2
-            3d-prf sampled: PrM4n seq_nrs:           3
-            3d-prf sampled: PrM5s seq_nrs:           4
-            3d-prf sampled: PrM6r seq_nrs:           5
-            3d-prf sampled: PrDIC seq_nrs:           6
-            3d-prf sampled: PrAc seq_nrs:           7
-            3d-prf sampled: PrpH seq_nrs:           8
-        section 4:Sampled BenProfile Diagnostic Variables start at           1
+            2d averaged: netPPm2 seq_nrs:          17
+        section 3:Averaged Benthic Calculations  start at          17
+            2d sampled: irrenh seq_nrs:          18
+            2d sampled: turenh seq_nrs:          19
+            2d sampled: DICae seq_nrs:          20
+            2d sampled: DICan seq_nrs:          21
+            2d sampled: Acae seq_nrs:          22
+            2d sampled: Acan seq_nrs:          23
+            2d sampled: pHae seq_nrs:          24
+            2d sampled: pHan seq_nrs:          25
+            2d sampled: pCO2ae seq_nrs:          26
+            2d sampled: pCO2an seq_nrs:          27
+        section 4:Sampled Benthic Diagnostic Variables start at          18
         Set all elements of cc3d_out which contain river outputs on 0  and NOT on 'bio_missing'...
         In this way all active grid points in which no river ents   are set on 0
         Reading biological fields from hotstart file
@@ -1662,11 +1384,11 @@
         save (rotated) velocities in center points
         save grid-related volume fluxes through interfaces
         2D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0213.nc
-        First=           0  step=           1  sync_2d=          144
+        First=           0  step=         900  sync_2d=          144
         Elevation will be masked for depths below   0.349999994    
         Saving meteo forcing in /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0213.nc
         3D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.3d.0213.nc
-        First=           0  step=           1  sync_3d=           48
+        First=           0  step=         900  sync_3d=           48
         Elevation will be masked for depths below   0.200000003    
         calculate and save mixing analysis
     do_register_all_variables()
@@ -1684,10 +1406,7 @@
             variable missing in restart file. Skipping Vinto               
  read_restart_ncdf_0           1           2           3           4
  read_restart_ncdf_1
-    joff/jmax          14
-    jmax,joff,joff_0,joff_l          32         470          22         448
-    joff_l         480
-    imin,ioff_l,iread_from,il,ifill_from           1           0           0    10651360           0
+    imin,ioff_l,iread_from,il,ifill_from           1           0           0           0           0
     jmin,joff_l,jread_from,jl,jfill_from           1         480           0           0           0
     il           1
     il           1
@@ -4844,103 +4563,201 @@
             2015-01-01 00:00:00: reading meteo data - 2015-01-01 01:00:00
             2015-01-01 00:00:00: reading 2D boundary data ...           2
     NaN sweeping seems OK with this compiler and settings
-            2015-01-01 00:00:04: saving 2D .... 
-            2015-01-01 00:00:04: saving 3D .... 
-        Checking for NANs before saving hotstart file...
-        Saving hotstart file #            1  as /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//restart.0213.out
- ------------------------------------------------------------------------
- Cleaning up....
- ------------------------------------------------------------------------
-    clean_input
-        At final MPI barrier
- barrier(): we are waiting
-        About to finish parallel part of GETM - calling MPI_Finalize()
-        MPI finalized
- ------------------------------------------------------------------------
-    getm: Completed on 20260126 111225.208
-    Memory used (global 2D and 3D arrays):
-        2D:          216  kbytes
-        3D:         3200  kbytes
-    Total CPU-time was:       4.94809389      seconds
-    Number of time steps:             1
-    Number of calc-points:          512
-    CPU-time/calc-point:      9.66424588E-03  seconds
-    Sim-time/CPU-time:        31884278.566818140     
- ------------------------------------------------------------------------
-    GETM timers in seconds (           1000000000  tics per second)
-                                 wall      #sysclocks     % of total
-     Timername                time (s)        calls       clocked time
-  initialize                   19.16              6         99.22
-   sum bottom_friction          0.00              4          0.00
-  momentum                      0.00              2          0.00
-   momentum-halo                0.00              4          0.00
-  uv_depths                     0.00              2          0.00
-   sum uv_advect                0.03              2          0.18
-   uv_advect-halo               0.01              4          0.03
-   sum deformation_rates        0.00              0          0.00
-   sum uv_diffusion             0.00              2          0.00
-   sum depth_update             0.00              6          0.00
-   sum dryfac_update            0.00              2          0.00
-  sealevel                      0.00              2          0.00
-   sealevel-halo                0.00              2          0.00
-  gotm                          0.00              0          0.00
-   gotm-halo                    0.00              0          0.00
-  uv_advect_3d                  0.00              0          0.00
-   uv_advect_3d-halo            0.00              0          0.00
-  deformation_rates_3d          0.00              0          0.00
-  uv_diffusion_3d               0.00              0          0.00
-  vv_momentum_3d                0.00              0          0.00
-   vv_momentum_3d-halo          0.00              0          0.00
-  uu_momentum_3d                0.00              0          0.00
-   uu_momentum_3d-halo          0.00              0          0.00
-  ww_momentum_3d                0.00              0          0.00
-   ww_momentum_3d-halo          0.00              0          0.00
-  shear_frequency               0.00              0          0.00
-  buoyancy_frequency            0.00              2          0.00
-  stresses_3d                   0.00              0          0.00
-  do_bdy_3d                     0.00              0          0.00
-  do_temperature                0.00              0          0.00
-   temperature-halo             0.00              0          0.00
-  do_salinity                   0.00              0          0.00
-   salinity-halo                0.00              0          0.00
-  coordinates                   0.00              3          0.01
-  do_internal_pressure          0.00              2          0.01
-  do_nonhydrostatic             0.00              0          0.00
-   nonhyd overhead              0.00              0          0.00
-  start_macro                   0.00              0          0.00
-  stop_macro                    0.00              0          0.00
-  eq_state                      0.00              2          0.01
-  tracer_stirring               0.00              0          0.00
-   sum tracer_diffusion         0.00              0          0.00
-  calc_mean_fields              0.00              0          0.00
-  do_meteo                      0.00              6          0.02
-  getm_bio                      0.00              0          0.00
-  integrate_2d other            0.03              8          0.18
-  integrate_3d other            0.00              0          0.00
-  do_input                      0.00              2          0.00
-  do_output                     0.11              4          0.55
-  output_manager_save           0.00              4          0.00
-  do_output_processing          0.00              2          0.00
-   sum do_advection             0.03              4          0.15
-   do_advection-halo            0.03              6          0.15
-   sum do_advection_3d          0.00              0          0.00
-   do_advection_3d-halo         0.00              0          0.00
-   sum check_3d_fields          0.00              0          0.00
-  numerical mixing analysi      0.00              0          0.00
-   sum do_halo_2d               0.00             68          0.01
-   sum do_halo_3d               0.01            366          0.03
-   sum wait_halo                3.53            434         18.27
-   advection getm_bio           0.00              0          0.00
-  do_les_2d                     0.00              0          0.00
-  do_les_3d                     0.00              0          0.00
-   sum les_smagorinsky          0.00              0          0.00
-  waves                         0.00              0          0.00
-              TIMERS SUM       19.32            951        100.00
- ------------------------------------------------------------------------
-    Communication with other sub-domains:
-        2D data exchange:                     0  MB
-        3D data exchange:                     3  MB
- ------------------------------------------------------------------------
-    Copyright (C) Karsten Bolding and Hans Burchard.
-    under the General Public License (GPL) - http://www.gnu.org 
- ------------------------------------------------------------------------
+            2015-01-01 00:01:04: reading river data ....        21186
+            2015-01-01 00:01:56: reading 3D boundary data ...           2
+ bio_solver numc=          56
+ bio_solver nlev=          15
+ bio_solver dt=   120.00000000000000     
+ bio_solver solver=           1
+ Start of run..........follow=     2457024
+            Vertical advective transport is present for
+                R9x defined outside PelGlobal.F90
+                R9x Diffusive transport coupled to advective transport
+                B1c
+                B1n coupled to B1c
+                B1p coupled to B1c
+                Bac coupled to B1c
+                P1c
+                P1n coupled to P1c
+                P1p coupled to P1c
+                P1l coupled to P1c
+                P1s coupled to P1c
+                P2c
+                P2n coupled to P2c
+                P2p coupled to P2c
+                P2l coupled to P2c
+                P3c
+                P3n coupled to P3c
+                P3p coupled to P3c
+                P3l coupled to P3c
+                P4c
+                P4n coupled to P4c
+                P4p coupled to P4c
+                P4l coupled to P4c
+                P5c
+                P5n coupled to P5c
+                P5p coupled to P5c
+                P5l coupled to P5c
+                P5s coupled to P5c
+                P6c
+                P6n coupled to P6c
+                P6p coupled to P6c
+                P6l coupled to P6c
+                Pcc coupled to P6c
+                R2c
+                R2n coupled to R2c
+                R3c coupled to P6c
+                R6c
+                R6n coupled to R6c
+                R6p coupled to R6c
+                R6s
+                RZc
+                Z3c
+                Z4c
+                Z2c
+                Z5c
+                Z6c
+            End of Vertical transport
+             
+    16:37:38.907 n=    39441700
+    16:37:56.055 n=    39441800
+    16:38:12.609 n=    39441900
+    16:38:34.449 n=    39442000
+    16:38:51.435 n=    39442100
+    16:39:08.590 n=    39442200
+    16:39:32.035 n=    39442300
+    16:39:48.329 n=    39442400
+    16:40:04.368 n=    39442500
+            2015-01-01 01:00:00: saving 2D .... 
+            2015-01-01 01:00:00: saving 3D .... 
+            2015-01-01 01:00:00: reading meteo data - 2015-01-01 02:00:00
+            2015-01-01 01:00:00: reading 2D boundary data ...           3
+            2015-01-01 01:01:56: reading 3D boundary data ...           3
+    16:40:27.175 n=    39442600
+    16:40:43.675 n=    39442700
+    16:40:59.762 n=    39442800
+    16:41:21.914 n=    39442900
+    16:41:38.450 n=    39443000
+    16:41:54.590 n=    39443100
+    16:42:16.226 n=    39443200
+    16:42:32.872 n=    39443300
+    16:42:50.022 n=    39443400
+            2015-01-01 02:00:00: saving 2D .... 
+            2015-01-01 02:00:00: saving 3D .... 
+            2015-01-01 02:00:00: reading meteo data - 2015-01-01 03:00:00
+            2015-01-01 02:00:00: reading 2D boundary data ...           4
+            2015-01-01 02:01:56: reading 3D boundary data ...           4
+    16:43:12.501 n=    39443500
+    16:43:28.469 n=    39443600
+    16:43:45.567 n=    39443700
+    16:44:06.893 n=    39443800
+    16:44:23.025 n=    39443900
+    16:44:39.114 n=    39444000
+    16:45:01.002 n=    39444100
+    16:45:17.868 n=    39444200
+    16:45:33.997 n=    39444300
+            2015-01-01 03:00:00: saving 2D .... 
+            2015-01-01 03:00:00: saving 3D .... 
+            2015-01-01 03:00:00: reading meteo data - 2015-01-01 04:00:00
+            2015-01-01 03:00:00: reading 2D boundary data ...           5
+            2015-01-01 03:01:56: reading 3D boundary data ...           5
+    16:45:56.848 n=    39444400
+    16:46:13.744 n=    39444500
+    16:46:30.123 n=    39444600
+    16:46:51.475 n=    39444700
+    16:47:07.921 n=    39444800
+    16:47:24.135 n=    39444900
+    16:47:45.537 n=    39445000
+    16:48:01.596 n=    39445100
+    16:48:17.872 n=    39445200
+            2015-01-01 04:00:00: saving 2D .... 
+            2015-01-01 04:00:00: saving 3D .... 
+            2015-01-01 04:00:00: reading meteo data - 2015-01-01 05:00:00
+            2015-01-01 04:00:00: reading 2D boundary data ...           6
+            2015-01-01 04:01:56: reading 3D boundary data ...           6
+    16:48:41.321 n=    39445300
+    16:48:58.804 n=    39445400
+    16:49:15.715 n=    39445500
+    16:49:38.956 n=    39445600
+    16:49:55.178 n=    39445700
+    16:50:11.288 n=    39445800
+    16:50:33.010 n=    39445900
+    16:50:49.112 n=    39446000
+    16:51:05.596 n=    39446100
+            2015-01-01 05:00:00: saving 2D .... 
+            2015-01-01 05:00:00: saving 3D .... 
+            2015-01-01 05:00:00: reading meteo data - 2015-01-01 06:00:00
+            2015-01-01 05:00:00: reading 2D boundary data ...           7
+            2015-01-01 05:01:56: reading 3D boundary data ...           7
+    16:51:27.017 n=    39446200
+    16:51:43.166 n=    39446300
+    16:51:59.498 n=    39446400
+    16:52:22.157 n=    39446500
+    16:52:39.790 n=    39446600
+    16:52:56.331 n=    39446700
+    16:53:17.820 n=    39446800
+    16:53:33.859 n=    39446900
+    16:53:50.077 n=    39447000
+            2015-01-01 06:00:00: saving 2D .... 
+            2015-01-01 06:00:00: saving 3D .... 
+            2015-01-01 06:00:00: reading meteo data - 2015-01-01 07:00:00
+            2015-01-01 06:00:00: reading 2D boundary data ...           8
+            2015-01-01 06:01:56: reading 3D boundary data ...           8
+    16:54:11.990 n=    39447100
+    16:54:28.186 n=    39447200
+    16:54:44.722 n=    39447300
+    16:55:06.191 n=    39447400
+    16:55:22.717 n=    39447500
+    16:55:44.302 n=    39447600
+    16:56:07.039 n=    39447700
+    16:56:25.781 n=    39447800
+    16:56:45.865 n=    39447900
+            2015-01-01 07:00:00: saving 2D .... 
+            2015-01-01 07:00:00: saving 3D .... 
+            2015-01-01 07:00:00: reading meteo data - 2015-01-01 08:00:00
+            2015-01-01 07:00:00: reading 2D boundary data ...           9
+            2015-01-01 07:01:56: reading 3D boundary data ...           9
+    16:57:09.830 n=    39448000
+    16:57:27.525 n=    39448100
+    16:57:43.843 n=    39448200
+    16:58:07.608 n=    39448300
+    16:58:26.863 n=    39448400
+    16:58:43.767 n=    39448500
+    16:59:09.870 n=    39448600
+    16:59:28.851 n=    39448700
+    16:59:47.998 n=    39448800
+            2015-01-01 08:00:00: saving 2D .... 
+            2015-01-01 08:00:00: saving 3D .... 
+            2015-01-01 08:00:00: reading meteo data - 2015-01-01 09:00:00
+            2015-01-01 08:00:00: reading 2D boundary data ...          10
+            2015-01-01 08:01:56: reading 3D boundary data ...          10
+    17:00:12.730 n=    39448900
+    17:00:29.242 n=    39449000
+    17:00:48.936 n=    39449100
+    17:01:12.698 n=    39449200
+    17:01:29.307 n=    39449300
+    17:01:48.352 n=    39449400
+    17:02:12.208 n=    39449500
+    17:02:29.477 n=    39449600
+    17:02:46.091 n=    39449700
+            2015-01-01 09:00:00: saving 2D .... 
+            2015-01-01 09:00:00: saving 3D .... 
+            2015-01-01 09:00:00: reading meteo data - 2015-01-01 10:00:00
+            2015-01-01 09:00:00: reading 2D boundary data ...          11
+            2015-01-01 09:01:56: reading 3D boundary data ...          11
+    17:03:07.935 n=    39449800
+    17:03:24.122 n=    39449900
+    17:03:39.974 n=    39450000
+    17:04:01.287 n=    39450100
+    17:04:17.432 n=    39450200
+    17:04:33.532 n=    39450300
+    17:04:55.042 n=    39450400
+    17:05:12.122 n=    39450500
+    17:05:30.240 n=    39450600
+            2015-01-01 10:00:00: saving 2D .... 
+            2015-01-01 10:00:00: saving 3D .... 
+            2015-01-01 10:00:00: reading meteo data - 2015-01-01 11:00:00
+            2015-01-01 10:00:00: reading 2D boundary data ...          12
+            2015-01-01 10:01:56: reading 3D boundary data ...          12
+    17:05:53.408 n=    39450700
+    17:06:09.438 n=    39450800
