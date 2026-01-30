@@ -1,7 +1,7 @@
  MPI is initialised - v3.1
- Process           18  of          239  is alive on no64
+ Process           18  of          239  is alive on no61
  ------------------------------------------------------------------------
- getm: Started on  20260129 141608.335
+ getm: Started on  20260130 085508.862
  ------------------------------------------------------------------------
  GETM version: 969dceb (iow_20200609_bfm2016_20250116 branch)
  GOTM version: f7b271b (master_20210107_couplingGETM_bfm2016_20241126 branch)
@@ -25,8 +25,8 @@
         Time step:         4.0000000000000000       seconds
         Time format:               2
         Start:          2010-01-01 00:00:00
-        Stop:           2015-01-02 00:00:00
-         ==>         1827  day(s) and            0  seconds ==>     39463200  micro time steps
+        Stop:           2015-02-01 00:00:00
+         ==>         1857  day(s) and            0  seconds ==>     40111200  micro time steps
         using "2010-01-01 00:00:00" as time reference
     init_domain
     read_par_setup: Consistency OK
@@ -1358,11 +1358,11 @@
         save (rotated) velocities in center points
         save grid-related volume fluxes through interfaces
         2D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0018.nc
-        First=           0  step=         450  sync_2d=          144
+        First=           0  step=       21600  sync_2d=          144
         Elevation will be masked for depths below    1.00000000    
         Saving meteo forcing in /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.2d.0018.nc
         3D results: /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//dws_200m.3d.0018.nc
-        First=           0  step=         450  sync_3d=           48
+        First=           0  step=       21600  sync_3d=           48
         Elevation will be masked for depths below   0.400000006    
         calculate and save mixing analysis
     do_register_all_variables()
@@ -7828,7 +7828,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     8.245%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.831%
-    14:16:44.653 n=    39441700
+    08:55:44.677 n=    39441700
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    77.876%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -7897,7 +7897,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=    23.836%
  P4c: Negative values after bio+vdiff n= 5 shift=     3.246%
-    14:17:00.836 n=    39441800
+    08:56:01.192 n=    39441800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=    10.384%
@@ -8015,7 +8015,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.445%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.200%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.062%
-    14:17:17.418 n=    39441900
+    08:56:18.072 n=    39441900
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    71.389%
  P4c: Negative values after bio+vdiff n= 7 shift=    15.450%
@@ -8233,7 +8233,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.277%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.011%
  P4c: Negative values after bio+vdiff n= 7 shift=     1.684%
-    14:17:39.281 n=    39442000
+    08:56:40.445 n=    39442000
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    93.305%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -8378,8 +8378,6 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.226%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.090%
  P4c: Negative values after bio+vdiff n= 8 shift=     3.257%
-            2015-01-01 00:30:00: saving 2D .... 
-            2015-01-01 00:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    27.469%
@@ -8458,7 +8456,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.058%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.043%
  P4c: Negative values after bio+vdiff n= 7 shift=     1.651%
-    14:17:56.564 n=    39442100
+    08:56:57.052 n=    39442100
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=    27.238%
@@ -8733,7 +8731,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     0.213%
  P4c: Negative values after bio+vdiff n= 8 shift=     7.534%
  P4c: Negative values after bio+vdiff n= 8 shift=     5.318%
-    14:18:14.178 n=    39442200
+    08:57:13.686 n=    39442200
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    69.795%
  P4c: Negative values after bio+vdiff n= 7 shift=    15.868%
@@ -9182,7 +9180,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=     7.100%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.248%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.331%
-    14:18:36.959 n=    39442300
+    08:57:35.019 n=    39442300
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -9563,7 +9561,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.029%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.498%
  P4c: Negative values after bio+vdiff n= 5 shift=     0.972%
-    14:18:53.036 n=    39442400
+    08:57:52.329 n=    39442400
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -9981,7 +9979,7 @@
  P4c: Negative values after bio+vdiff n= 5 shift=     2.345%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.492%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.077%
-    14:19:09.457 n=    39442500
+    08:58:09.049 n=    39442500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
@@ -10121,8 +10119,6 @@
  P4c: Negative values after bio+vdiff n= 7 shift=    12.756%
  P4c: Negative values after bio+vdiff n= 6 shift=     4.744%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.291%
-            2015-01-01 01:00:00: saving 2D .... 
-            2015-01-01 01:00:00: saving 3D .... 
             2015-01-01 01:00:00: reading meteo data - 2015-01-01 02:00:00
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    62.984%
@@ -10542,7 +10538,7 @@
  P4c: Negative values after bio+vdiff n=10 shift=    97.056%
  P4c: Negative values after bio+vdiff n= 8 shift=    26.763%
  P4c: Negative values after bio+vdiff n= 4 shift=     1.688%
-    14:19:31.820 n=    39442600
+    08:58:31.629 n=    39442600
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    46.665%
@@ -10966,7 +10962,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.626%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.289%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.064%
-    14:19:48.880 n=    39442700
+    08:58:48.191 n=    39442700
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -11374,7 +11370,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=    22.961%
  P4c: Negative values after bio+vdiff n= 6 shift=     8.292%
  P4c: Negative values after bio+vdiff n= 4 shift=     2.911%
-    14:20:05.109 n=    39442800
+    08:59:04.554 n=    39442800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -11898,7 +11894,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.333%
-    14:20:27.452 n=    39442900
+    08:59:26.845 n=    39442900
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    52.414%
@@ -12149,8 +12145,6 @@
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.118%
-            2015-01-01 01:30:00: saving 2D .... 
-            2015-01-01 01:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    49.321%
@@ -12280,7 +12274,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     8.437%
  P4c: Negative values after bio+vdiff n= 4 shift=     1.988%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.503%
-    14:20:44.053 n=    39443000
+    08:59:44.359 n=    39443000
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    54.441%
@@ -12654,7 +12648,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=    90.820%
  P4c: Negative values after bio+vdiff n= 8 shift=    38.431%
  P4c: Negative values after bio+vdiff n= 4 shift=     3.673%
-    14:21:00.667 n=    39443100
+    09:00:01.668 n=    39443100
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    55.345%
@@ -13153,7 +13147,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=    66.076%
  P4c: Negative values after bio+vdiff n= 8 shift=    42.394%
  P4c: Negative values after bio+vdiff n= 4 shift=     2.365%
-    14:21:23.828 n=    39443200
+    09:00:23.991 n=    39443200
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    52.936%
@@ -13513,7 +13507,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.069%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.006%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.005%
-    14:21:41.304 n=    39443300
+    09:00:40.844 n=    39443300
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    51.906%
@@ -13863,7 +13857,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.060%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:21:57.369 n=    39443400
+    09:00:57.673 n=    39443400
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    57.924%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -13982,8 +13976,6 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.007%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.002%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.007%
-            2015-01-01 02:00:00: saving 2D .... 
-            2015-01-01 02:00:00: saving 3D .... 
             2015-01-01 02:00:00: reading meteo data - 2015-01-01 03:00:00
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
@@ -14317,7 +14309,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.019%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.080%
  P4c: Negative values after bio+vdiff n= 9 shift=    79.993%
-    14:22:19.552 n=    39443500
+    09:01:19.964 n=    39443500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
@@ -14654,7 +14646,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.012%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.024%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.097%
-    14:22:35.943 n=    39443600
+    09:01:37.310 n=    39443600
  P4c: Negative values after bio+vdiff n=10 shift=    51.969%
  P4c: Negative values after bio+vdiff n=10 shift=    25.139%
  P4c: Negative values after bio+vdiff n=10 shift=    49.779%
@@ -14984,7 +14976,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.061%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.077%
  P4c: Negative values after bio+vdiff n= 8 shift=    41.252%
-    14:22:52.589 n=    39443700
+    09:01:54.353 n=    39443700
  P4c: Negative values after bio+vdiff n= 9 shift=    17.245%
  P4c: Negative values after bio+vdiff n= 9 shift=     7.505%
  P4c: Negative values after bio+vdiff n= 9 shift=     9.425%
@@ -15408,7 +15400,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.098%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.008%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.511%
-    14:23:15.097 n=    39443800
+    09:02:16.346 n=    39443800
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    14.589%
@@ -15622,8 +15614,6 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.022%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.005%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.075%
-            2015-01-01 02:30:00: saving 2D .... 
-            2015-01-01 02:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=11 shift=    90.508%
  P4c: Negative values after bio+vdiff n= 9 shift=     8.740%
  P4c: Negative values after bio+vdiff n= 9 shift=     8.574%
@@ -15724,7 +15714,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.021%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.019%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.101%
-    14:23:32.574 n=    39443900
+    09:02:32.909 n=    39443900
  P4c: Negative values after bio+vdiff n= 9 shift=    12.899%
  P4c: Negative values after bio+vdiff n=10 shift=    12.802%
  P4c: Negative values after bio+vdiff n=10 shift=    33.837%
@@ -16021,7 +16011,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.089%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.361%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.103%
-    14:23:49.715 n=    39444000
+    09:02:49.191 n=    39444000
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    98.973%
  P4c: Negative values after bio+vdiff n=10 shift=    47.556%
@@ -16388,7 +16378,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.292%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.213%
  P4c: Negative values after bio+vdiff n= 6 shift=     1.879%
-    14:24:12.340 n=    39444100
+    09:03:11.111 n=    39444100
  P4c: Negative values after bio+vdiff n=10 shift=    24.596%
  P4c: Negative values after bio+vdiff n=10 shift=    11.071%
  P4c: Negative values after bio+vdiff n=10 shift=    19.307%
@@ -16627,7 +16617,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=     4.961%
  P4c: Negative values after bio+vdiff n= 8 shift=     9.425%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.005%
-    14:24:29.316 n=    39444200
+    09:03:28.694 n=    39444200
  P4c: Negative values after bio+vdiff n=11 shift=    37.193%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=     7.177%
@@ -16834,7 +16824,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=    38.666%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    35.264%
-    14:24:46.684 n=    39444300
+    09:03:44.886 n=    39444300
  P4c: Negative values after bio+vdiff n=10 shift=    20.474%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.401%
  P4c: Negative values after bio+vdiff n=10 shift=     7.888%
@@ -16897,8 +16887,6 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     2.677%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
-            2015-01-01 03:00:00: saving 2D .... 
-            2015-01-01 03:00:00: saving 3D .... 
             2015-01-01 03:00:00: reading meteo data - 2015-01-01 04:00:00
  P4c: Negative values after bio+vdiff n=10 shift=    34.166%
  P4c: Negative values after bio+vdiff n=10 shift=     7.323%
@@ -17068,7 +17056,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     0.309%
  P4c: Negative values after bio+vdiff n= 5 shift=     0.845%
  P4c: Negative values after bio+vdiff n= 7 shift=     8.699%
-    14:25:10.844 n=    39444400
+    09:04:06.787 n=    39444400
  P4c: Negative values after bio+vdiff n=10 shift=    12.707%
  P4c: Negative values after bio+vdiff n=10 shift=    17.415%
  P4c: Negative values after bio+vdiff n= 9 shift=     8.104%
@@ -17205,7 +17193,7 @@
  P4c: Negative values after bio+vdiff n= 5 shift=     0.660%
  P4c: Negative values after bio+vdiff n= 6 shift=     1.547%
  P4c: Negative values after bio+vdiff n=10 shift=    83.844%
-    14:25:28.437 n=    39444500
+    09:04:23.487 n=    39444500
  P4c: Negative values after bio+vdiff n=11 shift=    36.253%
  P4c: Negative values after bio+vdiff n=12 shift=    83.200%
  P4c: Negative values after bio+vdiff n=10 shift=    20.438%
@@ -17330,7 +17318,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     1.130%
  P4c: Negative values after bio+vdiff n= 7 shift=     2.800%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:25:45.936 n=    39444600
+    09:04:40.727 n=    39444600
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -17472,7 +17460,7 @@
  P4c: Negative values after bio+vdiff n= 8 shift=     6.418%
  P4c: Negative values after bio+vdiff n= 7 shift=     2.056%
  P4c: Negative values after bio+vdiff n= 8 shift=     5.859%
-    14:26:07.630 n=    39444700
+    09:05:03.118 n=    39444700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -17542,8 +17530,6 @@
  P4c: Negative values after bio+vdiff n= 9 shift=    11.860%
  P4c: Negative values after bio+vdiff n= 8 shift=     3.026%
  P4c: Negative values after bio+vdiff n= 9 shift=     9.064%
-            2015-01-01 03:30:00: saving 2D .... 
-            2015-01-01 03:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -17579,7 +17565,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=    16.586%
  P4c: Negative values after bio+vdiff n= 8 shift=     3.238%
  P4c: Negative values after bio+vdiff n= 9 shift=    11.698%
-    14:26:24.135 n=    39444800
+    09:05:20.197 n=    39444800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    14.084%
@@ -17674,7 +17660,7 @@
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.261%
  P4c: Negative values after bio+vdiff n=10 shift=    32.647%
-    14:26:41.307 n=    39444900
+    09:05:36.908 n=    39444900
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -17792,7 +17778,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=     9.311%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-    14:27:03.894 n=    39445000
+    09:05:59.120 n=    39445000
  P4c: Negative values after bio+vdiff n=12 shift=    53.177%
  P4c: Negative values after bio+vdiff n=11 shift=    24.622%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
@@ -17878,7 +17864,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    19.958%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-    14:27:21.116 n=    39445100
+    09:06:17.699 n=    39445100
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=    44.290%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -17957,7 +17943,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    80.054%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
-    14:27:38.631 n=    39445200
+    09:06:37.012 n=    39445200
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -17985,8 +17971,6 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
-            2015-01-01 04:00:00: saving 2D .... 
-            2015-01-01 04:00:00: saving 3D .... 
             2015-01-01 04:00:00: reading meteo data - 2015-01-01 05:00:00
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -18058,7 +18042,7 @@
  P4c: Negative values after bio+vdiff n=10 shift=     5.153%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-    14:28:01.679 n=    39445300
+    09:06:58.725 n=    39445300
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -18129,7 +18113,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:28:19.040 n=    39445400
+    09:07:15.511 n=    39445400
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    14.519%
@@ -18193,7 +18177,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     0.798%
  P4c: Negative values after bio+vdiff n=10 shift=     5.562%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:28:35.262 n=    39445500
+    09:07:32.346 n=    39445500
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    29.319%
@@ -18276,7 +18260,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=     5.270%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:28:56.947 n=    39445600
+    09:07:54.581 n=    39445600
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=     8.309%
@@ -18312,8 +18296,6 @@
  P4c: Negative values after bio+vdiff n= 5 shift=     0.697%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.327%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-            2015-01-01 04:30:00: saving 2D .... 
-            2015-01-01 04:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=     9.224%
@@ -18331,7 +18313,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.418%
  P4c: Negative values after bio+vdiff n= 5 shift=     0.713%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.329%
-    14:29:13.675 n=    39445700
+    09:08:11.629 n=    39445700
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=     9.776%
@@ -18384,7 +18366,7 @@
  P4c: Negative values after bio+vdiff n= 5 shift=     0.727%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.351%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:29:30.281 n=    39445800
+    09:08:28.590 n=    39445800
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    11.897%
@@ -18451,7 +18433,7 @@
  P4c: Negative values after bio+vdiff n= 5 shift=     0.773%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.514%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:29:52.189 n=    39445900
+    09:08:50.050 n=    39445900
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    18.057%
@@ -18502,7 +18484,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     0.832%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.707%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:30:08.478 n=    39446000
+    09:09:06.270 n=    39446000
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    29.078%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -18548,7 +18530,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     0.840%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.879%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-    14:30:25.408 n=    39446100
+    09:09:23.269 n=    39446100
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    24.418%
@@ -18562,8 +18544,6 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     0.839%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.916%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-            2015-01-01 05:00:00: saving 2D .... 
-            2015-01-01 05:00:00: saving 3D .... 
             2015-01-01 05:00:00: reading meteo data - 2015-01-01 06:00:00
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -18603,7 +18583,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     0.824%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.930%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
-    14:30:48.408 n=    39446200
+    09:09:45.887 n=    39446200
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    13.571%
@@ -18640,7 +18620,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     0.722%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.705%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
-    14:31:06.671 n=    39446300
+    09:10:03.143 n=    39446300
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    21.011%
@@ -18678,7 +18658,7 @@
  P4c: Negative values after bio+vdiff n= 5 shift=     0.514%
  P4c: Negative values after bio+vdiff n= 9 shift=     5.108%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
-    14:31:23.590 n=    39446400
+    09:10:19.695 n=    39446400
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    45.429%
@@ -18724,7 +18704,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.140%
  P4c: Negative values after bio+vdiff n= 9 shift=     3.703%
  P4c: Negative values after bio+vdiff n=11 shift=    93.456%
-    14:31:47.272 n=    39446500
+    09:10:41.732 n=    39446500
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -18746,8 +18726,6 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.019%
  P4c: Negative values after bio+vdiff n= 8 shift=     2.724%
  P4c: Negative values after bio+vdiff n=11 shift=    66.592%
-            2015-01-01 05:30:00: saving 2D .... 
-            2015-01-01 05:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    24.236%
@@ -18757,7 +18735,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.422%
  P4c: Negative values after bio+vdiff n= 8 shift=     2.370%
  P4c: Negative values after bio+vdiff n=11 shift=    54.014%
-    14:32:05.030 n=    39446600
+    09:10:58.106 n=    39446600
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -18788,7 +18766,7 @@
  P4c: Negative values after bio+vdiff n=10 shift=    29.187%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:32:21.606 n=    39446700
+    09:11:14.684 n=    39446700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    29.771%
@@ -18836,7 +18814,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:32:44.076 n=    39446800
+    09:11:36.821 n=    39446800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -18878,7 +18856,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 2 shift=     2.586%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:33:02.423 n=    39446900
+    09:11:53.407 n=    39446900
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=    72.996%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
@@ -18923,7 +18901,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:33:20.237 n=    39447000
+    09:12:09.610 n=    39447000
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    28.554%
@@ -18940,8 +18918,6 @@
  P4c: Negative values after bio+vdiff n=10 shift=    12.653%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
-            2015-01-01 06:00:00: saving 2D .... 
-            2015-01-01 06:00:00: saving 3D .... 
             2015-01-01 06:00:00: reading meteo data - 2015-01-01 07:00:00
  P4c: Negative values after bio+vdiff n=10 shift=    99.291%
  P4c: Negative values after bio+vdiff n=10 shift=    21.819%
@@ -18996,7 +18972,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=    18.563%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:33:44.400 n=    39447100
+    09:12:31.069 n=    39447100
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    33.379%
  P4c: Negative values after bio+vdiff n=10 shift=    11.547%
@@ -19054,7 +19030,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.144%
  P4c: Negative values after bio+vdiff n= 5 shift=     3.594%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-    14:34:01.279 n=    39447200
+    09:12:48.430 n=    39447200
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
@@ -19115,7 +19091,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.059%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
-    14:34:18.854 n=    39447300
+    09:13:05.055 n=    39447300
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
@@ -19207,7 +19183,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    42.991%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:34:41.593 n=    39447400
+    09:13:27.143 n=    39447400
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    58.931%
  P4c: Negative values after bio+vdiff n=10 shift=    66.762%
@@ -19258,8 +19234,6 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=    19.680%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-            2015-01-01 06:30:00: saving 2D .... 
-            2015-01-01 06:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    31.188%
@@ -19288,7 +19262,7 @@
  P4c: Negative values after bio+vdiff n= 8 shift=    31.469%
  P4c: Negative values after bio+vdiff n= 8 shift=    13.988%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:34:58.205 n=    39447500
+    09:13:43.687 n=    39447500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    23.334%
@@ -19376,7 +19350,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=     3.285%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
-    14:35:15.167 n=    39447600
+    09:13:59.898 n=    39447600
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    87.793%
  P4c: Negative values after bio+vdiff n= 9 shift=    10.100%
@@ -19502,7 +19476,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    46.561%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:35:38.399 n=    39447700
+    09:14:21.338 n=    39447700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -19606,7 +19580,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=     7.914%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:35:54.890 n=    39447800
+    09:14:38.150 n=    39447800
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    77.347%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -19715,7 +19689,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.036%
  P4c: Negative values after bio+vdiff n= 6 shift=    10.801%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.852%
-    14:36:11.464 n=    39447900
+    09:14:55.602 n=    39447900
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -19754,8 +19728,6 @@
  P4c: Negative values after bio+vdiff n= 7 shift=     9.478%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=     3.827%
-            2015-01-01 07:00:00: saving 2D .... 
-            2015-01-01 07:00:00: saving 3D .... 
             2015-01-01 07:00:00: reading meteo data - 2015-01-01 08:00:00
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -19879,7 +19851,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.177%
  P4c: Negative values after bio+vdiff n= 5 shift=     2.135%
-    14:36:34.664 n=    39448000
+    09:15:17.498 n=    39448000
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -19997,7 +19969,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     4.611%
  P4c: Negative values after bio+vdiff n= 6 shift=    11.275%
  P4c: Negative values after bio+vdiff n=12 shift=    70.149%
-    14:36:52.098 n=    39448100
+    09:15:34.712 n=    39448100
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -20117,7 +20089,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.079%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=     2.562%
-    14:37:09.930 n=    39448200
+    09:15:51.242 n=    39448200
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -20285,7 +20257,7 @@
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=     5.010%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.007%
-    14:37:32.733 n=    39448300
+    09:16:14.928 n=    39448300
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 1 shift=     1.107%
@@ -20372,8 +20344,6 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 4 shift=     3.057%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.717%
-            2015-01-01 07:30:00: saving 2D .... 
-            2015-01-01 07:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=   100.000%
@@ -20415,7 +20385,7 @@
  P4c: Negative values after bio+vdiff n= 8 shift=    11.051%
  P4c: Negative values after bio+vdiff n= 8 shift=    69.301%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.135%
-    14:37:50.694 n=    39448400
+    09:16:31.982 n=    39448400
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -20548,7 +20518,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     0.891%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.389%
-    14:38:07.825 n=    39448500
+    09:16:48.594 n=    39448500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=    13.221%
@@ -20731,7 +20701,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.608%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 3 shift=     1.786%
-    14:38:30.121 n=    39448600
+    09:17:10.447 n=    39448600
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -20865,7 +20835,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 3 shift=     2.947%
  P4c: Negative values after bio+vdiff n=10 shift=    95.928%
-    14:38:47.281 n=    39448700
+    09:17:26.503 n=    39448700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=    52.894%
  P4c: Negative values after bio+vdiff n= 8 shift=    81.332%
@@ -21003,7 +20973,7 @@
  P4c: Negative values after bio+vdiff n= 5 shift=    20.448%
  P4c: Negative values after bio+vdiff n= 8 shift=    43.165%
  P4c: Negative values after bio+vdiff n= 5 shift=     8.558%
-    14:39:03.957 n=    39448800
+    09:17:43.889 n=    39448800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -21050,8 +21020,6 @@
  P4c: Negative values after bio+vdiff n= 5 shift=    14.769%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 4 shift=     4.226%
-            2015-01-01 08:00:00: saving 2D .... 
-            2015-01-01 08:00:00: saving 3D .... 
             2015-01-01 08:00:00: reading meteo data - 2015-01-01 09:00:00
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -21201,7 +21169,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     1.190%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.294%
-    14:39:26.013 n=    39448900
+    09:18:05.324 n=    39448900
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=    28.432%
@@ -21346,7 +21314,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     1.054%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
-    14:39:42.303 n=    39449000
+    09:18:21.479 n=    39449000
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
@@ -21501,7 +21469,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=    41.806%
  P4c: Negative values after bio+vdiff n= 7 shift=    18.666%
  P4c: Negative values after bio+vdiff n= 7 shift=    17.810%
-    14:39:59.029 n=    39449100
+    09:18:38.000 n=    39449100
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=     4.445%
@@ -21704,7 +21672,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     1.661%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 3 shift=     1.527%
-    14:40:22.020 n=    39449200
+    09:18:59.549 n=    39449200
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
@@ -21810,8 +21778,6 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.424%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.385%
-            2015-01-01 08:30:00: saving 2D .... 
-            2015-01-01 08:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 4 shift=     6.138%
@@ -21870,7 +21836,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.154%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.142%
-    14:40:39.709 n=    39449300
+    09:19:16.053 n=    39449300
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -22038,7 +22004,7 @@
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    81.475%
  P4c: Negative values after bio+vdiff n=10 shift=    35.966%
-    14:40:57.777 n=    39449400
+    09:19:34.048 n=    39449400
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -22267,7 +22233,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=     7.967%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=     3.327%
-    14:41:21.366 n=    39449500
+    09:19:58.337 n=    39449500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 3 shift=     3.404%
  P4c: Negative values after bio+vdiff n= 7 shift=    31.229%
@@ -22449,7 +22415,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     1.860%
  P4c: Negative values after bio+vdiff n=11 shift=    83.931%
  P4c: Negative values after bio+vdiff n= 4 shift=     1.026%
-    14:41:37.981 n=    39449600
+    09:20:15.171 n=    39449600
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -22639,7 +22605,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.620%
  P4c: Negative values after bio+vdiff n= 9 shift=    13.945%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.340%
-    14:41:55.954 n=    39449700
+    09:20:32.791 n=    39449700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
@@ -22709,8 +22675,6 @@
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    10.326%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.241%
-            2015-01-01 09:00:00: saving 2D .... 
-            2015-01-01 09:00:00: saving 3D .... 
             2015-01-01 09:00:00: reading meteo data - 2015-01-01 10:00:00
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -22913,7 +22877,7 @@
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     3.302%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.055%
-    14:42:19.126 n=    39449800
+    09:20:55.269 n=    39449800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -23128,7 +23092,7 @@
  P4c: Negative values after bio+vdiff n= 1 shift=     0.031%
  P4c: Negative values after bio+vdiff n=11 shift=    50.247%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.350%
-    14:42:35.867 n=    39449900
+    09:21:11.503 n=    39449900
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -23350,7 +23314,7 @@
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=    13.824%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.650%
-    14:42:52.374 n=    39450000
+    09:21:27.889 n=    39450000
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 9 shift=   100.000%
@@ -23645,7 +23609,7 @@
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=     5.572%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.334%
-    14:43:14.076 n=    39450100
+    09:21:49.246 n=    39450100
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    90.543%
@@ -23799,8 +23763,6 @@
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     4.315%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.248%
-            2015-01-01 09:30:00: saving 2D .... 
-            2015-01-01 09:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=    34.064%
@@ -23882,7 +23844,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     3.838%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.226%
-    14:43:30.763 n=    39450200
+    09:22:08.217 n=    39450200
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=    69.015%
  P4c: Negative values after bio+vdiff n= 6 shift=    22.154%
@@ -24133,7 +24095,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     2.888%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.182%
-    14:43:47.295 n=    39450300
+    09:22:25.029 n=    39450300
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
@@ -24485,7 +24447,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     2.194%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.192%
-    14:44:11.286 n=    39450400
+    09:22:48.214 n=    39450400
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -24757,7 +24719,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     1.916%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.225%
-    14:44:29.088 n=    39450500
+    09:23:05.166 n=    39450500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -25041,7 +25003,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     1.773%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.055%
-    14:44:45.254 n=    39450600
+    09:23:21.452 n=    39450600
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
@@ -25143,8 +25105,6 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     1.483%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.078%
-            2015-01-01 10:00:00: saving 2D .... 
-            2015-01-01 10:00:00: saving 3D .... 
             2015-01-01 10:00:00: reading meteo data - 2015-01-01 11:00:00
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -25440,7 +25400,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     0.104%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     1.818%
-    14:45:07.075 n=    39450700
+    09:23:42.971 n=    39450700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
@@ -25740,7 +25700,7 @@
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=     2.269%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.076%
-    14:45:23.975 n=    39450800
+    09:23:59.454 n=    39450800
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -26033,7 +25993,7 @@
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=     5.094%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.663%
-    14:45:40.308 n=    39450900
+    09:24:15.958 n=    39450900
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -26398,7 +26358,7 @@
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=10 shift=    10.157%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.768%
-    14:46:01.996 n=    39451000
+    09:24:38.462 n=    39451000
  P4c: Negative values after bio+vdiff n=14 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=    71.147%
  P4c: Negative values after bio+vdiff n= 6 shift=    16.744%
@@ -26570,8 +26530,6 @@
  P4c: Negative values after bio+vdiff n=10 shift=    16.104%
  P4c: Negative values after bio+vdiff n= 6 shift=     1.286%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.014%
-            2015-01-01 10:30:00: saving 2D .... 
-            2015-01-01 10:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    32.802%
@@ -26657,7 +26615,7 @@
  P4c: Negative values after bio+vdiff n=11 shift=    17.909%
  P4c: Negative values after bio+vdiff n= 6 shift=     0.580%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.177%
-    14:46:18.451 n=    39451100
+    09:24:55.385 n=    39451100
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    58.681%
@@ -26920,7 +26878,7 @@
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=     2.007%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.300%
-    14:46:35.039 n=    39451200
+    09:25:11.481 n=    39451200
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 5 shift=     6.780%
@@ -27244,7 +27202,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.196%
  P4c: Negative values after bio+vdiff n= 9 shift=     7.988%
  P4c: Negative values after bio+vdiff n= 4 shift=     0.775%
-    14:46:56.914 n=    39451300
+    09:25:33.232 n=    39451300
  P4c: Negative values after bio+vdiff n= 6 shift=    83.041%
  P4c: Negative values after bio+vdiff n= 7 shift=    36.411%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -27479,7 +27437,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     0.630%
  P4c: Negative values after bio+vdiff n=11 shift=    31.119%
  P4c: Negative values after bio+vdiff n= 2 shift=     1.356%
-    14:47:13.898 n=    39451400
+    09:25:51.461 n=    39451400
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=    38.073%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -27718,7 +27676,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=    18.956%
  P4c: Negative values after bio+vdiff n= 9 shift=     7.812%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.237%
-    14:47:30.892 n=    39451500
+    09:26:07.944 n=    39451500
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 6 shift=    24.222%
  P4c: Negative values after bio+vdiff n= 7 shift=    30.034%
@@ -27797,8 +27755,6 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     0.418%
  P4c: Negative values after bio+vdiff n=10 shift=    13.811%
  P4c: Negative values after bio+vdiff n= 7 shift=     2.004%
-            2015-01-01 11:00:00: saving 2D .... 
-            2015-01-01 11:00:00: saving 3D .... 
             2015-01-01 11:00:00: reading meteo data - 2015-01-01 12:00:00
  P4c: Negative values after bio+vdiff n= 8 shift=    76.847%
  P4c: Negative values after bio+vdiff n= 9 shift=   100.000%
@@ -28032,7 +27988,7 @@
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=     7.307%
  P4c: Negative values after bio+vdiff n= 6 shift=     0.773%
-    14:47:53.931 n=    39451600
+    09:26:30.278 n=    39451600
  P4c: Negative values after bio+vdiff n= 6 shift=    15.943%
  P4c: Negative values after bio+vdiff n= 6 shift=    10.918%
  P4c: Negative values after bio+vdiff n= 5 shift=    12.445%
@@ -28263,7 +28219,7 @@
  P4c: Negative values after bio+vdiff n= 9 shift=     6.598%
  P4c: Negative values after bio+vdiff n= 2 shift=     1.120%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.111%
-    14:48:10.638 n=    39451700
+    09:26:46.486 n=    39451700
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    52.146%
@@ -28487,7 +28443,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     2.187%
  P4c: Negative values after bio+vdiff n= 2 shift=     0.837%
  P4c: Negative values after bio+vdiff n= 1 shift=     0.069%
-    14:48:27.819 n=    39451800
+    09:27:03.555 n=    39451800
  P4c: Negative values after bio+vdiff n= 8 shift=    50.402%
  P4c: Negative values after bio+vdiff n= 8 shift=    46.303%
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
@@ -28780,7 +28736,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.548%
  P4c: Negative values after bio+vdiff n= 5 shift=     1.385%
  P4c: Negative values after bio+vdiff n= 8 shift=     5.090%
-    14:48:49.514 n=    39451900
+    09:27:27.719 n=    39451900
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=    46.199%
  P4c: Negative values after bio+vdiff n= 8 shift=    61.445%
@@ -28916,8 +28872,6 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     1.841%
  P4c: Negative values after bio+vdiff n= 9 shift=     6.085%
  P4c: Negative values after bio+vdiff n=10 shift=    10.964%
-            2015-01-01 11:30:00: saving 2D .... 
-            2015-01-01 11:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n= 7 shift=    38.698%
  P4c: Negative values after bio+vdiff n= 6 shift=    10.167%
  P4c: Negative values after bio+vdiff n= 6 shift=     9.463%
@@ -28976,7 +28930,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     2.995%
  P4c: Negative values after bio+vdiff n= 9 shift=    10.204%
  P4c: Negative values after bio+vdiff n=11 shift=    40.820%
-    14:49:06.200 n=    39452000
+    09:27:44.448 n=    39452000
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    23.372%
  P4c: Negative values after bio+vdiff n= 7 shift=    23.268%
@@ -29145,7 +29099,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     5.436%
  P4c: Negative values after bio+vdiff n=10 shift=    43.832%
  P4c: Negative values after bio+vdiff n=13 shift=   100.000%
-    14:49:22.536 n=    39452100
+    09:28:01.285 n=    39452100
  P4c: Negative values after bio+vdiff n= 7 shift=    20.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    14.759%
  P4c: Negative values after bio+vdiff n= 6 shift=    14.446%
@@ -29341,7 +29295,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.505%
  P4c: Negative values after bio+vdiff n= 3 shift=     2.063%
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
-    14:49:44.571 n=    39452200
+    09:28:23.618 n=    39452200
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    23.032%
  P4c: Negative values after bio+vdiff n= 8 shift=    30.140%
@@ -29469,7 +29423,7 @@
  P4c: Negative values after bio+vdiff n= 7 shift=    20.990%
  P4c: Negative values after bio+vdiff n= 4 shift=     7.810%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:50:01.255 n=    39452300
+    09:28:39.637 n=    39452300
  P4c: Negative values after bio+vdiff n= 7 shift=    15.964%
  P4c: Negative values after bio+vdiff n= 7 shift=    18.879%
  P4c: Negative values after bio+vdiff n= 8 shift=    29.048%
@@ -29579,7 +29533,7 @@
  P4c: Negative values after bio+vdiff n= 2 shift=     0.273%
  P4c: Negative values after bio+vdiff n= 5 shift=    24.777%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:50:17.958 n=    39452400
+    09:28:55.958 n=    39452400
  P4c: Negative values after bio+vdiff n= 8 shift=    22.285%
  P4c: Negative values after bio+vdiff n= 7 shift=    10.097%
  P4c: Negative values after bio+vdiff n= 7 shift=    16.715%
@@ -29614,8 +29568,6 @@
  P4c: Negative values after bio+vdiff n=11 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 3 shift=     0.893%
  P4c: Negative values after bio+vdiff n= 6 shift=    37.882%
-            2015-01-01 12:00:00: saving 2D .... 
-            2015-01-01 12:00:00: saving 3D .... 
             2015-01-01 12:00:00: reading meteo data - 2015-01-01 13:00:00
  P4c: Negative values after bio+vdiff n= 8 shift=    63.755%
  P4c: Negative values after bio+vdiff n= 8 shift=    21.966%
@@ -29715,7 +29667,7 @@
  P4c: Negative values after bio+vdiff n= 3 shift=     3.411%
  P4c: Negative values after bio+vdiff n= 4 shift=     3.193%
  P4c: Negative values after bio+vdiff n= 7 shift=   100.000%
-    14:50:40.864 n=    39452500
+    09:29:17.568 n=    39452500
  P4c: Negative values after bio+vdiff n= 7 shift=    17.362%
  P4c: Negative values after bio+vdiff n= 7 shift=    21.364%
  P4c: Negative values after bio+vdiff n= 8 shift=    54.268%
@@ -29792,7 +29744,7 @@
  P4c: Negative values after bio+vdiff n= 8 shift=    65.391%
  P4c: Negative values after bio+vdiff n= 5 shift=     8.816%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:50:57.710 n=    39452600
+    09:29:34.118 n=    39452600
  P4c: Negative values after bio+vdiff n= 8 shift=    52.708%
  P4c: Negative values after bio+vdiff n= 6 shift=    11.948%
  P4c: Negative values after bio+vdiff n= 7 shift=    24.777%
@@ -29862,7 +29814,7 @@
  P4c: Negative values after bio+vdiff n= 4 shift=     1.582%
  P4c: Negative values after bio+vdiff n= 7 shift=    31.422%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:51:14.839 n=    39452700
+    09:29:50.796 n=    39452700
  P4c: Negative values after bio+vdiff n= 7 shift=    18.185%
  P4c: Negative values after bio+vdiff n= 6 shift=    14.000%
  P4c: Negative values after bio+vdiff n= 7 shift=    38.742%
@@ -29923,7 +29875,7 @@
  P4c: Negative values after bio+vdiff n= 6 shift=    20.753%
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:51:36.757 n=    39452800
+    09:30:12.934 n=    39452800
  P4c: Negative values after bio+vdiff n= 7 shift=    37.168%
  P4c: Negative values after bio+vdiff n= 8 shift=    84.824%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
@@ -29940,272 +29892,276 @@
  P4c: Negative values after bio+vdiff n= 6 shift=     8.557%
  P4c: Negative values after bio+vdiff n= 6 shift=    18.928%
  P4c: Negative values after bio+vdiff n= 8 shift=   100.000%
-            2015-01-01 12:30:00: saving 2D .... 
-            2015-01-01 12:30:00: saving 3D .... 
  P4c: Negative values after bio+vdiff n= 7 shift=    36.402%
  P4c: Negative values after bio+vdiff n= 6 shift=    20.087%
  P4c: Negative values after bio+vdiff n= 7 shift=    60.079%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:51:54.425 n=    39452900
+    09:30:29.805 n=    39452900
  P4c: Negative values after bio+vdiff n=10 shift=   100.000%
  P4c: Negative values after bio+vdiff n= 8 shift=    83.739%
  P4c: Negative values after bio+vdiff n=12 shift=   100.000%
  P4c: Negative values after bio+vdiff n=15 shift=   100.000%
-    14:52:11.480 n=    39453000
-    14:52:32.842 n=    39453100
-    14:52:49.030 n=    39453200
-    14:53:05.106 n=    39453300
-            2015-01-01 13:00:00: saving 2D .... 
-            2015-01-01 13:00:00: saving 3D .... 
+    09:30:46.557 n=    39453000
+    09:31:09.644 n=    39453100
+    09:31:26.075 n=    39453200
+    09:31:42.146 n=    39453300
             2015-01-01 13:00:00: reading meteo data - 2015-01-01 14:00:00
-    14:53:27.884 n=    39453400
-    14:53:44.938 n=    39453500
-    14:54:02.786 n=    39453600
-    14:54:26.061 n=    39453700
-            2015-01-01 13:30:00: saving 2D .... 
-            2015-01-01 13:30:00: saving 3D .... 
-    14:54:42.290 n=    39453800
-    14:54:58.333 n=    39453900
-    14:55:19.875 n=    39454000
-    14:55:36.304 n=    39454100
-    14:55:52.436 n=    39454200
-            2015-01-01 14:00:00: saving 2D .... 
-            2015-01-01 14:00:00: saving 3D .... 
+    09:32:03.512 n=    39453400
+    09:32:20.329 n=    39453500
+    09:32:37.219 n=    39453600
+    09:33:00.283 n=    39453700
+    09:33:16.399 n=    39453800
+    09:33:32.986 n=    39453900
+    09:33:54.321 n=    39454000
+    09:34:10.664 n=    39454100
+    09:34:26.980 n=    39454200
             2015-01-01 14:00:00: reading meteo data - 2015-01-01 15:00:00
-    14:56:15.557 n=    39454300
-    14:56:32.595 n=    39454400
-    14:56:49.753 n=    39454500
-    14:57:12.109 n=    39454600
-            2015-01-01 14:30:00: saving 2D .... 
-            2015-01-01 14:30:00: saving 3D .... 
-    14:57:28.917 n=    39454700
-    14:57:45.869 n=    39454800
-    14:58:07.189 n=    39454900
-    14:58:23.807 n=    39455000
-    14:58:39.952 n=    39455100
-            2015-01-01 15:00:00: saving 2D .... 
-            2015-01-01 15:00:00: saving 3D .... 
+    09:34:48.863 n=    39454300
+    09:35:04.802 n=    39454400
+    09:35:20.965 n=    39454500
+    09:35:43.214 n=    39454600
+    09:35:59.763 n=    39454700
+    09:36:16.468 n=    39454800
+    09:36:39.591 n=    39454900
+    09:36:55.849 n=    39455000
+    09:37:12.556 n=    39455100
             2015-01-01 15:00:00: reading meteo data - 2015-01-01 16:00:00
-    14:59:02.944 n=    39455200
-    14:59:19.332 n=    39455300
-    14:59:35.612 n=    39455400
-    14:59:56.840 n=    39455500
-            2015-01-01 15:30:00: saving 2D .... 
-            2015-01-01 15:30:00: saving 3D .... 
-    15:00:13.394 n=    39455600
-    15:00:30.674 n=    39455700
-    15:00:53.942 n=    39455800
-    15:01:10.135 n=    39455900
-    15:01:26.591 n=    39456000
-            2015-01-01 16:00:00: saving 2D .... 
-            2015-01-01 16:00:00: saving 3D .... 
+    09:37:34.207 n=    39455200
+    09:37:51.745 n=    39455300
+    09:38:08.429 n=    39455400
+    09:38:30.724 n=    39455500
+    09:38:47.662 n=    39455600
+    09:39:04.601 n=    39455700
+    09:39:27.844 n=    39455800
+    09:39:44.702 n=    39455900
+    09:40:01.629 n=    39456000
             2015-01-01 16:00:00: reading meteo data - 2015-01-01 17:00:00
-    15:01:48.278 n=    39456100
-    15:02:04.297 n=    39456200
-    15:02:20.640 n=    39456300
-    15:02:42.225 n=    39456400
-            2015-01-01 16:30:00: saving 2D .... 
-            2015-01-01 16:30:00: saving 3D .... 
-    15:02:59.049 n=    39456500
-    15:03:16.177 n=    39456600
-    15:03:38.700 n=    39456700
-    15:03:56.134 n=    39456800
-    15:04:13.266 n=    39456900
-            2015-01-01 17:00:00: saving 2D .... 
-            2015-01-01 17:00:00: saving 3D .... 
+    09:40:23.730 n=    39456100
+    09:40:41.072 n=    39456200
+    09:40:57.638 n=    39456300
+    09:41:19.647 n=    39456400
+    09:41:35.837 n=    39456500
+    09:41:51.865 n=    39456600
+    09:42:14.771 n=    39456700
+    09:42:31.929 n=    39456800
+    09:42:48.173 n=    39456900
             2015-01-01 17:00:00: reading meteo data - 2015-01-01 18:00:00
-    15:04:34.847 n=    39457000
-    15:04:50.992 n=    39457100
-    15:05:07.261 n=    39457200
-    15:05:28.858 n=    39457300
-            2015-01-01 17:30:00: saving 2D .... 
-            2015-01-01 17:30:00: saving 3D .... 
-    15:05:45.386 n=    39457400
-    15:06:01.715 n=    39457500
-    15:06:23.204 n=    39457600
-    15:06:39.294 n=    39457700
-    15:06:56.072 n=    39457800
-            2015-01-01 18:00:00: saving 2D .... 
-            2015-01-01 18:00:00: saving 3D .... 
+    09:43:09.896 n=    39457000
+    09:43:26.594 n=    39457100
+    09:43:42.933 n=    39457200
+    09:44:05.533 n=    39457300
+    09:44:22.225 n=    39457400
+    09:44:40.719 n=    39457500
+    09:45:02.217 n=    39457600
+    09:45:19.516 n=    39457700
+    09:45:37.428 n=    39457800
             2015-01-01 18:00:00: reading meteo data - 2015-01-01 19:00:00
-    15:07:19.326 n=    39457900
-    15:07:35.536 n=    39458000
-    15:07:51.789 n=    39458100
-    15:08:13.194 n=    39458200
-            2015-01-01 18:30:00: saving 2D .... 
-            2015-01-01 18:30:00: saving 3D .... 
-    15:08:29.588 n=    39458300
-    15:08:45.642 n=    39458400
-    15:09:07.477 n=    39458500
-    15:09:23.874 n=    39458600
-    15:09:40.630 n=    39458700
-            2015-01-01 19:00:00: saving 2D .... 
-            2015-01-01 19:00:00: saving 3D .... 
+    09:46:00.588 n=    39457900
+    09:46:17.574 n=    39458000
+    09:46:34.652 n=    39458100
+    09:46:56.569 n=    39458200
+    09:47:13.268 n=    39458300
+    09:47:30.293 n=    39458400
+    09:47:52.249 n=    39458500
+    09:48:08.279 n=    39458600
+    09:48:24.638 n=    39458700
             2015-01-01 19:00:00: reading meteo data - 2015-01-01 20:00:00
-    15:10:02.995 n=    39458800
-    15:10:20.704 n=    39458900
-    15:10:37.830 n=    39459000
-    15:11:00.303 n=    39459100
-            2015-01-01 19:30:00: saving 2D .... 
-            2015-01-01 19:30:00: saving 3D .... 
-    15:11:16.693 n=    39459200
-    15:11:33.113 n=    39459300
-    15:11:54.509 n=    39459400
-    15:12:10.695 n=    39459500
-    15:12:26.988 n=    39459600
-            2015-01-01 20:00:00: saving 2D .... 
-            2015-01-01 20:00:00: saving 3D .... 
+    09:48:46.441 n=    39458800
+    09:49:02.761 n=    39458900
+    09:49:19.154 n=    39459000
+    09:49:40.599 n=    39459100
+    09:49:57.180 n=    39459200
+    09:50:13.558 n=    39459300
+    09:50:35.811 n=    39459400
+    09:50:53.210 n=    39459500
+    09:51:11.410 n=    39459600
             2015-01-01 20:00:00: reading meteo data - 2015-01-01 21:00:00
-    15:12:49.746 n=    39459700
-    15:13:06.579 n=    39459800
-    15:13:23.683 n=    39459900
-    15:13:47.296 n=    39460000
-            2015-01-01 20:30:00: saving 2D .... 
-            2015-01-01 20:30:00: saving 3D .... 
-    15:14:04.764 n=    39460100
-    15:14:21.223 n=    39460200
-    15:14:42.614 n=    39460300
-    15:14:58.721 n=    39460400
-    15:15:15.125 n=    39460500
-            2015-01-01 21:00:00: saving 2D .... 
-            2015-01-01 21:00:00: saving 3D .... 
+    09:51:32.814 n=    39459700
+    09:51:49.432 n=    39459800
+    09:52:06.251 n=    39459900
+    09:52:29.871 n=    39460000
+    09:52:46.174 n=    39460100
+    09:53:02.806 n=    39460200
+    09:53:24.577 n=    39460300
+    09:53:41.251 n=    39460400
+    09:53:58.103 n=    39460500
             2015-01-01 21:00:00: reading meteo data - 2015-01-01 22:00:00
-    15:15:37.234 n=    39460600
-    15:15:53.179 n=    39460700
-    15:16:09.779 n=    39460800
-    15:16:31.684 n=    39460900
-            2015-01-01 21:30:00: saving 2D .... 
-            2015-01-01 21:30:00: saving 3D .... 
-    15:16:50.074 n=    39461000
-    15:17:07.203 n=    39461100
-    15:17:28.849 n=    39461200
-    15:17:45.036 n=    39461300
-    15:18:01.222 n=    39461400
-            2015-01-01 22:00:00: saving 2D .... 
-            2015-01-01 22:00:00: saving 3D .... 
+    09:54:20.814 n=    39460600
+    09:54:36.885 n=    39460700
+    09:54:53.404 n=    39460800
+    09:55:15.500 n=    39460900
+    09:55:32.452 n=    39461000
+    09:55:49.973 n=    39461100
+    09:56:13.011 n=    39461200
+    09:56:29.681 n=    39461300
+    09:56:46.028 n=    39461400
             2015-01-01 22:00:00: reading meteo data - 2015-01-01 23:00:00
-    15:18:22.852 n=    39461500
-    15:18:39.065 n=    39461600
-    15:18:55.752 n=    39461700
-    15:19:17.593 n=    39461800
-            2015-01-01 22:30:00: saving 2D .... 
-            2015-01-01 22:30:00: saving 3D .... 
-    15:19:34.043 n=    39461900
-    15:19:50.955 n=    39462000
-    15:20:14.462 n=    39462100
-    15:20:31.509 n=    39462200
-    15:20:47.950 n=    39462300
-            2015-01-01 23:00:00: saving 2D .... 
-            2015-01-01 23:00:00: saving 3D .... 
+    09:57:08.379 n=    39461500
+    09:57:24.846 n=    39461600
+    09:57:40.991 n=    39461700
+    09:58:02.231 n=    39461800
+    09:58:18.690 n=    39461900
+    09:58:34.921 n=    39462000
+    09:58:57.891 n=    39462100
+    09:59:14.493 n=    39462200
+    09:59:31.263 n=    39462300
             2015-01-01 23:00:00: reading meteo data - 2015-01-02 00:00:00
-    15:21:10.794 n=    39462400
-    15:21:26.842 n=    39462500
-    15:21:43.132 n=    39462600
-    15:22:04.617 n=    39462700
-            2015-01-01 23:30:00: saving 2D .... 
-            2015-01-01 23:30:00: saving 3D .... 
-    15:22:21.055 n=    39462800
-    15:22:37.529 n=    39462900
-    15:22:58.953 n=    39463000
-    15:23:15.586 n=    39463100
-    15:23:33.101 n=    39463200
+    09:59:53.424 n=    39462400
+    10:00:10.285 n=    39462500
+    10:00:27.681 n=    39462600
+    10:00:50.874 n=    39462700
+    10:01:07.396 n=    39462800
+    10:01:23.401 n=    39462900
+    10:01:45.230 n=    39463000
+    10:02:03.400 n=    39463100
+    10:02:20.134 n=    39463200
             2015-01-02 00:00:00: saving 2D .... 
             2015-01-02 00:00:00: saving 3D .... 
-        Checking for NANs before saving hotstart file...
-        Saving hotstart file #            1  as /export/lv9/user/qzhan/home/GETM_ERSEM_SETUPS/dws_200m/out/dws_200m/32x32/2015/01//restart.0018.out
- ------------------------------------------------------------------------
- Cleaning up....
- ------------------------------------------------------------------------
-    clean_input
-        At final MPI barrier
- barrier(): we are waiting
-        About to finish parallel part of GETM - calling MPI_Finalize()
-        MPI finalized
- ------------------------------------------------------------------------
-    getm: Completed on 20260129 152341.141
-    Memory used (global 2D and 3D arrays):
-        2D:          216  kbytes
-        3D:         3200  kbytes
-    Total CPU-time was:       4010.17847      seconds
-    Number of time steps:         21600
-    Number of calc-points:         1024
-    CPU-time/calc-point:      1.81305091E-04  seconds
-    Sim-time/CPU-time:        39363.036160853138     
- ------------------------------------------------------------------------
-    GETM timers in seconds (           1000000000  tics per second)
-                                 wall      #sysclocks     % of total
-     Timername                time (s)        calls       clocked time
-  initialize                   15.54              6          0.40
-   sum bottom_friction          5.84          46082          0.15
-  momentum                     17.71          43200          0.46
-   momentum-halo               15.43          86400          0.40
-  uv_depths                     0.00              2          0.00
-   sum uv_advect               48.56          44640          1.25
-   uv_advect-halo              30.54          89280          0.79
-   sum deformation_rates        0.00              0          0.00
-   sum uv_diffusion             1.76          44640          0.05
-   sum depth_update             0.32          44644          0.01
-   sum dryfac_update            0.36          44640          0.01
-  sealevel                      6.98          43200          0.18
-   sealevel-halo                6.53          43200          0.17
-  gotm                         11.22           1440          0.29
-   gotm-halo                    0.43           1440          0.01
-  uv_advect_3d                 21.47           1440          0.55
-   uv_advect_3d-halo            0.67           2880          0.02
-  deformation_rates_3d          0.00           1440          0.00
-  uv_diffusion_3d               0.00           1440          0.00
-  vv_momentum_3d                1.81           1440          0.05
-   vv_momentum_3d-halo          0.16           1440          0.00
-  uu_momentum_3d                1.77           1440          0.05
-   uu_momentum_3d-halo          0.17           1440          0.00
-  ww_momentum_3d                0.88           1440          0.02
-   ww_momentum_3d-halo          0.76           1440          0.02
-  shear_frequency               0.21           1440          0.01
-  buoyancy_frequency            0.26           1442          0.01
-  stresses_3d                   0.03           1440          0.00
-  do_bdy_3d                     0.00              0          0.00
-  do_temperature                5.70           2880          0.15
-   temperature-halo             0.36           1440          0.01
-  do_salinity                   4.28           2880          0.11
-   salinity-halo                0.49           1440          0.01
-  coordinates                   1.00           1443          0.03
-  do_internal_pressure          2.27           1442          0.06
-  do_nonhydrostatic             0.00              0          0.00
-   nonhyd overhead              0.00              0          0.00
-  start_macro                   0.38           1440          0.01
-  stop_macro                    4.31           1440          0.11
-  eq_state                      1.83           1442          0.05
-  tracer_stirring               0.00              0          0.00
-   sum tracer_diffusion         0.00              0          0.00
-  calc_mean_fields              0.00              0          0.00
-  do_meteo                     45.32          43204          1.17
-  getm_bio                   3675.05           2160         94.79
-  integrate_2d other           53.15         172800          1.37
-  integrate_3d other            1.03           4320          0.03
-  do_input                      1.49          43200          0.04
-  do_output                     2.94          43202          0.08
-  output_manager_save           0.00          86400          0.00
-  do_output_processing          0.00          43200          0.00
-   sum do_advection           149.40        1363680          3.85
-   do_advection-halo           21.63          66240          0.56
-   sum do_advection_3d        197.06          84960          5.08
-   do_advection_3d-halo         0.00              0          0.00
-   sum check_3d_fields          0.00              0          0.00
-  numerical mixing analysi      0.49           2880          0.01
-   sum do_halo_2d               0.78         286612          0.02
-   sum do_halo_3d               0.95          96846          0.02
-   sum wait_halo              603.95         383458         15.58
-   advection getm_bio         171.50           1440          4.42
-  do_les_2d                     0.00              0          0.00
-  do_les_3d                     0.00              0          0.00
-   sum les_smagorinsky          0.00              0          0.00
-  waves                         0.00              0          0.00
-              TIMERS SUM     3877.10        3293425        100.00
- ------------------------------------------------------------------------
-    Communication with other sub-domains:
-        2D data exchange:                   419  MB
-        3D data exchange:                  2269  MB
- ------------------------------------------------------------------------
-    Copyright (C) Karsten Bolding and Hans Burchard.
-    under the General Public License (GPL) - http://www.gnu.org 
- ------------------------------------------------------------------------
+            2015-01-02 00:00:00: reading meteo data - 2015-01-02 01:00:00
+            2015-01-02 00:01:00: reading river data ....        21187
+    10:02:43.372 n=    39463300
+    10:02:59.854 n=    39463400
+    10:03:16.434 n=    39463500
+    10:03:38.611 n=    39463600
+    10:03:55.500 n=    39463700
+    10:04:11.770 n=    39463800
+    10:04:33.269 n=    39463900
+    10:04:49.239 n=    39464000
+    10:05:05.790 n=    39464100
+            2015-01-02 01:00:00: reading meteo data - 2015-01-02 02:00:00
+    10:05:29.653 n=    39464200
+    10:05:46.350 n=    39464300
+    10:06:02.759 n=    39464400
+    10:06:24.470 n=    39464500
+    10:06:41.256 n=    39464600
+    10:06:57.790 n=    39464700
+    10:07:20.061 n=    39464800
+    10:07:37.402 n=    39464900
+    10:07:53.607 n=    39465000
+            2015-01-02 02:00:00: reading meteo data - 2015-01-02 03:00:00
+    10:08:15.265 n=    39465100
+    10:08:33.536 n=    39465200
+    10:08:49.822 n=    39465300
+    10:09:13.050 n=    39465400
+    10:09:30.200 n=    39465500
+    10:09:46.609 n=    39465600
+    10:10:08.835 n=    39465700
+    10:10:25.287 n=    39465800
+    10:10:42.434 n=    39465900
+            2015-01-02 03:00:00: reading meteo data - 2015-01-02 04:00:00
+    10:11:03.731 n=    39466000
+    10:11:19.967 n=    39466100
+    10:11:36.860 n=    39466200
+    10:12:00.303 n=    39466300
+    10:12:18.437 n=    39466400
+    10:12:34.796 n=    39466500
+    10:12:56.177 n=    39466600
+    10:13:12.577 n=    39466700
+    10:13:29.092 n=    39466800
+            2015-01-02 04:00:00: reading meteo data - 2015-01-02 05:00:00
+    10:13:52.076 n=    39466900
+    10:14:08.743 n=    39467000
+    10:14:24.778 n=    39467100
+    10:14:46.426 n=    39467200
+    10:15:03.009 n=    39467300
+    10:15:20.272 n=    39467400
+    10:15:43.015 n=    39467500
+    10:15:59.439 n=    39467600
+    10:16:15.959 n=    39467700
+            2015-01-02 05:00:00: reading meteo data - 2015-01-02 06:00:00
+    10:16:39.174 n=    39467800
+    10:16:55.928 n=    39467900
+    10:17:11.973 n=    39468000
+    10:17:35.270 n=    39468100
+    10:17:51.686 n=    39468200
+    10:18:09.524 n=    39468300
+    10:18:31.682 n=    39468400
+    10:18:48.014 n=    39468500
+    10:19:04.285 n=    39468600
+            2015-01-02 06:00:00: reading meteo data - 2015-01-02 07:00:00
+    10:19:26.176 n=    39468700
+    10:19:42.915 n=    39468800
+    10:19:59.392 n=    39468900
+    10:20:21.178 n=    39469000
+    10:20:38.546 n=    39469100
+    10:20:54.737 n=    39469200
+    10:21:17.230 n=    39469300
+    10:21:35.265 n=    39469400
+    10:21:52.146 n=    39469500
+            2015-01-02 07:00:00: reading meteo data - 2015-01-02 08:00:00
+    10:22:13.984 n=    39469600
+    10:22:29.996 n=    39469700
+    10:22:46.423 n=    39469800
+    10:23:08.580 n=    39469900
+    10:23:25.439 n=    39470000
+    10:23:42.557 n=    39470100
+    10:24:04.751 n=    39470200
+    10:24:20.750 n=    39470300
+    10:24:37.753 n=    39470400
+            2015-01-02 08:00:00: reading meteo data - 2015-01-02 09:00:00
+    10:25:00.417 n=    39470500
+    10:25:17.248 n=    39470600
+    10:25:34.381 n=    39470700
+    10:25:56.033 n=    39470800
+    10:26:12.604 n=    39470900
+    10:26:28.862 n=    39471000
+    10:26:50.645 n=    39471100
+    10:27:07.555 n=    39471200
+    10:27:23.723 n=    39471300
+            2015-01-02 09:00:00: reading meteo data - 2015-01-02 10:00:00
+    10:27:45.162 n=    39471400
+    10:28:03.317 n=    39471500
+    10:28:19.612 n=    39471600
+    10:28:41.808 n=    39471700
+    10:28:58.063 n=    39471800
+    10:29:14.591 n=    39471900
+    10:29:36.146 n=    39472000
+    10:29:52.372 n=    39472100
+    10:30:09.346 n=    39472200
+            2015-01-02 10:00:00: reading meteo data - 2015-01-02 11:00:00
+    10:30:32.006 n=    39472300
+    10:30:48.129 n=    39472400
+    10:31:05.302 n=    39472500
+    10:31:28.336 n=    39472600
+    10:31:46.311 n=    39472700
+    10:32:03.715 n=    39472800
+    10:32:25.063 n=    39472900
+    10:32:41.255 n=    39473000
+    10:32:58.073 n=    39473100
+            2015-01-02 11:00:00: reading meteo data - 2015-01-02 12:00:00
+    10:33:19.826 n=    39473200
+    10:33:36.032 n=    39473300
+    10:33:52.531 n=    39473400
+    10:34:14.221 n=    39473500
+    10:34:30.916 n=    39473600
+    10:34:48.388 n=    39473700
+    10:35:11.534 n=    39473800
+    10:35:28.693 n=    39473900
+    10:35:45.430 n=    39474000
+            2015-01-02 12:00:00: reading meteo data - 2015-01-02 13:00:00
+    10:36:10.190 n=    39474100
+    10:36:27.945 n=    39474200
+    10:36:46.163 n=    39474300
+    10:37:08.699 n=    39474400
+    10:37:25.811 n=    39474500
+    10:37:43.081 n=    39474600
+    10:38:05.310 n=    39474700
+    10:38:22.312 n=    39474800
+    10:38:39.745 n=    39474900
+            2015-01-02 13:00:00: reading meteo data - 2015-01-02 14:00:00
+    10:39:01.699 n=    39475000
+    10:39:18.261 n=    39475100
+    10:39:34.991 n=    39475200
+    10:39:58.373 n=    39475300
+    10:40:14.938 n=    39475400
+    10:40:31.329 n=    39475500
+    10:40:52.986 n=    39475600
+    10:41:09.445 n=    39475700
+    10:41:25.780 n=    39475800
+            2015-01-02 14:00:00: reading meteo data - 2015-01-02 15:00:00
+    10:41:49.194 n=    39475900
+    10:42:06.742 n=    39476000
+    10:42:22.946 n=    39476100
+    10:42:45.858 n=    39476200
+    10:43:03.425 n=    39476300
+    10:43:22.759 n=    39476400
