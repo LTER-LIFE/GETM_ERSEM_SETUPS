@@ -12,7 +12,7 @@
   hotstart_bio=.true.,
   bio_hor_adv=5
   bio_ver_adv=5
-  bio_adv_split=1
+  bio_adv_split=2
   bio_AH=-1.
  /
 &getm_bfm_nml

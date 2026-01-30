@@ -94,7 +94,7 @@
 			<elev_const>0.0</elev_const>
 			<elev_file>elev.nc</elev_file>
 			<MM>1</MM>
-			<vel2d_adv_split>1</vel2d_adv_split>
+			<vel2d_adv_split>2</vel2d_adv_split>
 			<vel2d_adv_hor>5</vel2d_adv_hor>
                         <Am_method>1</Am_method>
 			<Am_const>10.0</Am_const>
@@ -124,7 +124,7 @@
 			<bdy3d_tmrlx_min>0.0</bdy3d_tmrlx_min>
 			<bdy3d_tmrlx_max>0.25</bdy3d_tmrlx_max>
 			<bdy3d_tmrlx_ucut>0.03</bdy3d_tmrlx_ucut>
-			<vel3d_adv_split>1</vel3d_adv_split>
+			<vel3d_adv_split>2</vel3d_adv_split>
 			<vel3d_adv_hor>5</vel3d_adv_hor>
 			<vel3d_adv_ver>5</vel3d_adv_ver>
 			<calc_temp>True</calc_temp>
@@ -149,7 +149,7 @@
 			<temp_file>initial.nc</temp_file>
 			<temp_name>temp</temp_name>
 			<temp_field_no>1</temp_field_no>
-			<temp_adv_split>1</temp_adv_split>
+			<temp_adv_split>2</temp_adv_split>
 			<temp_adv_hor>5</temp_adv_hor>
 			<temp_adv_ver>5</temp_adv_ver>
                         <avmolt>0.0</avmolt>
@@ -178,7 +178,7 @@
 			<salt_file>initial.nc</salt_file>
 			<salt_name>salt</salt_name>
 			<salt_field_no>1</salt_field_no>
-			<salt_adv_split>1</salt_adv_split>
+			<salt_adv_split>2</salt_adv_split>
 			<salt_adv_hor>5</salt_adv_hor>
 			<salt_adv_ver>5</salt_adv_ver>
 
