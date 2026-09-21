@@ -106,8 +106,13 @@ clone_repos() {
     # Replace BenOrganism.nml in BFM for the coupled model:
     rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/GlobalDefsBFM.model" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/General/GlobalDefsBFM.model"
 
-    # Replace wave.F90 in BFM/Silt to reduce minimum threshold for Tz_out for coupled model:
-    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave.F90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/Silt/wave.F90"
+    # Replace wave related source code for updated wave formulation in the coupled model:
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/wave.F90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/Silt/wave.F90"
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/ModuleSilt.f90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/Silt/ModuleSilt.f90"
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/Silt.F90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/Silt/Silt.F90"
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/Silt.nml" "$HOME/home/BFM_SOURCES/bfm_2016/bfm_nml/Silt.nml"
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/getm_bio.F90" "$HOME/home/GETM_SOURCES/getm_coupled_bfm_2016/src/3d/getm_bio.F90"
+    
 
     echo "==========================================="
     echo " Cloning completed successfully"
