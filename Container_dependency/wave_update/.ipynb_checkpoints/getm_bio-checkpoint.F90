@@ -83,11 +83,10 @@
    logical, public           :: hotstart_bio=.true.
    logical,public            :: no_hortr_silt=.false.
 !  effective-fetch fields for the BFM Silt wave scheme (Silt.nml wave_method
-!  3 and 4), read from wave_fetch_file (getm_bio.inp, &getm_bfm_wave_nml)
+!  2), read from wave_fetch_file (getm_bio.inp, &getm_bfm_wave_nml)
    character(len=PATH_MAX)   :: wave_fetch_file=''
    logical                   :: have_wave_fetch=.false.
-   logical                   :: have_wave_cap=.false.
-   REALTYPE, dimension(:,:,:), allocatable :: wave_fetch_dir,wave_fetch_cap
+   REALTYPE, dimension(:,:,:), allocatable :: wave_fetch_dir
    REALTYPE, dimension(:,:),   allocatable :: wave_fetch_exp,wave_fetch_tp
 #endif
 !
@@ -345,17 +344,13 @@
      if (len_trim(wave_fetch_file) .gt. 0) then
        call init_wave_fetch()
      else
-       LEVEL2 'no wave_fetch_file: Silt wave_method 3 and 4 not available'
+       LEVEL2 'no wave_fetch_file: Silt wave_method 2 not available'
      end if
      LEVEL2 'Silt wave_method= ',wave_method
-     if (wave_method .ge. 3 .and. .not. have_wave_fetch) then
+     if (wave_method .ge. 2 .and. .not. have_wave_fetch) then
        call getm_error('init_getm_bio', &
-            'Silt.nml wave_method 3/4 needs wave_fetch_file in &getm_bfm_wave_nml of ' &
+            'Silt.nml wave_method 2 needs wave_fetch_file in &getm_bfm_wave_nml of ' &
             //trim(input_file))
-     end if
-     if (wave_method .eq. 4 .and. .not. have_wave_cap) then
-       call getm_error('init_getm_bio', &
-            'Silt.nml wave_method 4 needs fetch_cap_* fields in '//trim(wave_fetch_file))
      end if
 
      if ( bio_setup >=2 ) then
@@ -510,14 +505,13 @@
 !
 ! !DESCRIPTION:
 !  Reads the effective-fetch fields used by the BFM Silt wave scheme
-!  (Silt.nml: wave_method 3 or 4) from wave_fetch_file. The file has the
+!  (Silt.nml: wave_method 2) from wave_fetch_file. The file has the
 !  dimensions of the bathymetry file and holds
 !    fetch_dir_000 ... fetch_dir_350   directional fetch, bearing wind comes from
 !    fetch_exp, fetch_tp               direction-mean exposure and period fetch
-!    fetch_cap_000 ... fetch_cap_350   optional, for wave_method 4
 !  Bearings are geographic; do_getm_bio passes convc so that BFM can convert
 !  the grid-relative wind direction. Create the file with
-!  DWS_CLI/tools/wave_fetch_grid.py.
+!  bin/wave_effective_fetch.py.
 !
 ! !USES:
    use domain, only: ilg,ihg,jlg,jhg,ill,ihl,jll,jhl
@@ -544,14 +538,11 @@
 
    allocate(wave_fetch_dir(NBEAR_FETCH,E2DFIELD),stat=rc)
    if (rc /= 0) stop 'init_wave_fetch: Error allocating memory (wave_fetch_dir)'
-   allocate(wave_fetch_cap(NBEAR_FETCH,E2DFIELD),stat=rc)
-   if (rc /= 0) stop 'init_wave_fetch: Error allocating memory (wave_fetch_cap)'
    allocate(wave_fetch_exp(E2DFIELD),stat=rc)
    if (rc /= 0) stop 'init_wave_fetch: Error allocating memory (wave_fetch_exp)'
    allocate(wave_fetch_tp(E2DFIELD),stat=rc)
    if (rc /= 0) stop 'init_wave_fetch: Error allocating memory (wave_fetch_tp)'
    wave_fetch_dir=-_ONE_
-   wave_fetch_cap=-_ONE_
    wave_fetch_exp=-_ONE_
    wave_fetch_tp=-_ONE_
 
@@ -564,11 +555,6 @@
                      wave_fetch_exp(ill:ihl,jll:jhl))
    call get_2d_field(trim(wave_fetch_file),'fetch_tp',ilg,ihg,jlg,jhg,.true., &
                      wave_fetch_tp(ill:ihl,jll:jhl))
-   do k=1,NBEAR_FETCH
-      write(vname,'(A,I3.3)') 'fetch_cap_',(k-1)*(360/NBEAR_FETCH)
-      call get_2d_field(trim(wave_fetch_file),trim(vname),ilg,ihg,jlg,jhg,.false., &
-                        wave_fetch_cap(k,ill:ihl,jll:jhl))
-   end do
 
 !  every wet column needs valid values
    nbad=0
@@ -587,24 +573,11 @@
            'missing or negative fetch in '//trim(wave_fetch_file))
    end if
 
-   have_wave_cap=.true.
-   do j=jmin,jmax
-      do i=imin,imax
-         if (az(i,j) .ge. 1) then
-            if (any(.not.(wave_fetch_cap(:,i,j) .ge. _ZERO_))) have_wave_cap=.false.
-         end if
-      end do
-   end do
    have_wave_fetch=.true.
 
    fmin=minval(wave_fetch_exp(imin:imax,jmin:jmax),mask=az(imin:imax,jmin:jmax).ge.1)
    fmax=maxval(wave_fetch_exp(imin:imax,jmin:jmax),mask=az(imin:imax,jmin:jmax).ge.1)
    LEVEL3 'fetch_exp range (m): ',fmin,fmax
-   if (have_wave_cap) then
-      LEVEL3 'fetch_cap fields found: wave_method 4 available'
-   else
-      LEVEL3 'no fetch_cap fields: wave_method 4 not available'
-   end if
 
    return
    end subroutine init_wave_fetch
@@ -840,14 +813,8 @@
                                   I_0,julianday,dry_z(i,j))
 !          fetch fields and grid convergence for the Silt wave scheme
            if (have_wave_fetch) then
-             if (have_wave_cap) then
-               call set_wave_column(convc(i,j),wave_fetch_dir(:,i,j), &
-                      wave_fetch_exp(i,j),wave_fetch_tp(i,j),         &
-                      fetch_cap=wave_fetch_cap(:,i,j))
-             else
-               call set_wave_column(convc(i,j),wave_fetch_dir(:,i,j), &
-                      wave_fetch_exp(i,j),wave_fetch_tp(i,j))
-             end if
+             call set_wave_column(convc(i,j),wave_fetch_dir(:,i,j), &
+                    wave_fetch_exp(i,j),wave_fetch_tp(i,j))
            end if
 !AN           call set_env_bio_bfm(bath_dep,sqrt(taub(i,j)),dl(i,j),u10(i,j),v10(i,j),&
 !AN                                I_0,julianday,dry_z(i,j) &

@@ -15,13 +15,11 @@
 !  to various wave calculation methods
 !
 !  wave_mode 1: simple JONSWAP equilibrium wave method, as originally compiled
-!  wave_mode 2: JONSWAP with namelist depth-duration law and breaker ratio
-!  wave_mode 3: effective-fetch scheme (Breugem & Holthuijsen local sea,
+!  wave_mode 2: effective-fetch scheme (Breugem & Holthuijsen local sea,
 !               propagated sea on the exposure fetch, SPM peak period)
-!  wave_mode 4: JONSWAP height with an effective-fetch cap
-!  Parameters and column fetch values of modes 2-4 are in mem_Silt
-!  (Silt.nml, set_wave_column). The modes are described and calibrated in
-!  DWS_CLI/waves_sensitivity/tdm_calibration/fetch_formulation.
+!  Parameters and column fetch values of mode 2 are in mem_Silt
+!  (Silt.nml, set_wave_column).
+!
 !
 !
 ! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -90,12 +88,8 @@
    select case (wave_mode)
    case (1)   ! simple JONSWAP equilibrium model
      call jonswap(Hhs,Ttz,Phiw,wind,windx,windy,depth)
-   case (2)   ! JONSWAP, namelist depth-duration law
-     call jonswap_general(Hhs,Ttz,Phiw,wind,windx,windy,depth,.false.)
-   case (3)   ! effective-fetch scheme
+   case (2)   ! effective-fetch scheme
      call effective_fetch_waves(Hhs,Ttz,Phiw,wind,windx,windy,depth)
-   case (4)   ! JONSWAP with effective-fetch cap on the height
-     call jonswap_general(Hhs,Ttz,Phiw,wind,windx,windy,depth,.true.)
    case default
      write(*,*) 'do_wave: unknown wave_mode ',wave_mode
      stop 'do_wave'
@@ -171,81 +165,7 @@
 !-----------------------------------------------------------------------
 !BOP
 !
-! !IROUTINE: JONSWAP with namelist depth-duration law (wave_mode 2 and 4)
-!
-! !INTERFACE:
-   subroutine jonswap_general(Hhs,Ttz,Phiw,wind,windx,windy,depth,fetch_cap)
-!
-! !DESCRIPTION:
-! As jonswap(), with Tdm = (depth/10)^wave_p * wave_Tdmax and
-! Hs <= wave_gamma * depth from Silt.nml. With the defaults (wave_p=2,
-! wave_Tdmax=10800, wave_gamma=0.4, wave_Tz_min=1) it reproduces jonswap().
-! With fetch_cap, the fetch used for the height is limited by the effective
-! fetch at the wind direction (wave_fetch_cap); the period is not capped.
-!
-! !USES:
-   use mem_Silt, only: wave_p,wave_Tdmax,wave_gamma,wave_Tz_min, &
-                       wave_convc,wave_fetch_cap,wave_cap_set
-   use mem, only: InitializeModel
-   IMPLICIT NONE
-!
-! !INPUT PARAMETERS:
-   REALTYPE, intent(in)                 :: wind,windx,windy,depth
-   logical,  intent(in)                 :: fetch_cap
-   REALTYPE, intent(out)                :: Hhs,Ttz,Phiw
-!
-! !LOCAL VARIABLES
-   REALTYPE, parameter  :: g=9.81
-   REALTYPE             :: U,F,FH,Fstar,FstarH,Tdm
-   REALTYPE, parameter  :: Hs_min=0.0
-!EOP
-!-----------------------------------------------------------------------
-!BOC
-   if (fetch_cap .and. .not. wave_cap_set) then
-!    init_var_bfm calls SiltDynamics on a dummy column before GETM has read
-!    the fetch file: return calm conditions during that call only
-     if (InitializeModel .ne. 0) then
-       Hhs=0.0D0
-       Ttz=wave_Tz_min
-       Phiw=0.0D0
-       return
-     endif
-     write(*,*) 'jonswap_general: wave_method 4 needs fetch_cap_* fields in wave_fetch_file'
-     stop 'jonswap_general'
-   endif
-
-   if (wind.gt.1E-3) then
-     if (depth.lt.10.0) then
-       Tdm=((depth/10.0)**wave_p)*wave_Tdmax
-     else
-       Tdm=wave_Tdmax
-     endif
-     F=wind*Tdm
-     U=0.7*(wind**1.2)
-     Fstar=g*F/(U**2)
-     call wind_direction(windx,windy,Phiw)
-     FstarH=Fstar
-     if (fetch_cap) then
-       FH=min(F,fetch_at_wind(Phiw,wave_convc,wave_fetch_cap))
-       FstarH=g*FH/(U**2)
-     endif
-     Hhs=max(Hs_min,min(0.243*(U**2)/g,0.0016*sqrt(FstarH)*(U**2)/g))
-     Hhs=min(Hhs,wave_gamma*depth)
-     Ttz=max(wave_Tz_min,min(8.14*U/g,0.286*(Fstar**0.33)*U/g))
-   else
-     Hhs=0.0
-     Ttz=wave_Tz_min
-     Phiw=0.0
-   endif
-
-   return
-   end subroutine jonswap_general
-!EOC
-
-!-----------------------------------------------------------------------
-!BOP
-!
-! !IROUTINE: Effective-fetch wave scheme (wave_mode 3)
+! !IROUTINE: Effective-fetch wave scheme (wave_mode 2)
 !
 ! !INTERFACE:
    subroutine effective_fetch_waves(Hhs,Ttz,Phiw,wind,windx,windy,depth)
@@ -291,7 +211,7 @@
        Phiw=0.0D0
        return
      endif
-     write(*,*) 'effective_fetch_waves: wave_method 3 needs wave_fetch_file in getm_bio.inp'
+     write(*,*) 'effective_fetch_waves: wave_method 2 needs wave_fetch_file in getm_bio.inp'
      stop 'effective_fetch_waves'
    endif
 
