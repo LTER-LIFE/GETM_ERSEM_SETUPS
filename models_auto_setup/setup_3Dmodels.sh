@@ -113,6 +113,9 @@ clone_repos() {
     rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/Silt.nml" "$HOME/home/BFM_SOURCES/bfm_2016/bfm_nml/Silt.nml"
     rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/getm_bio.F90" "$HOME/home/GETM_SOURCES/getm_coupled_bfm_2016/src/3d/getm_bio.F90"
     
+    # Macroaggregate sinking scaling factor (p_fMAsink in PelGlobal.nml):
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/sinking_update/ModulePelGlobal.f90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/PelB/ModulePelGlobal.f90"
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/sinking_update/PelGlobal.F90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/PelB/PelGlobal.F90"
 
     echo "==========================================="
     echo " Cloning completed successfully"
@@ -159,6 +162,10 @@ compile_models(){
     rm out
     ln -s "/export/lv9/projects/dws/model_output/active_runs/dws_500m" "$HOME/home/GETM_ERSEM_SETUPS/dws_500m/out"
     
+    # --- updated wave scheme: Silt.nml with effective-fetch wave method (2) ---
+    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/Silt.nml" Silt.nml
+    sed -i 's/^wave_method=.*/wave_method=2/' Silt.nml
+
     # --- copy ecological nml files (optional) ---
     # rsync -av /export/lv9/user/qzhan/home/BFM_SOURCES/bfm-git/bfm_nml/ .
     ## To select biological variables output: 'bio_bfm.nml'
