@@ -57,7 +57,9 @@
     ZI_Fc, ETW_Ben, RI_Fc, ZI_Fn, ZI_Fp, RI_Fn, RI_Fp, RI_Fs, jmY3c,&
     R2_Benn,R2_Benc,R3_Benc,R3_Benn,R3_Benp,puPIY3,puZEY3, &
     puP6Y3, efilP6Y3,efilPART,NO_BOXES_XY, Depth_Ben,  &
-    ctfPm2c,ctfZim2c,ctfZem2c,OcDepth,efsatY3
+    ctfPm2c,ctfZim2c,ctfZem2c,OcDepth,efsatY3, &
+    foodY3,foodPTY3,foodR2Y3,foodZIY3,activeY3,edryY3, &
+    ruY3c,ruPIY3c,ruR2Y3c,ruZIY3c,reY3c,rrmY3c,jmnY3c,jmxY3c,jmatY3c
   !apoiter to pelagic
   use mem,only:iiMesoZooPlankton,ppMesoZooPlankton,iiPhytoPlankton,&
     ppPhytoPlankton,iiP1,iiP5,iiP6,iiMicroZooPlankton,ppMicroZooPlankton,ppO2o,&
@@ -458,6 +460,14 @@
   ! suf= food uptake per unit of food
   suf  =   rugc/ foodpm2
 
+  !QZ diagnostics: food as seen by the filter feeders and filtering switch
+  foodY3(:,y)   = food
+  foodPTY3(:,y) = food_PT
+  foodR2Y3(:,y) = R2x_food_c + food_R3
+  foodZIY3(:,y) = food_ZI + food_ZE
+  activeY3(:,y) = min(DONE,active)
+  edryY3(:)     = edry
+
   !-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   ! Execreted part:
   !-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -794,6 +804,11 @@ endif
 !stop
 
   rugc_corr=ruPIc+ ruR2c + ruR3c +  ruZIc+ ruZEc+ ruR6c
+  !QZ diagnostics: realized ingestion
+  ruY3c(:,y)   = rugc_corr
+  ruPIY3c(:,y) = ruPIc
+  ruR2Y3c(:,y) = ruR2c + ruR3c
+  ruZIY3c(:,y) = ruZIc + ruZEc
   rrac= p_pur(y)*( rugc_corr- retR1c-retR6c- retQ6c)
   jnetYc=max(ZERO,ruPIc+ ruR2c + ruR3c +  ruZIc+ ruZEc+ ruR6c &
           -rrac -retQ6c-retR1c-retR6c)
@@ -831,6 +846,10 @@ endif
   renn = max( ZERO, renn+ yn(:) -DONE * p_qnc* yc(:))
   renp = max( ZERO, renp+ yp(:) -DONE * p_qpc* yc(:))
 
+  !QZ diagnostics: faeces + excretion (incl. excess-C correction renc and urea C),
+  !   before mortality is added to retQ6c
+  reY3c(:,y) = retR1c + renn/p_qnUc + retR6c + retQ6c
+
 
   !-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   ! Calculation of respiration:
@@ -842,6 +861,8 @@ endif
   call addbotflux_vector(POSITIVE,iiBen,ppyc,iiPel,ppO3c,r*p_pePel(y))
   jPLO3c=jPLO3c+r*p_pePel(y)
   jrrY3c(:,y)=r
+  !QZ diagnostics: filtering + rest respiration; digestion respiration = jrrY3c - rrmY3c
+  rrmY3c(:,y)=rrmc
 
   call flux_vector(iiBen, ppG2o,ppG2o,-( r/ MW_C))
   call addbotflux_vector(POSITIVE,iiPel,ppO2o,iiBen,ppG2o, &
@@ -875,6 +896,9 @@ endif
                        *insw_vector(TauBed-p_xtauC(y))
 
   rx_any  =   max(ZERO,yc(:))* sm
+  !QZ diagnostics: total natural mortality (to Q1 + Q6) and its bed-stress part
+  jmnY3c(:,y) = rx_any
+  jmxY3c(:,y) = max(ZERO,yc(:))*(sm - p_sd(y)*et - p_sd2(y)*max(ZERO,Y3c+Yy3c))
   reQ1c  =   rx_any*p_peZ_R1c
   reQ6c  =   rx_any-reQ1c
   rx_any  =   max(ZERO,yn(:)) *sm
@@ -1067,6 +1091,8 @@ endif
         call flux_vector(iiBen,ppYs3c,ppYs3c,-Ys3c*sx_any/et*insw_vector(Ys3c) ) 
         sx_any=p_smYy3c+sx_any
         call flux_vector(iiBen, ppYy3c,ppY3c, yc* sx_any/et*insw_vector(yc) )
+        !QZ diagnostics: maturation Yy3 -> Y3 (incl. forced maturation of starving young)
+        jmatY3c(:) = yc*sx_any/et*insw_vector(yc)
         call flux_vector(iiBen, ppYy3n,ppY3n, yn* sx_any/et*insw_vector(yn) )
         call flux_vector(iiBen, ppYy3p,ppY3p, yp* sx_any/et*insw_vector(yp) )
         jCaCO3Y3c=jCaCO3Y3c+p_qCaCO3Y3c * max(ZERO,jnetY3c-jnetYy3c)

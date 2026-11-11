@@ -53,6 +53,7 @@
   use mem, ONLY: ppQ6c, ppQ6n, ppQ6p,ppG3c,ppO3c, ppG2o,ppO2o, ppQ1c,ppQ11c, &
     ppQun,ppQ1un, ppK1p, ppK11p, ppDfm,ppDcm,ppD6m, ppD7m, ppD8m, ppD9m, &
     iiSuspensionFeeders, iiBenBacteria,iiBenPhyto,jmYIc,jmY3c,jugYIc,jrrYIc,&
+    jpredY3c, &
     iiH1,iiH2,iiH3,iiHN,iiBen,iiPel, iiY1,iiY2,iiY4,iiY5,iiC, iiN, iiP,iiS,iiL,&
     ppBenOrganisms, ppSuspensionFeeders, ppBenBacteria,ppBenPhyto, &
     iiBenOrganisms,max_change_per_step , &
@@ -460,6 +461,8 @@
     ruYIn  = qnc* ruYIc
     ruYIp  = qpc* ruYIc
     jmY3c(:,i)=jmY3c(:,i)+ruYIc
+    !QZ diagnostics: predation on Y3/Yy3 summed over benthic predators (reset in BenGlobal)
+    jpredY3c(:,i)=jpredY3c(:,i)+ruYIc
 
     call flux_vector( iiBen, ppSuspensionFeeders(i,iiC),ppyc, ruYIc )
     call flux_vector( iiBen, ppSuspensionFeeders(i,iiN),ppyn, ruYIn )

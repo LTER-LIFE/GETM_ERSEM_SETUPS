@@ -541,6 +541,25 @@ end
   jrrYIc(BenOrganisms): rest respiration BenOrganisms: mg C/m2/d
   rugY3c(SuspensionFeeders) :gross food uptake SuspensionFeeders :mg C/m2/d
   efsatY3(SuspensionFeeders) : food saturation SuspensionFeeders :-
+  # SuspensionFeeders_update: full carbon budget of Y3/Yy3 (FilterFeeder, BenOrganism, Y3Z2Coup)
+  foodY3(SuspensionFeeders)  : apparent total food near bed SuspensionFeeders : mg C/m3
+  foodPTY3(SuspensionFeeders): apparent phytoplankton food SuspensionFeeders : mg C/m3
+  foodR2Y3(SuspensionFeeders): apparent TEP food SuspensionFeeders : mg C/m3
+  foodZIY3(SuspensionFeeders): apparent zooplankton food SuspensionFeeders : mg C/m3
+  activeY3(SuspensionFeeders): filtering activity switch SuspensionFeeders : -
+  ruY3c(SuspensionFeeders)   : realized total ingestion SuspensionFeeders : mg C/m2/d
+  ruPIY3c(SuspensionFeeders) : realized phytoplankton ingestion SuspensionFeeders : mg C/m2/d
+  ruR2Y3c(SuspensionFeeders) : realized TEP ingestion SuspensionFeeders : mg C/m2/d
+  ruZIY3c(SuspensionFeeders) : realized zooplankton ingestion SuspensionFeeders : mg C/m2/d
+  reY3c(SuspensionFeeders)   : faeces and excretion SuspensionFeeders : mg C/m2/d
+  rrmY3c(SuspensionFeeders)  : filtering and rest respiration SuspensionFeeders : mg C/m2/d
+  jmnY3c(SuspensionFeeders)  : natural mortality SuspensionFeeders : mg C/m2/d
+  jmxY3c(SuspensionFeeders)  : bed-stress mortality SuspensionFeeders : mg C/m2/d
+  jpredY3c(SuspensionFeeders): predation by benthic organisms on SuspensionFeeders : mg C/m2/d
+  edryY3   : drying limitation of filtering : -
+  jmatY3c  : maturation young to adult SuspensionFeeders : mg C/m2/d
+  jY3Z2c   : flux young SuspensionFeeders to larvae Z2 : mg C/m2/d
+  jZ2Y3c   : settlement larvae Z2 to young SuspensionFeeders : mg C/m2/d
   jrrPTc:rest respiration phytoplankton: mg C/m2/d
   jrrMec:rest respiration mesozooplankton: mg C/m2/d
   jrrMic:rest respiration microzooplankton: mg C/m2/d
@@ -807,7 +826,8 @@ end
 3d-calc flux  perm2
   grsPPm2=(P.c<-O3c):gross primary production:mg C/m2/d
   netPPm2=(P.c<-O3c)-(P.c->O3c):net primary production:mg C/m2/d
-  netPPBm2=(BP1.c<-O3c)-(BP1.c->O3c):net benthic primary production:mg C/m2/d  
+#QZ disabled: BP1 is a 2d-state; GenerateGlobalBFMF90Code stops with "Error 105: BP1.c does not exist in 3d-state"
+#  netPPBm2=(BP1.c<-O3c)-(BP1.c->O3c):net benthic primary production:mg C/m2/d
   jnetR6c=(R6c<-P.c+Z.c+B1c)-(R6c->B1c):net detritus production:mg C/m2/d
   jnetR6n=(R6n<-P.n+B1n)-(R6n->B1n):net detritus production:mmol N/m2/d
   jnetR6p=(R6p<-P.p+B1p)-(R6p->B1p):net detritus production:mmol P/m2/d

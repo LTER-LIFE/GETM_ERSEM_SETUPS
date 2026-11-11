@@ -113,9 +113,8 @@ clone_repos() {
     rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/Silt.nml" "$HOME/home/BFM_SOURCES/bfm_2016/bfm_nml/Silt.nml"
     rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/wave_update/getm_bio.F90" "$HOME/home/GETM_SOURCES/getm_coupled_bfm_2016/src/3d/getm_bio.F90"
     
-    # Macroaggregate sinking scaling factor (p_fMAsink in PelGlobal.nml):
-    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/sinking_update/ModulePelGlobal.f90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/PelB/ModulePelGlobal.f90"
-    rsync -av --force "$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/sinking_update/PelGlobal.F90" "$HOME/home/BFM_SOURCES/bfm_2016/src/BFM/PelB/PelGlobal.F90"
+    # Macroaggregate sinking (PelGlobal) and suspension-feeder updates are applied
+    # in apply_source_updates, which runs before every compilation.
 
     echo "==========================================="
     echo " Cloning completed successfully"
@@ -124,11 +123,48 @@ clone_repos() {
 
 
 ###############################################################################
+# SOURCE UPDATES (applied before every compilation, modes 1 and 2)
+###############################################################################
+apply_source_updates(){
+    SRC_UPD="$HOME/home/GETM_ERSEM_SETUPS/Container_dependency/SuspensionFeeders_update"
+    BFM_SRC="$HOME/home/BFM_SOURCES/bfm_2016/src/BFM"
+    echo "Applying suspension-feeder source updates from $SRC_UPD ..."
+
+    for f in "$SRC_UPD/ModulePelGlobal.f90" "$SRC_UPD/PelGlobal.F90" \
+             "$SRC_UPD/FilterFeeder.F90" "$SRC_UPD/BenOrganism.F90" "$SRC_UPD/BenGlobal.F90" \
+             "$SRC_UPD/Y3Z2Coup.F90" "$SRC_UPD/PelForcingForBen.F90" "$SRC_UPD/GlobalDefsBFM.model"; do
+        [ -f "$f" ] || { echo "ERROR: missing $f"; exit 1; }
+    done
+
+    # Macroaggregate sinking scaling factor (p_fMAsink in PelGlobal.nml):
+    rsync -av --force "$SRC_UPD/ModulePelGlobal.f90" "$BFM_SRC/PelB/ModulePelGlobal.f90"
+    rsync -av --force "$SRC_UPD/PelGlobal.F90"       "$BFM_SRC/PelB/PelGlobal.F90"
+
+    # Issue 1: TEP near-bed correction uses sediR2 instead of sediR6:
+    rsync -av --force "$SRC_UPD/PelForcingForBen.F90" "$BFM_SRC/PelBen/PelForcingForBen.F90"
+
+    # Suspension-feeder carbon-budget diagnostics:
+    rsync -av --force "$SRC_UPD/FilterFeeder.F90" "$BFM_SRC/Ben/FilterFeeder.F90"
+    rsync -av --force "$SRC_UPD/BenOrganism.F90"  "$BFM_SRC/Ben/BenOrganism.F90"
+    rsync -av --force "$SRC_UPD/BenGlobal.F90"    "$BFM_SRC/Ben/BenGlobal.F90"
+    rsync -av --force "$SRC_UPD/Y3Z2Coup.F90"     "$BFM_SRC/PelBen/Y3Z2Coup.F90"
+
+    # Variable definitions (overrides Container_dependency/GlobalDefsBFM.model).
+    # touch: make it newer than ModuleMem.F90 so CMake re-runs GenerateGlobalBFMF90Code
+    rsync -av --force "$SRC_UPD/GlobalDefsBFM.model" "$BFM_SRC/General/GlobalDefsBFM.model"
+    touch "$BFM_SRC/General/GlobalDefsBFM.model"
+}
+
+
+###############################################################################
 # COMPILATION
 ###############################################################################
 compile_models(){
     echo "Starting compilation..."
-    
+
+    # --- Copy updated BFM sources into the source tree ---
+    apply_source_updates
+
     # --- Clean build directories ---
     rm -rf "$HOME/home/build"
     rm -rf "$HOME/tools"

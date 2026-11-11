@@ -30,7 +30,7 @@
   use mem, ONLY:    Yy3c,Z2c,sediMeZ,  D2STATE
   use mem, ONLY: max_change_per_step,NO_BOXES_XY, BoxNumberXY, BoxNumber, &
     ppYy3c,ppYy3n,ppYy3p,ppZ2c,ppZ2n,ppZ2p,iiPel,iiBen,iiZ2,iiYy3,&
-    PelBoxAbove, Depth,jspaY3c,TauBed, flux
+    PelBoxAbove, Depth,jspaY3c,TauBed, flux,jY3Z2c,jZ2Y3c
 
   use mem_Param,  ONLY: CalcMesoZooPlankton,CalcSuspensionFeeders
   use mem_FilterFeeder,ONLY:p_qnY3c=>p_qnc,p_qpY3c=>p_qpc,p_xtauC,p_sxresus, &
@@ -124,6 +124,9 @@
       call LimitChange(POSITIVE,ruYy3c,Z2c(BoxNumber)*Depth(BoxNumber),&
                                                     max_change_per_step)
       call LimitChange(POSITIVE,ruYy3c,cx_any(BoxNumberXY), max_change_per_step)
+      !QZ diagnostics: larval exchange between Yy3 and Z2
+      jY3Z2c(BoxNumberXY)=toZ2c      ! spawned larvae + resuspended young -> Z2
+      jZ2Y3c(BoxNumberXY)=ruYy3c     ! settlement Z2 -> Yy3
 !write(LOGUNIT,*) 'before use p_qnMEC'
 !stop
       ruYy3n  =   ruYy3c*p_qnMec(iiZ2)

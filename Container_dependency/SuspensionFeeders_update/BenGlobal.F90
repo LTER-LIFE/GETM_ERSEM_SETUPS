@@ -34,7 +34,7 @@
   use global_mem, ONLY:LOGUNIT,RLEN,ZERO
   use mem, ONLY: ruBPc, ruBPn, ruBPp, ruBPs, &
     jnetBPTc,jPIY3c,jZEY3c,jZIY3c,jY3N4n,jY3N1p,jY3RIc, jRIQIc,jRIQIs, &
-    jO2Y2o,jmYIc,jP6Y3c,jPIQ6s,jBenFishInput,jCaCO3Y3c, &
+    jO2Y2o,jmYIc,jP6Y3c,jPIQ6s,jBenFishInput,jCaCO3Y3c,jpredY3c, &
     ResetSource_D2_vector,flux_vector,NO_BOXES_XY,  &
     ppBenthicCO2,iiBenthicCO2, iiBenPhyto,ppBenPhyto, &
     ppBenUrea,iiBenUrea, ppBenLabileDetritus,iiBenLabileDetritus, &
@@ -110,6 +110,7 @@
 ! Mortality of FilterFeeders is initialized in PelB/PelGLobal.F90 because
 ! the mortality of benthic larvae is added to Yy3c
        jmYIc(:,:)=ZERO
+       jpredY3c(:,:)=ZERO   !QZ diagnostics: predation on SuspensionFeeders
        jBenFishInput(:)=ZERO 
        jPIY3c(:,:)=ZERO
        jP6Y3c(:,:)=ZERO
