@@ -21,7 +21,7 @@
   ben_init_file='Input/beninit_ersem.nc'
 /
 !-------------------------------------------------------------------------------
-!  Effective-fetch fields for the BFM Silt wave scheme (Silt.nml wave_method 3, 4)
+!  Effective-fetch fields for the BFM Silt wave scheme (Silt.nml wave_method 2)
 !  wave_fetch_file=  NetCDF file from DWS_CLI/tools/wave_fetch_grid.py, on the
 !                    grid of the bathymetry file; '' = not used (wave_method 1, 2)
 !-------------------------------------------------------------------------------
