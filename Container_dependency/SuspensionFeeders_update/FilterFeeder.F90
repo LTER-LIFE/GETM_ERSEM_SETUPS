@@ -192,7 +192,6 @@
   real(RLEN) :: clu
   real(RLEN) :: corr_max,corr_not
   real(RLEN),dimension(NO_BOXES_XY)  :: R6_corr !correction for power distitustion of R6 ln layer near sediment
-  real(RLEN),dimension(NO_BOXES_XY)  :: corr_mass !QZ mass-conservation cap D/f on the near-bed food enrichment
   real(RLEN),dimension(NO_BOXES_XY)  :: et    !temperature correction
   real(RLEN),dimension(NO_BOXES_XY)  :: eO    !correction for low oxygen
   real(RLEN),dimension(NO_BOXES_XY)  :: edry  !on tidal flat when it is nearly food uptake is stopped.
@@ -308,16 +307,6 @@
     edry= r/(r+0.10)
     actual_depth=actual_depth*dry_z
   endif
-  !QZ Cap on the near-bed enrichment of food (CorrectConcNearBed, Rouse-type
-  !   power profile C(z)~z**(-b), b=ws/(kappa*u*)). The calls below pass
-  !   corr_not=1e80, so b->infinity at slack water or for fast-sinking TEP
-  !   gave apparent food up to ~1e38 mg C/m3. Mass conservation: the mean
-  !   concentration in the lowest f metres cannot exceed the content of the
-  !   bottom layer (C*D) squeezed into f, so correction <= D/f
-  !   (f=min(p_height,0.5*D), as in CorrectConcNearBed).
-  !   Refs: Rouse (1937) Trans. ASCE 102:463-543; van Rijn (1984) J. Hydraul.
-  !   Eng. 110:1613-1641 (near-bed suspended-load profile).
-  corr_mass = actual_depth/(NZERO+min(p_height(y),0.5D0*actual_depth))
   !-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
   ! Physiological temperature response
   !-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -349,7 +338,6 @@
      cx_any =  cx_any  *px_any
      call CorrectConcNearBed_vector(actual_depth(:),sediPI_Ben(:,i),p_height(y),&
                                         corr_not,NO_BOXES_XY,  puPIY3(:,i))
-     puPIY3(:,i)=min(puPIY3(:,i),corr_mass)   !QZ mass-conservation cap
      food_PIc(:,i)=cx_any*puPIY3(:,i)
      food_PT(:)  = food_PT(:)+ food_PIc(:,i)
 !write(LOGUNIT,*) 'i,food_PT:',i,food_PT(:)
@@ -385,7 +373,6 @@
      cx_any =  cx_any  * px_any
      call CorrectConcNearBed_vector(actual_depth(:),sediZE_Ben(:,i),p_height(y), &
                                        corr_not,NO_BOXES_XY,  puZEY3(:,i))
-     puZEY3(:,i)=min(puZEY3(:,i),corr_mass)   !QZ mass-conservation cap
      food_ZEc(:,i)=cx_any*puZEY3(:,i)
      food_ZE(:)  = food_ZE(:)+ food_ZEc(:,i)
   enddo
@@ -399,14 +386,12 @@
   !uptake of R2 (EPS) depend on uptqke rate of phytoplankton
   call CorrectConcNearBed_vector(actual_depth(:), sediR2_Ben(:), p_height(y), &
                                              corr_not,NO_BOXES_XY, px_limit)
-  px_limit=min(px_limit,corr_mass)           !QZ mass-conservation cap
   R2x_food_c=R2x_food_c*px_limit
   food  =   food+ R2x_food_c
 
   cx_any=   RI_Fc(:)* MM_vector(  RI_Fc(:),  clu)
   call CorrectConcNearBed_vector(actual_depth(:), sediR6_Ben(:), p_height(y), &
                                              corr_not,NO_BOXES_XY, R6_corr)
-  R6_corr=min(R6_corr,corr_mass)             !QZ mass-conservation cap
   RTc=cx_any*R6_corr
   food_RI=RTc*p_R6(y)
   food  =   food+ food_RI
